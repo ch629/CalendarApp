@@ -1,6 +1,6 @@
 # Meeting Minutes
 
-## Meeting One - 2nd Feburary 2017
+## Meeting One - 2nd February 2017
 __Members Present:__ Ben Ashing, Lewis Allen, Charlie Howes, Constantinos Ioannou.
 
 __Meeting Time:__ 10:00am - 10:30am.
@@ -12,7 +12,7 @@ __Events:__
 3. Arranged meeting for next week.
 4. Began to discuss requirements.
  
-## Meeting Two - 6th Feburary 2017
+## Meeting Two - 6th February 2017
 __Members Present:__ Charlie Howes, Constantinous Ioannou, Ben Ashing, Lewis Allen, Adam Howes.
 
 __Meeting Time:__ 2:00pm - 3:00pm.
@@ -24,7 +24,7 @@ __Events:__
 3. Discussed individual roles within the group.
 4. Commited current workings to GitHub repository. 
 
-## Meeting Three - 13th Feburary 2017
+## Meeting Three - 13th February 2017
 __Members Present:__
 
 __Meeting Time:__
