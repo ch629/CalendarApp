@@ -1,4 +1,13 @@
 # Interview Questions
+/*Constantinos
+I added some key questions that I thing we should ask at the begin of the interview
+- Product name
+- Who will be using(target group)
+- Brief overview
+- Why you need the product and problem that is going to solve
+- Goals that the project should meet
+*/
+
 - Personal Diary Requirements:
 	- Privacy/Security (Can anyone have authorization to see all?)
 - Which Platform(Mobile, Desktop)
