@@ -1,32 +1,54 @@
 # Interview Questions
-/*Constantinos
-I added some key questions that I thing we should ask at the begin of the interview
+
+## General
 - Product name
 - Who will be using(target group)
 - Brief overview
 - Why you need the product and problem that is going to solve
 - Goals that the project should meet
-*/
-
-- Personal Diary Requirements:
-	- Privacy/Security (Can anyone have authorization to see all?)
-- Which Platform(Mobile, Desktop)
-- Scheduled events (Hourly, Monthly, Yearly) within ranges
-- What exactly will the concrete times for events be?
-- Include weekend?
-- How will this actually be input (Drag & Drop, Selections)
-- User Accounts(Students? Customized groups)
-	- Database security (Hashed passwords, etc)
-- Deadlines (Each deliverable)
-- Are staff accounts automatically public or choice?
-- Default screen (How much Personalization to allow)
-- Notifications (Reminders before events, removal of event):
-	- Email?
-- Maintenance of system after completion?
 - As a business stakeholder what is the aim of this system?
-- Latest point to delete an appointment?
-- How long for requests to expire? - Notifies if someone doesn't respond
-- What happens if there are clashes in the calendar?
-- Accessibility options - Colour blind
 - Margin, budgets
-- Minimum pc specifications
+- Maintenance of system after completion?
+- Deadlines (Each deliverable)
+- Minimum PC Specifications
+- Which Platform (Mobile, Desktop)
+
+## User Customization
+- Privacy/Security Settings (Can anyone override this?)
+- Accessibility
+- Notification Settings:
+	- Email, Facebook
+	- Meeting Requests
+	- Before an Event (How long before)
+	- Meeting Cancellations
+	- Meeting Request Expiration
+
+## User Accounts
+- Staff accounts automatically public or choice?
+- User Registration
+- Students?
+- Security (Hashed Passwords, encrypted logins)
+- Customizable Groups with access rights (For Admin)
+- Administration accounts:
+	- Managing Groups (Adding users to groups)
+	- Removing old users
+
+## User Experience
+- How will this actually be input (Drag & Drop, Selections)
+- Default screen (Customizable?)
+
+## Tech
+- Web Server:
+	- Host singular database
+	- Deal with requests (Login, add meeting request)
+	- Multiple clients can run at the same time
+	- Security (Encrypting Data over the network)
+
+## Miscellaneous
+- Scheduled events (Hourly, Monthly, Yearly) within ranges
+- Concrete Times
+- Include weekend
+- Latest point to cancel an appointment
+- Request Expiration - How long
+- Event Clashing
+- User Search (Find by name, role, subject)
