@@ -7,10 +7,10 @@ __Meeting Time:__ 10:00am - 10:30am.
 
 __Events:__ 
 
-1. Introduced group members to eachother.
-2. Discussed how group is going to collaborate and communicate. Decided on Facebook Messenger.
-3. Arranged meeting for next week.
-4. Began to discuss requirements.
+- Introduced group members to eachother.
+- Discussed how group is going to collaborate and communicate. Decided on Facebook Messenger.
+- Arranged meeting for next week.
+- Began to discuss requirements.
  
 ## Meeting Two - 6th February 2017
 __Members Present:__ Charlie Howes, Constantinous Ioannou, Ben Ashing, Lewis Allen, Adam Howes.
@@ -19,14 +19,19 @@ __Meeting Time:__ 2:00pm - 3:00pm.
 
 __Events:__
 
-1. Generated high-level requirements based off outline.
-2. Formed questions to ask client in upcoming interview.
-3. Discussed individual roles within the group.
-4. Commited current workings to GitHub repository. 
+- Generated high-level requirements based off outline.
+- Formed questions to ask client in upcoming interview.
+- Discussed individual roles within the group.
+- Commited current workings to GitHub repository. 
 
 ## Meeting Three - 13th February 2017
-__Members Present:__
+__Members Present:__ Ben Ashing, Charlie Howes, Constantinous Ioannou, Lewis Allen.
 
-__Meeting Time:__
+__Meeting Time:__ 10:30am - 11:00am
 
 __Events:__
+
+- Met with client regarding product.
+- Recorded client and asked questions in order to form the basis for our requirements later.
+- Formed a WhatsApp group as a back-up means of communication.
+- Arranged next tutorial session.
