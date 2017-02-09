@@ -10,8 +10,7 @@
 - Group Meetings
 - Events
 - Deadlines
-- private meetings that cannnot be viewed by others
-
+- Private meetings that cannnot be viewed by others
 - When creating an appointment and event state the duration and time and add people to the event
 
 ###Maintenance:
@@ -29,6 +28,7 @@
 - There will be an admin team
 - Accounts can have admin rights
 
+###Security
 - Usernames and Passwords
 - Encryption on the server
 
@@ -41,8 +41,9 @@
 ###Views:
 - User sets  default view for when the calendar opens
 
+###Other Functionality
 - Search feature
-- Member accounts can have additional attributes to assist in searching
+ - Member accounts can have additional attributes to assist in searching
 
 ###Delivery:
 - First deadline : Beginning of May
