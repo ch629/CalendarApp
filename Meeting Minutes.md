@@ -24,7 +24,7 @@ __Events:__
 - Discussed individual roles within the group.
 - Commited current workings to GitHub repository. 
 
-## Meeting Three - 13th February 2017
+## Meeting Three - 9th February 2017
 __Members Present:__ Ben Ashing, Charlie Howes, Constantinous Ioannou, Lewis Allen.
 
 __Meeting Time:__ 10:30am - 11:00am
