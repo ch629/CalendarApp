@@ -1,0 +1,21 @@
+University of Brighton Calendar
+Staff only - Include people into calendar (Through Email)
+Further maintenance - easily expanded (Web API deals with most of this)
+Java Desktop - Download
+Admin Accounts
+Full Encryption/Hashing of passwords
+Accounts must be verified by admin to be staff
+Username/Password - Email for notifications
+Personalization options(Colors, font size, larger views)
+Multiple views (Monthly, Weekly, Daily) - Customized home screen view
+Re-occuring meetings (appointment over x weeks)
+Groups (Named - "Members of Examination Board")
+Cancelled appointments on the main views (Notifications also)
+Inbuilt Notifactions
+Symbols (Cancelled Appointments etc)
+Customized notification timings (30 mins before)
+Cancel appointments anytime
+Staff set which course they are on, or tags (For searching)
+Accept events (Appear on both calendars)
+Fully tested
+Searching
