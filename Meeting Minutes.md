@@ -35,3 +35,15 @@ __Events:__
 - Recorded client and asked questions in order to form the basis for our requirements later.
 - Formed a WhatsApp group as a back-up means of communication.
 - Arranged next tutorial session.
+
+## Meeting Four - 13th February 2017
+__Members Present:__ Constantinous Ioannou, Charlie Howes, Adam Howes, Lewis Allen.
+
+__Meeting Time:__ 2:00pm - 3:00pm
+
+__Events:__
+
+- Relistened to interview audio.
+- Built requirements based off interview.
+- Came up with functional requirements and decided on each group members focus.
+- Decided to increase frequency of meetings.
