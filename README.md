@@ -1,3 +1,5 @@
 # NA32017
 
-Find the Trello board [here](https://trello.com/b/KUNhNhoX/integrated-group-project). 
+## Links
+- [Trello](https://trello.com/b/KUNhNhoX/integrated-group-project)
+- [Slack](https://na32017.slack.com)
