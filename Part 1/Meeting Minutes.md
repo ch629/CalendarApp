@@ -58,3 +58,14 @@ __Events:__
 - Recieved feedback on current progress from tutor.
 - Worked on restructuring requirements into better formatting.
 - Refocused priorities for next group meeting.
+
+## Meeting Six - 16th February 2017
+__Members Present:__ Charlie Howes, Adam Howes, Ben Ashing, Lewis Allen
+
+__Meeting Time:__ 3:00pm - 5:00pm
+
+__Events:__
+
+- Finalised initial gantt chart.
+- Assigned group roles.
+- Began to rework requirements.
