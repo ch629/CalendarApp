@@ -71,6 +71,6 @@ __Events:__
  - __Ben Ashing__ - Project Leader
  - __Charlie Howes__ - Technical Leader
  - __Lewis Allen__ - Quality Assurance
- - __Configuration Manager__ - Adam Howes
- - __Process Leader__ - Constantinous Ioannou
+ - __Adam Howes__ - Configuration Manager
+ - __Constantinous Ioannou__ - Process Leader
 - Began to rework requirements.
