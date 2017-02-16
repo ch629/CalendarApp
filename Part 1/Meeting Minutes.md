@@ -47,3 +47,14 @@ __Events:__
 - Built requirements based off interview.
 - Came up with functional requirements and decided on each group members focus.
 - Decided to increase frequency of meetings.
+
+## Meeting Five - 14th February 2017
+__Members Present:__ Lewis Allen, Ben Ashing, Adam Howes
+
+__Meeting Time:__ 3:00pm - 4:00pm
+
+__Events:__
+
+- Recieved feedback on current progress from tutor.
+- Worked on restructuring requirements into better formatting.
+- Refocused priorities for next group meeting.
