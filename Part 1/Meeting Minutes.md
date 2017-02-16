@@ -68,4 +68,9 @@ __Events:__
 
 - Finalised initial gantt chart.
 - Assigned group roles.
+ - __Ben Ashing__ - Project Leader
+ - __Charlie Howes__ - Technical Leader
+ - __Lewis Allen__ - Quality Assurance
+ - __Configuration Manager__ - Adam Howes
+ - __Process Leader__ - Constantinous Ioannou
 - Began to rework requirements.
