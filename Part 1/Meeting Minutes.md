@@ -74,3 +74,15 @@ __Events:__
  - __Adam Howes__ - Configuration Manager
  - __Constantinous Ioannou__ - Process Leader
 - Began to rework requirements.
+
+## Meeting Seven - 20th February 2017
+__Members Present:__ Constantinous Ioannou, Lewis Allen, Ben Ashing, Charlie Howes
+
+__Meeting Time:__ 3:00pm - 5:00pm
+
+__Events:__
+
+- Sorted requirements
+- Added onion model
+- Started final LaTeX planning document.
+- Reorganized information on GitHub
