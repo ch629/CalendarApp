@@ -3,6 +3,7 @@
 ##Non-Functional
 
 - Any tasks must be completable in a maximum of eight actions.(Lewis Allen)
+    - The user should be able to complete any single task with a maximum of eight actions.
 { Insert specific specification here }
 
 
