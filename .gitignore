@@ -67,3 +67,7 @@ gradle-app.setting
 Thumbs.db
 *.dll
 .~lock.*
+<<<<<<< HEAD
+=======
+*.swp
+>>>>>>> b61592c5eba79d21313dda68cdc9c36a258378e9
