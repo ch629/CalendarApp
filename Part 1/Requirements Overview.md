@@ -27,8 +27,10 @@ U7 - The user must be able to cancel appointments at any time.
 U8 - The user must be able to use a search feature to find other users.
 
 U9 - The user should be able to make event requests to other users.
-  U9.1 - Users should be able to accept event requests.
-  U9.2 - Users should be able to decline event requests.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U9.1 - Users should be able to accept event requests.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U9.2 - Users should be able to decline event requests.
 
 ## Quality Requirements
 
