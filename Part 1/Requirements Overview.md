@@ -26,13 +26,17 @@ U7 - The user must be able to cancel appointments at any time.
 
 U8 - The user must be able to use a search feature to find other users.
 
-U9 - The user should be able to make event requests, which other users can accept/decline.
+U9 - The user should be able to make event requests to other users.
+  U9.1 - Users should be able to accept event requests.
+  U9.2 - Users should be able to decline event requests.
 
 ## Quality Requirements
 
 Q1 - The application must use symbols to clearly show changes in events.
 
 Q2 - The application should notify the user in any changes to events such as cancellations.
+
+Q3 - The application must implement optimized loading times.
 
 ## Functional Requirements
 
