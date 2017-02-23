@@ -86,3 +86,13 @@ __Events:__
 - Added onion model
 - Started final LaTeX planning document.
 - Reorganized information on GitHub
+
+## Meeting Eight - 21st February 2017
+__Members Present:__ Ben Ashing, Lewis Allen, Constantinous Ioannou, Charie Howes, Adam Howes
+
+__Meeting Time:__ 3:00pm - 4:00pm
+
+__Evemts:__
+
+- Recieved feedback on current work.
+- Reprioritized tasks.
