@@ -96,3 +96,21 @@ __Evemts:__
 
 - Recieved feedback on current work.
 - Reprioritized tasks.
+
+## Meeting Nine - 23rd February 2017
+__Members Present:__ Adam Howes, Ben Ashing, Lewis Allen
+
+__Meeting Time:__ 2:00pm - 4:00pm
+
+__Events:__
+
+- Added names to Gantt Chart
+- Discussed use case model.
+- Minorly modified requirements.
+
+## Meeting Ten - 27th February 2017
+__Members Present:__
+
+__Meeting Time:__ 2:00pm - 4:00pm
+
+__Events:__
