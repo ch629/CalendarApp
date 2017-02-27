@@ -100,7 +100,7 @@ __Evemts:__
 ## Meeting Nine - 23rd February 2017
 __Members Present:__ Adam Howes, Ben Ashing, Lewis Allen
 
-__Meeting Time:__ 2:00pm - 4:00pm
+__Meeting Time:__ 3:00pm - 5:00pm
 
 __Events:__
 
