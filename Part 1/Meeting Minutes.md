@@ -109,8 +109,12 @@ __Events:__
 - Minorly modified requirements.
 
 ## Meeting Ten - 27th February 2017
-__Members Present:__
+__Members Present:__ Lewis Allen, Ben Ashing, Constantinous Ioannou, Adam Howes, Charlie Howes
 
 __Meeting Time:__ 2:00pm - 4:00pm
 
 __Events:__
+
+- Completed UML diagram
+- Worked on class diagram.
+- Worked on ERD.
