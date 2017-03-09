@@ -118,3 +118,14 @@ __Events:__
 - Completed UML diagram
 - Worked on class diagram.
 - Worked on ERD.
+
+## Meeting Eleven - 9th March 2017
+__Members Present:__ Ben Ashing, Lewis Allen, Adam Howes, Constantinous Ioannou
+
+__Meeting Time:__ 12:00pm-13:00pm and 15:00pm-17:00pm
+
+__Events:__
+
+- Recieved final feedback session from tutor.
+- Distributed remaining work among group members.
+- Discussed user specifications and wireframes.
