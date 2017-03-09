@@ -24,8 +24,15 @@
 
 - The project must be easily scaled to implement new features and a larger user base.
 
-- The product must be executable on all standard desktop Operating Systems with X minimum specs. (Adam Howes)
-{ Insert specific specification here }
+- The program must be executable on all standard desktop Operating Systems with X minimum specs. (Adam Howes){
+  - Windows 8, 8.1 and 10
+  - Mac OS
+  - Linux Ubuntu
+- The minimum specifications to run the program should be:
+  - Processor: Pentium 4
+  - RAM: 500 MB
+  - Disk space: 100 mb
+- The code must also be able to run on both 32 and 64 bit operating systems.}
 
 
 - All personal data must be fully secure through encryption and hashing. (Ben Ashing)
