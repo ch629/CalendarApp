@@ -1,4 +1,31 @@
-# The Model View Controller Design Pattern
+# Model View Control Design Notes
+
+The Model-View-Controller design application consists several main aspects. It consists of:
+
+- __The View classes__
+
+Every view in the application will have its own View class. This class handles the updating and gathering of information through the user interface.
+
+- __The Controller Classes__
+
+Each respective View has its own Controller. This controller class handles communicating the information from the View to the Model class.
+
+- __The Model Class__
+
+The Model class is where all the respective information will be stored and all logical calculations will take place. This model is shared amongst all controller classes, but its possible that this large Model class will be split up into smaller individual model classes.
+
+- __The Server__
+
+The Server will handle communications between the database and the Model class.
+
+- __The Database__
+
+The database is where all the data in the application will be stored using appropriate encyrption and hashing depending on the confidentiality of the data stored.
+
+Each view has its own View and Controller class. Each view communicates with its respective controller. Each controller communicates with a model class which is shared amongst all controllers. It is possible that this larger model class may be split up into several individual model classes. This model is wher
+
+
+# Model View Controller Explanation, Rationale, Benefits and Disadvantages
 
 The Model-View-Controller is a design pattern which focuses on providing a versatile user interface. It seperates internal representations of information from the parts of the program which present this information to the user. This section will describe our rationale behind the decision to use the MVC. It will also outline how the use of the MVC design pattern within our application will offer benefits not only to the user, but also to the developers whilst creating the application. Despite this however, its usage also comes with a few disadvantages. These will also be outlined and discussed below.
 
