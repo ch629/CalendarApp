@@ -1,6 +1,8 @@
-# Model View Control Design Notes
+# The Model View Controller Design
 
-The Model-View-Controller design application consists several main aspects. It consists of:
+## Diagram Notes
+
+The Model-View-Controller design application is made up of several main aspects. It consists of:
 
 - __The View classes__
 
@@ -22,17 +24,14 @@ The Server will handle communications between the database and the Model class.
 
 The database is where all the data in the application will be stored using appropriate encyrption and hashing depending on the confidentiality of the data stored.
 
-Each view has its own View and Controller class. Each view communicates with its respective controller. Each controller communicates with a model class which is shared amongst all controllers. It is possible that this larger model class may be split up into several individual model classes. This model is wher
-
-
-# Model View Controller Explanation, Rationale, Benefits and Disadvantages
+## Model View Controller Explanation, Rationale, Benefits and Disadvantages
 
 The Model-View-Controller is a design pattern which focuses on providing a versatile user interface. It seperates internal representations of information from the parts of the program which present this information to the user. This section will describe our rationale behind the decision to use the MVC. It will also outline how the use of the MVC design pattern within our application will offer benefits not only to the user, but also to the developers whilst creating the application. Despite this however, its usage also comes with a few disadvantages. These will also be outlined and discussed below.
 
-## Rationale
+### Rationale
 The rationale for the use of the MVC pattern within our application is formed from our analysis of the requirements. We needed a design pattern that is both versatile and maintainable whilst remaining uncomplicated to allow other development teams to extend the project in the future. The project needs to be able to perform the basic tasks of a calendar system such as modifying views and updating data. The Model-View-Controller pattern provides the tools to do this in an efficent manner through its relatively simple framework.
 
-## Benefits
+### Benefits
 The MVC design pattern comes with a variety of benefits, such as:
 
 - __Seperation of Logic and View__
@@ -51,7 +50,7 @@ The loose coupling provided by the MVC pattern will allow seperate members of th
 
 Whilst the code regarding different aspects of the application will remain seperate in different classes, the pattern relies on relationships between these classes, giving the application an essense of strong cohesion. An example of this is how the controller will communicate between the model and the view to perform actions.
 
-## Disadvantages
+### Disadvantages
 Whilst the MVC pattern comes with a variety of benefits, it also has several disadvantages. These include:
 
 - __Keeping things Consistent__
