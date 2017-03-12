@@ -32,7 +32,7 @@
   - Processor: Pentium 4
   - RAM: 500 MB
   - Disk space: 100 mb
-- The code must also be able to run on both 32 and 64 bit operating systems.}
+- The code must also be able to run on both 32 and 64 bit operating systems and be able to view events when not connected to the internet}
 
 
 - All personal data must be fully secure through encryption and hashing. (Ben Ashing)
