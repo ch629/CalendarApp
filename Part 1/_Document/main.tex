@@ -12,6 +12,8 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 
+\usepackage{parskip}
+
 \newcommand{\ts}{\textsuperscript}
 
 \title{Integrated Group Project}
@@ -19,7 +21,7 @@
 	\\ \rule{5cm}{0.4pt}
 	\\Charlie Howes, Lewis Allen, 
     \\Adam Howes, Ben Ashing, 
-    \\Constantinous Ioannou
+    \\Constantinos Ioannou
     \\ \rule{5cm}{0.4pt}
 } %TODO: Look at making the rule closer to the text.
 
@@ -85,11 +87,21 @@
     \item Administrators must be able to verify accounts.
   \end{enumerate}
   \item Non-Functional Requirements
-  \begin{enumerate}[label=NF\arabic*.] %TODO: These need to be completed fully. More added?
+  \begin{enumerate}[label=NF\arabic*.]
   	  \item The user should be able to complete any single task with a minimum of eight actions. (LA)
       \item The code needs to be easily maintainable by keeping the code organized, well written, documented and simple. (CH)
       \item The project must be easily scaled to implement additional features and a larger user base. (CH) %TODO: Be more specific with numbers
-      \item The product must be executable on all standard desktop Operating Systems with X minimum specifications. (AH) %TODO: Fill this in from Adam's github commit
+      \item The program must be executable on the following Operating Systems: (AH) \begin{itemize}
+        \item Windows 8, 8.1 \& 10
+        \item Mac OS
+        \item Linux Ubuntu
+      \end{itemize}
+      \item The minimum specifications to run the program should be: (AH) \begin{itemize}
+        \item Processor: Pentium 4
+        \item RAM: 500MB
+        \item Disk Space: 100MB
+      \end{itemize}
+      \item The code must also be able to run on both 32 and 64-bit Operating Systems and be able to view events when not connected to the Internet. (AH)
       \item All personal data must be fully secure through encryption and hashing. (BA)
       \item The project must be adaptable in the future for mobile implementations. (CI)
   \end{enumerate}
@@ -112,6 +124,37 @@
 \subsection{Diagram}
 
 \subsection{Case Descriptions}
+\subsubsection{Login - CI}
+\underline{\textit{Use case}}: Login
+
+\underline{\textit{Actors}}: User (Primary)
+
+\underline{\textit{Goal}}: TODO... %TODO: This is for AeroCar UML Coursework
+
+\underline{\textit{Precondition}}: Time, Date \& Location from customer (via phone).
+
+\underline{\textit{Success postcondition}}: The user fills in their login credentials successfuly and logs into the system.
+
+\underline{\textit{Failure postcondition}}: The user does not fill the correct login credentials.
+
+\underline{\textit{Trigger}}: The personal calendar of the user is displayed
+
+\underline{\textit{Main success scenario}}: 
+\begin{enumerate}[leftmargin = 3em]
+    \item User wants to login
+    \item User inserts credentials into the system
+    \item User clicks the login button
+    \item System checks the input credentials.
+    \item System fetches information and displays their personal calendar \\
+\end{enumerate} 
+
+\underline{\textit{Extensions}}:
+\begin{enumerate}[label=3\alph*, leftmargin = 3em]
+    \item User entered invalid data \begin{enumerate}[label=\arabic*.]
+        \item System asks the user to input correct data
+        \item Restart from 2
+    \end{enumerate}
+\end{enumerate}
 
 \section{Class Diagram}
 
@@ -119,15 +162,15 @@
 \subsection{Documentation}
 \subsubsection{Entities}
 \underline{\textit{Event:}} \\
-This entity will store all the information about the events. The unique ID for the entity is the \textit{Event\_ID} and it will be used to determine an event. The entity can hold all the necessary information such as date duration and location. The event is created by a user so the \textit{Host\_ID} is used to identify the user that create the event. The option to keep the event private is also available. \\
+This entity will store all the information about the events. The unique ID for the entity is the \textit{Event\_ID} and it will be used to determine an event. The entity can hold all the necessary information such as date duration and location. The event is created by a user so the \textit{Host\_ID} is used to identify the user that create the event. The option to keep the event private is also available. 
 
-\noindent\underline{\textit{Event Request:}} \\
-The Event Request entity is used store the information about an event request. The unique ID is the foreign key from the Event entity. It stores the response of user to the request as well as date invited and if the user seen the request or not. \\
+\underline{\textit{Event Request:}} \\
+The Event Request entity is used store the information about an event request. The unique ID is the foreign key from the Event entity. It stores the response of user to the request as well as date invited and if the user seen the request or not. 
 
-\noindent\underline{\textit{User:}} \\
-All the data of a user are store in the User entity. The unique \textit{User\_ID} is used as a primary and is used to log in in to the system with the required password. The basic personal data of the user are also store such as first name, last name, position, email and phone number. An Admin attribute is used to identify if a user is an admin or a normal user. \\
+\underline{\textit{User:}} \\
+All the data of a user are store in the User entity. The unique \textit{User\_ID} is used as a primary and is used to log in in to the system with the required password. The basic personal data of the user are also store such as first name, last name, position, email and phone number. An Admin attribute is used to identify if a user is an admin or a normal user. 
 
-\noindent\underline{\textit{Attendee:}} \\
+\underline{\textit{Attendee:}} \\
 The attendee entity holds the information about the attendance of the event. The combination of the two attributes \textit{User\_ID} and \textit{Event\_ID} will give a combine key for the table. 
 
 
@@ -205,7 +248,7 @@ The attendee entity holds the information about the attendance of the event. The
     \label{tab:user}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[ht] %TODO: Need to fix the vertical positioning of this
     \caption{Event Request}
     \centering
     \begin{tabular}{|c|c|c|c|}
