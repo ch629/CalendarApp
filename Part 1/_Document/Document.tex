@@ -13,15 +13,16 @@
 \usepackage{enumitem}
 
 \usepackage{parskip}
+\usepackage{lscape}
 
 \newcommand{\ts}{\textsuperscript}
-
+%TODO: Check all paging and add breaks where appropriate.
 \title{Integrated Group Project}
 \author{NA3
 	\\ \rule{5cm}{0.4pt}
-	\\Charlie Howes, Lewis Allen, 
-    \\Adam Howes, Ben Ashing, 
-    \\Constantinos Ioannou
+	\\Charlie Howes (CH), Lewis Allen (LA), 
+    \\Adam Howes (AH), Ben Ashing (BA), 
+    \\Constantinos Ioannou (CI)
     \\ \rule{5cm}{0.4pt}
 } %TODO: Look at making the rule closer to the text.
 
@@ -32,14 +33,21 @@
 
 \pagebreak
 
+\begin{landscape} %TODO: Look at making this nicer somehow
 \section{Planning}
 \subsection{Gantt Chart}
 \subsubsection{Proposed}
+\begin{figure}[!ht] %TODO: Maybe make this landscape, would be easier to read.
+    \centering
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ProposedGanttChart.png}} %TODO: Check this sizing at the end.
+    \caption{Proposed Gantt Chart}
+    \label{fig:proposed_gantt}
+\end{figure}
+\end{landscape}
+
 \subsubsection{Actual} %TODO: This might be better at the end, but not 100% sure.
 
 \subsection{Minutes}
-
-\pagebreak
 
 \section{Requirements}
 
@@ -123,13 +131,13 @@
 
 \subsection{Diagram}
 
-\subsection{Case Descriptions}
+\subsection{Case Descriptions} %TODO: Add other descriptions when they are done alongside screens.
 \subsubsection{Login - CI}
 \underline{\textit{Use case}}: Login
 
 \underline{\textit{Actors}}: User (Primary)
 
-\underline{\textit{Goal}}: TODO... %TODO: This is for AeroCar UML Coursework
+\underline{\textit{Goal}}: TODO? %TODO: This was for AeroCar UML Coursework
 
 \underline{\textit{Precondition}}: Time, Date \& Location from customer (via phone).
 
@@ -145,7 +153,7 @@
     \item User inserts credentials into the system
     \item User clicks the login button
     \item System checks the input credentials.
-    \item System fetches information and displays their personal calendar \\
+    \item System fetches information and displays their personal calendar
 \end{enumerate} 
 
 \underline{\textit{Extensions}}:
@@ -153,6 +161,41 @@
     \item User entered invalid data \begin{enumerate}[label=\arabic*.]
         \item System asks the user to input correct data
         \item Restart from 2
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Creating an Event - LA}
+\underline{\textit{Use case}}: Creating an Event
+
+\underline{\textit{Actors}}: User (Primary)
+
+\underline{\textit{Goal}}: TODO? %TODO
+
+\underline{\textit{Precondition}}: The User has logged into their account.
+
+\underline{\textit{Success postcondition}}: The User has the created event displayed on their calendar.
+
+\underline{\textit{Failure postcondition}}: The User was unable to create the event.
+
+\underline{\textit{Trigger}}: The User clicks the ‘add event’ button.
+
+\underline{\textit{Main success scenario}}: 
+\begin{enumerate}[leftmargin = 3em]
+    \item The user clicks the ‘add event’ button.
+    \item The User specifies the time, day and duration of the event.
+    \item The user names the event and gives it a description.
+    \item The user clicks ‘Confirm’.
+    \item The System adds the event to the user’s calendar.
+\end{enumerate} 
+
+\underline{\textit{Extensions}}:
+\begin{enumerate}[label=2\alph*, leftmargin = 3em]
+    \item The user has input an event time/date and there is a conflicting schedule. (The user already has an event booked for that duration) \begin{enumerate}[label=\arabic*.]
+        \item The System indicates that the user can no longer click confirm.
+        \item The System informs the user that there is already an event planned for that duration.
+        \item The user is returned to the event creation screen and is given the option to change to event time/day, along with the other details if required.
+        \item The user modifies the time/day to a free period.
+        \item Continue on to step 3.
     \end{enumerate}
 \end{enumerate}
 
@@ -172,7 +215,6 @@ All the data of a user are store in the User entity. The unique \textit{User\_ID
 
 \underline{\textit{Attendee:}} \\
 The attendee entity holds the information about the attendance of the event. The combination of the two attributes \textit{User\_ID} and \textit{Event\_ID} will give a combine key for the table. 
-
 
 \subsubsection{Tables}
 \begin{table}[ht]
@@ -267,14 +309,15 @@ The attendee entity holds the information about the attendance of the event. The
     \label{tab:event_request}
 \end{table}
 
-
+\begin{landscape}
 \clearpage
 \subsection{Entity Relationship Diagram}
-\begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ERDiagram.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperheight]{ERDiagram.png}} %TODO: Check this sizing at the end.
     \caption{Entity Relationship Diagram}
     \label{fig:erd}
 \end{figure}
+\end{landscape}
 
 \section{Design}
 
