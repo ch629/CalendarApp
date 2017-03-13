@@ -129,3 +129,15 @@ __Events:__
 - Recieved final feedback session from tutor.
 - Distributed remaining work among group members.
 - Discussed user specifications and wireframes.
+
+## Meeting Twelve - 13th March 2017
+__Members Present:__ Ben Ashing, Constantinous Ioannou, Lewis Allen
+
+__Meeting Time:__ 14:00pm-16:00pm
+
+__Events:__
+
+- Communicated with all group members on final document.
+- Organised GitHub repository
+- Double-checked deliverables.
+- Submitted document.
