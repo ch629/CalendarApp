@@ -43,9 +43,16 @@
     \caption{Proposed Gantt Chart}
     \label{fig:proposed_gantt}
 \end{figure}
-\end{landscape}
 
+\clearpage
 \subsubsection{Actual} %TODO: This might be better at the end, but not 100% sure.
+\begin{figure}[!ht]
+    \centering
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ActualGanttChart.png}} %TODO: Check this sizing at the end.
+    \caption{Actual Gantt Chart}
+    \label{fig:actual_gantt}
+\end{figure}
+\end{landscape}
 
 \subsection{Minutes}
 
@@ -137,8 +144,6 @@
 
 \underline{\textit{Actors}}: User (Primary)
 
-\underline{\textit{Goal}}: TODO? %TODO: This was for AeroCar UML Coursework
-
 \underline{\textit{Precondition}}: Time, Date \& Location from customer (via phone).
 
 \underline{\textit{Success postcondition}}: The user fills in their login credentials successfuly and logs into the system.
@@ -169,8 +174,6 @@
 
 \underline{\textit{Actors}}: User (Primary)
 
-\underline{\textit{Goal}}: TODO? %TODO
-
 \underline{\textit{Precondition}}: The User has logged into their account.
 
 \underline{\textit{Success postcondition}}: The User has the created event displayed on their calendar.
@@ -199,7 +202,69 @@
     \end{enumerate}
 \end{enumerate}
 
+\subsubsection{Edit Event - BA}
+\underline{\textit{Use case}}: Editing the Details of Events
+
+\underline{\textit{Actors}}: User (Primary)
+
+\underline{\textit{Precondition}}: The user is logged in and has an event to edit.
+
+\underline{\textit{Success postcondition}}: The User has successfully edited the details of their event.
+
+\underline{\textit{Failure postcondition}}: The User is unable to edit the details of their event
+
+\underline{\textit{Trigger}}: The User clicks on the event edit button.
+
+
+\underline{\textit{Main success scenario}}: 
+\begin{enumerate}[leftmargin = 3em]
+    \item The User will navigate to the event in the calendar
+    \item The User will select the event they wish to edit
+    \item The User will click on the edit button
+    \item The User will be able to change any detail of the even
+    \item The User will click on the save button to save any changes
+\end{enumerate} 
+
+\underline{\textit{Extensions}}:
+\begin{enumerate}[label=3\alph*, leftmargin = 3em]
+    \item The User is not the host of the event \begin{enumerate}[label=\arabic*.]
+        \item An edit button won’t be displayed to the user if they don’t have the right change it
+    \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[label=4\alph*, leftmargin = 3em]
+    \item The User makes an illegal change to the event e.g. changing the date to a date in the past \begin{enumerate}[label=\arabic*.]
+        \item The User is notified that the changes made cannot be saved
+        \item The User Changes the data so that it is valid
+        \item Proceed to step 5
+    \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[label=5\alph*, leftmargin = 3em]
+    \item The User closes the calendar without saving the changes that have been made 
+    \begin{enumerate}[label=\arabic*.]
+        \item The User is notified that changes won’t be saved
+        \begin{enumerate}[label=\alph*]
+            \item \begin{enumerate}[label=\arabic*.]
+                \item The user clicks cancel
+                \item Proceed to step 5
+            \end{enumerate}
+            \item \begin{enumerate}[label=\arabic*.]
+                \item The user ignores the notification and navigates away from the page
+                \item Failure postcondition is met
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\clearpage
 \section{Class Diagram}
+\begin{figure}[!ht]
+    \centering
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ClassDiagram.jpg}} %TODO: Check this sizing at the end.
+    \caption{Class Diagram}
+    \label{fig:class}
+\end{figure}
 
 \section{Database}
 \subsection{Documentation}
@@ -320,5 +385,62 @@ The attendee entity holds the information about the attendance of the event. The
 \end{landscape}
 
 \section{Design}
+\subsection{High-Level Architecture Diagram}
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{ArchDiagram.png}} %TODO: Check this sizing at the end.
+    \caption{High-Level Architecture Diagram}
+    \label{fig:arch}
+\end{figure}
+
+\subsection{Model View Controller}
+\subsubsection{Design}
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{MVCDiagram.png}} %TODO: Check this sizing at the end.
+    \caption{MVC Diagram}
+    \label{fig:mvc}
+\end{figure}
+
+\textbf{Diagram Notes}
+The Model-View-Controller design application is made up of several main aspects. It consists of: 
+\begin{itemize}
+    \item \textbf{The View Classes} \\ 
+    Every view in the application will have its own View class. This class handles the updating and gathering of information through the user interface. \\
+    \item \textbf{The Controller Classes} \\ 
+    Each respective View has its own Controller. This controller class handles communicating the information from the View to the Model class. \\
+    \item \textbf{The Model Class} \\ 
+    The Model class is where all the respective information will be stored and all logical calculations will take place. This model is shared amongst all controller classes, but its possible that this large Model class will be split up into smaller individual model classes. \\
+    \item \textbf{The Server} \\ 
+    The Server will handle communications between the database and the Model class. \\
+    \item \textbf{The Database} \\ 
+    The database is where all the data in the application will be stored using appropriate encryption and hashing depending on the confidentiality of the data stored.
+\end{itemize}
+
+\subsubsection{Explanation, Rationale, Benefits and Disadvantages}
+The Model-View-Controller (MVC) is a design pattern which focuses on providing a versatile user interface. It separates internal representations of information from the parts of the program which present this information to the user. This section will describe our rationale behind the decision to use the MVC. It will also outline how the use of the MVC design pattern within our application will offer benefits not only to the user, but also to the developers whilst creating the application. Despite this however, its usage also comes with a few disadvantages. These will also be outlined and discussed below.
+
+\textbf{Rationale}
+The rationale for the use of the MVC pattern within our application is formed from our analysis of the requirements. We needed a design pattern that is both versatile and maintainable whilst remaining uncomplicated to allow other development teams to extend the project in the future. The project needs to be able to perform the basic tasks of a calendar system such as modifying views and updating data. The Model-View-Controller pattern provides the tools to do this in an efficient manner through its relatively simple framework.
+
+\textbf{Benefits}
+The MVC design pattern comes with a variety of benefits, such as:
+\begin{itemize}
+    \item \textbf{Separation of Logic and View} \\
+    The separate Model and View classes will allow the code for the logic to be separated from the code for the views. This is useful as it promotes good code organisation, making it easier to pinpoint where problems occur and as a result bugs easier to fix. It also allows new features to be implemented more efficiently as well as existing features to be modified effectively. \\
+    \item \textbf{Simultaneous Views} \\
+    The nature of the MVC's specified encapsulation allows the program to display multiple views based off the same information. This will be useful when we implement the different types of calendars such as the Daily, Monthly and Yearly views. \\
+    \item \textbf{Parallel Development} \\
+    The loose coupling provided by the MVC pattern will allow separate members of the development team to be working on different aspects of the application at the same time. For example, One member could be working on the logic within the model whilst another on the physical representation of the view to the user. This is an advantage when considering both development speed and team-member co-operation. \\
+    \item \textbf{Strong Cohesion} \\
+    Whilst the code regarding different aspects of the application will remain separate in different classes, the pattern relies on relationships between these classes, giving the application an essence of strong cohesion. An example of this is how the controller will communicate between the model and the view to perform actions.
+\end{itemize}
+
+\textbf{Disadvantages}
+Whilst the MVC pattern comes with a variety of benefits, it also has several disadvantages. These include:
+\begin{itemize}
+    \item \textbf{Keeping things Consistent} \\
+    As we will be splitting code in to several different classes instead of keeping it form within one class, it will require the maintaining of several classes at once. This can be dangerous as forgetting to update one of these classes could cause bugs and other unforeseen problems. This can be avoided by careful planning and implementation. \\
+    \item \textbf{Complexity of Framework and Navigation within Code} \\
+    Whilst the MVC provides good organisation and encapsulation, it will require us to adapt the planning steps we made during the planning phase to function correctly with the MVC. This adds new layers of abstraction to the process, making it more complex and difficult to navigate.
+\end{itemize}
 
 \end{document}
