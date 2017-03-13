@@ -18,12 +18,14 @@
 
 \newcommand{\ts}{\textsuperscript}
 %TODO: Check all paging and add breaks where appropriate.
-\title{Integrated Group Project}
+\title{\vspace{-2cm}Integrated Group Project}
 \author{NA3
 	\\ \rule{5cm}{0.4pt}
-	\\Charlie Howes (CH), Lewis Allen (LA), 
-    \\Adam Howes (AH), Ben Ashing (BA), 
-    \\Constantinos Ioannou (CI)
+	\\Adam Howes - 00000000,
+	\\Ben Ashing - 15846150,
+	\\Charlie Howes - 15823951,
+	\\Constantinos Ioannou - 00000000,
+	\\Lewis Allen - 15816594,
     \\ \rule{5cm}{0.4pt}
 } %TODO: Look at making the rule closer to the text.
 
@@ -32,7 +34,18 @@
 
 \tableofcontents
 
-\pagebreak
+\break
+
+\section{Preface}
+Throughout this document we refer to the following group members using their initials in individual sections:
+\begin{itemize}
+    \item Adam Howes (AH) - Configuration Manager 
+    \item Ben Ashing (BA) - Project Leader
+    \item Charlie Howes (CH) - Technical Leader
+    \item Constantinos Ioannou (CI) - Process Leader
+    \item Lewis Allen (LA) - Quality Assurance
+\end{itemize}
+
 
 \begin{landscape} %TODO: Look at making this nicer somehow
 \section{Planning}
@@ -55,7 +68,7 @@
 \end{figure}
 \end{landscape}
 
-\subsection{Minutes}
+\subsection{Minutes} %TODO: Fill this in from github
 
 \section{Requirements}
 
@@ -516,22 +529,34 @@ Whilst the MVC pattern comes with a variety of benefits, it also has several dis
 
 \section{Appendix}
 \subsection{Scenarios}
-\includepdf[pages={1}]{ScnrCI.pdf}
-\includepdf[pages={1}]{ScnrLA.pdf}
-\includepdf[pages={1}]{ScnrBA.pdf}
+\includepdf[pages={1}]{scenarios/CI.pdf}
+\includepdf[pages={1}]{scenarios/LA.pdf}
+\includepdf[pages={1}]{scenarios/BA.pdf}
 
 \clearpage
 \subsection{Screen Designs}
-\begin{figure}[!ht] %TODO: Look into making this landscape too
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{ScrnLoginCI.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/LoginCI.png}} %TODO: Check this sizing at the end.
     \caption{Login - CI}
     \label{fig:login}
 \end{figure}
 
-\begin{figure}[!ht] %TODO: Look into making this landscape too
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ScrnGroupCH.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht] 
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/GroupCH.png}} %TODO: Check this sizing at the end.
     \caption{Create Group - CH}
     \label{fig:create_group}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventCalendarLA.png}} %TODO: Check this sizing at the end.
+    \caption{Create Group - LA}
+    \label{fig:create_event_cal}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventLA.png}} %TODO: Check this sizing at the end.
+    \caption{Create Group - LA}
+    \label{fig:create_event}
 \end{figure}
 
 \end{document}
