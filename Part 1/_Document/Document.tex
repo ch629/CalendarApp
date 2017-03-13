@@ -13,7 +13,8 @@
 \usepackage{enumitem}
 
 \usepackage{parskip}
-\usepackage{lscape}
+% \usepackage{lscape}
+\usepackage{pdflscape}
 \usepackage{pdfpages}
 
 \newcommand{\ts}{\textsuperscript}
@@ -28,6 +29,17 @@
 	\\Lewis Allen - 15816594,
     \\ \rule{5cm}{0.4pt}
 } %TODO: Look at making the rule closer to the text.
+
+\newcommand{\Lpagenumber}{\ifdim\textwidth=\linewidth\else\bgroup
+  \thispagestyle{empty}
+  \dimendef\margin=0
+  \ifodd\value{page}\margin=\oddsidemargin
+  \else\margin=\evensidemargin
+  \fi
+  \raisebox{\dimexpr -\topmargin-\headheight-\headsep-0.5\linewidth}[0pt][0pt]{%
+    \rlap{\hspace{\dimexpr \margin+\textheight+\footskip}%
+    \llap{\rotatebox{0}{\thepage}}}}%
+\egroup\fi}
 
 \begin{document}
 \maketitle
@@ -48,6 +60,7 @@ Throughout this document we refer to the following group members using their ini
 
 
 \begin{landscape} %TODO: Look at making this nicer somehow
+\Lpagenumber
 \section{Planning}
 \subsection{Gantt Chart}
 \subsubsection{Proposed}
@@ -58,14 +71,22 @@ Throughout this document we refer to the following group members using their ini
     \label{fig:proposed_gantt}
 \end{figure}
 
+\textbf{Explanation} \\
+This gantt chart is a proposed estimation of work for each group member sorted by task. The gantt chart is designed with consideration to ensuring each group member has a similar amount of work to do over the course of the planning phase.
+
 \clearpage
 \subsubsection{Actual} %TODO: This might be better at the end, but not 100% sure.
+\Lpagenumber
 \begin{figure}[!ht]
     \centering
     \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ActualGanttChart.png}} %TODO: Check this sizing at the end.
     \caption{Actual Gantt Chart}
     \label{fig:actual_gantt}
 \end{figure}
+
+\textbf{Explanation} \\
+This final gantt chart is the phyiscal representation of what actually happened during our project. As can be seen, each group member completed a similar amount of work, and we were able to stick to the original gantt chart in most instances. An extra task of "review" was added to the end of this gantt chart as we did not originally anticipate that this task would be required. Fortunately, due to our planning, we left several days at the end of the project free of tasks as a precaution in case this situation occured.
+
 \end{landscape}
 
 \subsection{Minutes} %TODO: Fill this in from github
@@ -145,6 +166,9 @@ Throughout this document we refer to the following group members using their ini
     \caption{Stakeholder Diagram}
     \label{fig:stakeholder}
 \end{figure}
+
+\textbf{Explanation} \\
+The onion model represents the relationship each group of stakeholders has with the final product. The innermost ring represents the stakeholders that will directly interact with the product. The next ring shows members of the organisation from which the innermost stakeholders derive. The outer ring represents the wider environment in which the product will exist e.g. the students won't directly interact with the product, but they will experience its effects.
 
 \clearpage
 \section{Use Case Model}
@@ -346,7 +370,7 @@ The class diagram consists of four main classes:
     \item \textbf{User - Event:} The relationship between these classes is composition, as an event can no longer exist without the host who created it. The multiplicity is one-to-many, as the user can create many events.
     \item \textbf{Attendee - Event:} The relationship between attendee and event is to allow the class to distinguish between who is the host of an event, and who is simply an attendee. This is to ensure events are destroyed when host accounts are deleted, but not if attendee accounts are deleted.
     \item \textbf{Attendee - User:} An attendee is a user who is attending an event. The attendee has all the attributes of a user but also contains the event ID for the event he/she is attending.
-    \item \textbf{User - EventRequest:} The relationship between these classes is aggregation, as even if the user who send the request is deleted, the request can still exist as it links directly to the event. The multiplicity is one-to-many as a user can send many requests.
+    \item \textbf{User - EventRequest:} The relationship between these classes is composition, as if the user of the creator of the event is deleted, then the event is also deleted. As a result of this, any event requests are also deleted.
     \item \textbf{Event - EventRequest:} The relationship between these classes is composition, as if the event a request points to is removed, any requests relating to it must also be removed. The multiplicity is one-to-many as an event can have many event requests.
     \item \textbf{User - Admin:} The relationship between these classes is generalisation, as the class Admin inherits from the class User. This is to ensure the class Admin has all the functionality of a User class aswell as further behaviour such as being able to create accounts.
 \end{itemize}
@@ -459,7 +483,7 @@ The attendee entity holds the information about the attendance of the event. The
 \end{table}
 
 \begin{landscape}
-\clearpage
+\Lpagenumber
 \subsection{Entity Relationship Diagram}
 \begin{figure}[!ht] %TODO: Look into making this landscape too
     \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperheight]{ERDiagram.png}} %TODO: Check this sizing at the end.
@@ -550,13 +574,37 @@ Whilst the MVC pattern comes with a variety of benefits, it also has several dis
 \begin{figure}[!ht]
     \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventCalendarLA.png}} %TODO: Check this sizing at the end.
     \caption{Create Group - LA}
-    \label{fig:create_event_cal}
+    \label{fig:create_event_cal}     
 \end{figure}
 
 \begin{figure}[!ht]
     \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventLA.png}} %TODO: Check this sizing at the end.
     \caption{Create Group - LA}
     \label{fig:create_event}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA1.png}} %TODO: Check this sizing at the end.
+    \caption{Edit Event 1 - BA}
+    \label{fig:edit_event1}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA2.png}} %TODO: Check this sizing at the end.
+    \caption{Edit Event 2 - BA}
+    \label{fig:edit_event2}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA3.png}} %TODO: Check this sizing at the end.
+    \caption{Edit Event 3 - BA}
+    \label{fig:edit_event3}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA4.png}} %TODO: Check this sizing at the end.
+    \caption{Edit Event 4 - BA}
+    \label{fig:edit_event4}
 \end{figure}
 
 \end{document}
