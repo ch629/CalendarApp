@@ -13,12 +13,10 @@
 \usepackage{enumitem}
 
 \usepackage{parskip}
-% \usepackage{lscape}
 \usepackage{pdflscape}
 \usepackage{pdfpages}
 
 \newcommand{\ts}{\textsuperscript}
-%TODO: Check all paging and add breaks where appropriate.
 \title{\vspace{-2cm}Integrated Group Project}
 \author{NA3
 	\\ \rule{5cm}{0.4pt}
@@ -28,7 +26,7 @@
 	\\Constantinos Ioannou - 15833031,
 	\\Lewis Allen - 15816594,
     \\ \rule{5cm}{0.4pt}
-} %TODO: Look at making the rule closer to the text.
+} 
 
 \newcommand{\Lpagenumber}{\ifdim\textwidth=\linewidth\else\bgroup
   \thispagestyle{empty}
@@ -59,14 +57,14 @@ Throughout this document we refer to the following group members using their ini
 \end{itemize}
 
 
-\begin{landscape} %TODO: Look at making this nicer somehow
+\begin{landscape}
 \Lpagenumber
 \section{Planning}
 \subsection{Gantt Chart}
 \subsubsection{Proposed}
-\begin{figure}[!ht] %TODO: Maybe make this landscape, would be easier to read.
+\begin{figure}[!ht]
     \centering
-    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ProposedGanttChart.png}} %TODO: Check this sizing at the end.
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ProposedGanttChart.png}} 
     \caption{Proposed Gantt Chart}
     \label{fig:proposed_gantt}
 \end{figure}
@@ -75,11 +73,11 @@ Throughout this document we refer to the following group members using their ini
 This gantt chart is a proposed estimation of work for each group member sorted by task. The gantt chart is designed with consideration to ensuring each group member has a similar amount of work to do over the course of the planning phase.
 
 \clearpage
-\subsubsection{Actual} %TODO: This might be better at the end, but not 100% sure.
+\subsubsection{Actual}
 \Lpagenumber
 \begin{figure}[!ht]
     \centering
-    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ActualGanttChart.png}} %TODO: Check this sizing at the end.
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperheight]{ActualGanttChart.png}} 
     \caption{Actual Gantt Chart}
     \label{fig:actual_gantt}
 \end{figure}
@@ -89,7 +87,7 @@ This final gantt chart is the physical representation of what actually happened 
 
 \end{landscape}
 
-\subsection{Minutes} %TODO: Fill this in from github
+\subsection{Minutes}
 \subsubsection*{Meeting One - 2nd February 2017}
 \textbf{Members Present:} Ben Ashing, Lewis Allen, Charlie Howes, Constantinos Ioannou. \\
 \textbf{Meeting Time:} 10:00am - 10:30am \\
@@ -222,8 +220,9 @@ This final gantt chart is the physical representation of what actually happened 
     \item Submitted document.
 \end{itemize}
 
+\break
 \section{Requirements}
-\subsection{Document} %TODO: Need to rename one of these.
+\subsection{Document}
 \begin{enumerate}
   \item Business Requirements
   \begin{enumerate}[label=B\arabic*.]
@@ -269,7 +268,7 @@ This final gantt chart is the physical representation of what actually happened 
   \begin{enumerate}[label=NF\arabic*.]
   	  \item The user should be able to complete any single task with a minimum of eight actions. (LA)
       \item The code needs to be easily maintainable by keeping the code organized, well written, documented and simple. (CH)
-      \item The project must be easily scaled to implement additional features and a larger user base. (CH) %TODO: Be more specific with numbers
+      \item The project must be easily scaled to implement additional features and at least double the user base. (CH)
       \item The program must be executable on the following Operating Systems: (AH) \begin{itemize}
         \item Windows 8, 8.1 \& 10
         \item Mac OS
@@ -286,12 +285,12 @@ This final gantt chart is the physical representation of what actually happened 
   \end{enumerate}
 \end{enumerate}
 
-\clearpage % Forces the figure to be in this subsection by clearing the floats.
+\clearpage
 \subsection{Stakeholder Diagram}
 
 \begin{figure}[!ht]
     \centering
-    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{OnionModel.png}} %TODO: Check this sizing at the end.
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{OnionModel.png}} 
     \caption{Stakeholder Diagram}
     \label{fig:stakeholder}
 \end{figure}
@@ -301,15 +300,16 @@ The onion model represents the relationship each group of stakeholders has with 
 
 \clearpage
 \section{Use Case Model}
-\begin{figure}[!ht] %TODO: Look into making this landscape too
+\begin{figure}[!ht]
     \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{UseCase.jpg}} %TODO: Check this sizing at the end.
     \caption{Use Case Diagram}
     \label{fig:usecase}
 \end{figure}
 \textbf{Overview} \\
- The Use Case Diagram lists the basic functionalists that people interacting the system can achieve. These use cases were developed through our analysis of the requirements and will form the core user activities of our program.
+ The Use Case Diagram lists the basic functionality that people interacting the system can achieve. These use cases were developed through our analysis of the requirements and will form the core user activities of our program.
 
-\subsection{Case Descriptions} %TODO: Add other descriptions when they are done alongside screens.
+\break
+\subsection{Case Descriptions}
 \subsubsection{Login - CI}
 \underline{\textit{Use case}}: Login
 
@@ -317,7 +317,7 @@ The onion model represents the relationship each group of stakeholders has with 
 
 \underline{\textit{Precondition}}: Time, Date \& Location from customer (via phone).
 
-\underline{\textit{Success postcondition}}: The user fills in their login credentials successfuly and logs into the system.
+\underline{\textit{Success postcondition}}: The user fills in their login credentials successfully and logs into the system.
 
 \underline{\textit{Failure postcondition}}: The user does not fill the correct login credentials.
 
@@ -510,7 +510,7 @@ The onion model represents the relationship each group of stakeholders has with 
 \subsection{Diagram}
 \begin{figure}[!ht]
     \centering
-    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ClassDiagram.jpg}} %TODO: Check this sizing at the end.
+    \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ClassDiagram.jpg}} 
     \caption{Class Diagram}
     \label{fig:class}
 \end{figure}
@@ -549,7 +549,7 @@ All the data of a user are store in the User entity. The unique \textit{User\_ID
 
 \underline{\textit{Attendee:}} \\
 The attendee entity holds the information about the attendance of the event. The combination of the two attributes \textit{User\_ID} and \textit{Event\_ID} will give a combine key for the table. 
-
+\break
 \subsubsection{Tables}
 \begin{table}[ht]
     \caption{Event}
@@ -624,7 +624,7 @@ The attendee entity holds the information about the attendance of the event. The
     \label{tab:user}
 \end{table}
 
-\begin{table}[ht] %TODO: Need to fix the vertical positioning of this
+\begin{table}[!ht]
     \caption{Event Request}
     \centering
     \begin{tabular}{|c|c|c|c|}
@@ -646,8 +646,8 @@ The attendee entity holds the information about the attendance of the event. The
 \begin{landscape}
 \Lpagenumber
 \subsection{Entity Relationship Diagram}
-\begin{figure}[!ht] %TODO: Look into making this landscape too
-    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperheight]{ERDiagram.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht] 
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperheight]{ERDiagram.png}} 
     \caption{Entity Relationship Diagram}
     \label{fig:erd}
 \end{figure}
@@ -655,20 +655,24 @@ The attendee entity holds the information about the attendance of the event. The
 
 \section{Design}
 \subsection{High-Level Architecture Diagram}
-\begin{figure}[!ht] %TODO: Look into making this landscape too
-    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{ArchDiagram.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht] 
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{ArchDiagram.png}} 
     \caption{High-Level Architecture Diagram}
     \label{fig:arch}
 \end{figure}
 
+\textbf{Overview:} \\
+The System Architecture shows the three main components of the system. The first of which is the front end client that the user will interact with, either the mobile application or the desktop client. The front-end act mostly as a GUI and relay of information between the back-end and the user. The back-end server takes requests and data from the user in the GUI and runs calculations and communicates data stored in the database back to the front-end. This separation between the front-end and the back-end allows for better security and portability in the future as a mobile interface and desktop client can both communicate with the same back-end, rather than having to repeat yourself across platforms.
+
 \subsection{Model View Controller}
 \subsubsection{Design}
-\begin{figure}[!ht] %TODO: Look into making this landscape too
-    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{MVCDiagram.png}} %TODO: Check this sizing at the end.
+\begin{figure}[!ht] 
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{MVCDiagram.png}} 
     \caption{MVC Diagram}
     \label{fig:mvc}
 \end{figure}
 
+\break
 \textbf{Diagram Notes}
 The Model-View-Controller design application is made up of several main aspects. It consists of: 
 \begin{itemize}
@@ -723,63 +727,81 @@ Whilst the MVC pattern comes with a variety of benefits, it also has several dis
 \clearpage
 \subsection{Screen Designs}
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/LoginCI.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/LoginCI.png}} 
     \caption{Login - CI}
     \label{fig:login}
 \end{figure}
 
 \begin{figure}[!ht] 
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH1.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH1.png}} 
     \caption{Create Group 1 - CH}
     \label{fig:create_group1}
 \end{figure}
 
 \begin{figure}[!ht] 
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH2.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH2.png}} 
     \caption{Create Group 2 - CH}
     \label{fig:create_group2}
 \end{figure}
 
 \begin{figure}[!ht] 
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH3.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{screens/CH3.png}} 
     \caption{Create Group 3 - CH}
     \label{fig:create_group3}
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventCalendarLA.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventCalendarLA.png}}
     \caption{Create Event - LA}
     \label{fig:create_event_cal}     
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventLA.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/CreateEventLA.png}} 
     \caption{Create Event - LA}
     \label{fig:create_event}
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA1.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA1.png}} 
     \caption{Edit Event 1 - BA}
     \label{fig:edit_event1}
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA2.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA2.png}} 
     \caption{Edit Event 2 - BA}
     \label{fig:edit_event2}
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA3.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA3.png}} 
     \caption{Edit Event 3 - BA}
     \label{fig:edit_event3}
 \end{figure}
 
 \begin{figure}[!ht]
-    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA4.png}} %TODO: Check this sizing at the end.
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/BA4.png}} 
     \caption{Edit Event 4 - BA}
     \label{fig:edit_event4}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/AH1.jpg}} 
+    \caption{Admin View 1 - AH}
+    \label{fig:admin1}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/AH2.jpg}} 
+    \caption{Admin View 2 - AH}
+    \label{fig:admin2}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{screens/AH3.jpg}} 
+    \caption{Admin View 3 - AH}
+    \label{fig:admin3}
 \end{figure}
 
 \end{document}
