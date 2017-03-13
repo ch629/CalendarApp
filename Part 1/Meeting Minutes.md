@@ -72,7 +72,7 @@ __Events:__
  - __Charlie Howes__ - Technical Leader
  - __Lewis Allen__ - Quality Assurance
  - __Adam Howes__ - Configuration Manager
- - __Constantinous Ioannou__ - Process Leader
+ - __Constantinos Ioannou__ - Process Leader
 - Began to rework requirements.
 
 ## Meeting Seven - 20th February 2017
