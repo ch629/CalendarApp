@@ -14,6 +14,7 @@
 
 \usepackage{parskip}
 \usepackage{lscape}
+\usepackage{pdfpages}
 
 \newcommand{\ts}{\textsuperscript}
 %TODO: Check all paging and add breaks where appropriate.
@@ -132,11 +133,13 @@
     \label{fig:stakeholder}
 \end{figure}
 
+\clearpage
 \section{Use Case Model}
-
-\subsection{Actors}
-
-\subsection{Diagram}
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.9\textwidth]{\includegraphics[width=0.75\paperwidth]{UseCase.jpg}} %TODO: Check this sizing at the end.
+    \caption{Use Case Diagram}
+    \label{fig:usecase}
+\end{figure}
 
 \subsection{Case Descriptions} %TODO: Add other descriptions when they are done alongside screens.
 \subsubsection{Login - CI}
@@ -257,8 +260,56 @@
     \end{enumerate}
 \end{enumerate}
 
+\subsubsection{Creating a Group - CH}
+\underline{\textit{Use case}}: Creating a Group
+
+\underline{\textit{Actors}}: User (Primary)
+
+\underline{\textit{Precondition}}: The User has logged into their account.
+
+\underline{\textit{Success postcondition}}: The User creates a group to use in events.
+
+\underline{\textit{Failure postcondition}}: The User was unable to create a group
+
+\underline{\textit{Trigger}}: The User clicks the "Add Group" button.
+
+\underline{\textit{Main success scenario}}: 
+\begin{enumerate}[leftmargin = 3em]
+    \item The User inputs the name of the group
+    \item The User inputs the description of the group
+    \item The User clicks on the "Add Member" button and adds a member.
+    \item The User clicks "Create".
+    \item The System adds the group to the user.
+\end{enumerate} 
+
+\underline{\textit{Extensions}}:
+\begin{enumerate}[label=1\alph*, leftmargin = 3em]
+    \item The user didn't input the name of the group \begin{enumerate}[label=\arabic*.]
+        \item The program disabled the "Create" button
+        \item The user is informed that they are required to input a name.
+        \begin{enumerate}[label=\alph*]
+            \item The user clicks cancel \begin{enumerate}[label=\arabic*.]
+                \item The program goes back to the previous screen.
+                \item The failure postcondition is met.
+            \end{enumerate}
+            \item The user inputs the name \begin{enumerate}[label=\arabic*.]
+                \item The program enables the "Create" button
+                \item Continue from step 2. 
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{enumerate}[label=4\alph*, leftmargin = 3em]
+    \item The user clicks "Cancel" \begin{enumerate}[label=\arabic*.]
+    \item The program goes back to the previous screen.
+        \item The failure postcondition is met 
+    \end{enumerate}
+\end{enumerate}
+
 \clearpage
 \section{Class Diagram}
+\subsection{Diagram}
 \begin{figure}[!ht]
     \centering
     \makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ClassDiagram.jpg}} %TODO: Check this sizing at the end.
@@ -266,6 +317,26 @@
     \label{fig:class}
 \end{figure}
 
+\subsubsection{Notes}
+\textbf{The Classes}
+The class diagram consists of four main classes:
+\begin{itemize}
+    \item \textbf{User:} The user will do the majority of the operations involving the other classes and will allow for event creation and deletion as well as sending, receiving and accepting invitations. The variables inside this class are protected as the class Admin will inherit from this class and an admin must have all the functionality of user and more.
+    \item \textbf{Attendee:} A problem we faced was distinguishing between a host and an attendee when creating events. We solved this by having two separate classes to be able to tell between hosts and attendees. An attendee is a user who is attending an event, and contains the event ID of the event to be attended.
+    \item \textbf{Event:} The event class will store the details for a single event. Information such as dates, times and locations will be stored in this class through the use of the database.
+    \item \textbf{EventRequest:} The Event Request class allows the User class to send out requests specifying the event being invited to as well as the recipient to the request.
+    \item \textbf{Admin:} The administrator Class is a user with special privilages which allow for the creation and removal of new and existing accounts. As the Admin class will extend the User class, it will have all the functionality of a User plus more. This authorization will only be given to a select few.
+\end{itemize}
+
+\textbf{The Relationships}
+\begin{itemize}
+    \item \textbf{User - Event:} The relationship between these classes is composition, as an event can no longer exist without the host who created it. The multiplicity is one-to-many, as the user can create many events.
+    \item \textbf{Attendee - Event:} The relationship between attendee and event is to allow the class to distinguish between who is the host of an event, and who is simply an attendee. This is to ensure events are destroyed when host accounts are deleted, but not if attendee accounts are deleted.
+    \item \textbf{Attendee - User:} An attendee is a user who is attending an event. The attendee has all the attributes of a user but also contains the event ID for the event he/she is attending.
+    \item \textbf{User - EventRequest:} The relationship between these classes is aggregation, as even if the user who send the request is deleted, the request can still exist as it links directly to the event. The multiplicity is one-to-many as a user can send many requests.
+    \item \textbf{Event - EventRequest:} The relationship between these classes is composition, as if the event a request points to is removed, any requests relating to it must also be removed. The multiplicity is one-to-many as an event can have many event requests.
+    \item \textbf{User - Admin:} The relationship between these classes is generalisation, as the class Admin inherits from the class User. This is to ensure the class Admin has all the functionality of a User class aswell as further behaviour such as being able to create accounts.
+\end{itemize}
 \section{Database}
 \subsection{Documentation}
 \subsubsection{Entities}
@@ -418,10 +489,10 @@ The Model-View-Controller design application is made up of several main aspects.
 \subsubsection{Explanation, Rationale, Benefits and Disadvantages}
 The Model-View-Controller (MVC) is a design pattern which focuses on providing a versatile user interface. It separates internal representations of information from the parts of the program which present this information to the user. This section will describe our rationale behind the decision to use the MVC. It will also outline how the use of the MVC design pattern within our application will offer benefits not only to the user, but also to the developers whilst creating the application. Despite this however, its usage also comes with a few disadvantages. These will also be outlined and discussed below.
 
-\textbf{Rationale}
+\textbf{Rationale} \\
 The rationale for the use of the MVC pattern within our application is formed from our analysis of the requirements. We needed a design pattern that is both versatile and maintainable whilst remaining uncomplicated to allow other development teams to extend the project in the future. The project needs to be able to perform the basic tasks of a calendar system such as modifying views and updating data. The Model-View-Controller pattern provides the tools to do this in an efficient manner through its relatively simple framework.
 
-\textbf{Benefits}
+\textbf{Benefits} \\
 The MVC design pattern comes with a variety of benefits, such as:
 \begin{itemize}
     \item \textbf{Separation of Logic and View} \\
@@ -434,7 +505,7 @@ The MVC design pattern comes with a variety of benefits, such as:
     Whilst the code regarding different aspects of the application will remain separate in different classes, the pattern relies on relationships between these classes, giving the application an essence of strong cohesion. An example of this is how the controller will communicate between the model and the view to perform actions.
 \end{itemize}
 
-\textbf{Disadvantages}
+\textbf{Disadvantages} \\
 Whilst the MVC pattern comes with a variety of benefits, it also has several disadvantages. These include:
 \begin{itemize}
     \item \textbf{Keeping things Consistent} \\
@@ -442,5 +513,25 @@ Whilst the MVC pattern comes with a variety of benefits, it also has several dis
     \item \textbf{Complexity of Framework and Navigation within Code} \\
     Whilst the MVC provides good organisation and encapsulation, it will require us to adapt the planning steps we made during the planning phase to function correctly with the MVC. This adds new layers of abstraction to the process, making it more complex and difficult to navigate.
 \end{itemize}
+
+\section{Appendix}
+\subsection{Scenarios}
+\includepdf[pages={1}]{ScnrCI.pdf}
+\includepdf[pages={1}]{ScnrLA.pdf}
+\includepdf[pages={1}]{ScnrBA.pdf}
+
+\clearpage
+\subsection{Screen Designs}
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.6\paperwidth]{ScrnLoginCI.png}} %TODO: Check this sizing at the end.
+    \caption{Login - CI}
+    \label{fig:login}
+\end{figure}
+
+\begin{figure}[!ht] %TODO: Look into making this landscape too
+    \centering\makebox[0.75\textwidth]{\includegraphics[width=0.75\paperwidth]{ScrnGroupCH.png}} %TODO: Check this sizing at the end.
+    \caption{Create Group - CH}
+    \label{fig:create_group}
+\end{figure}
 
 \end{document}
