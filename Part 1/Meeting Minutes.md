@@ -13,7 +13,7 @@ __Events:__
 - Began to discuss requirements.
  
 ## Meeting Two - 6th February 2017
-__Members Present:__ Charlie Howes, Constantinous Ioannou, Ben Ashing, Lewis Allen, Adam Howes.
+__Members Present:__ Charlie Howes, Constantinos Ioannou, Ben Ashing, Lewis Allen, Adam Howes.
 
 __Meeting Time:__ 2:00pm - 3:00pm.
 
@@ -25,7 +25,7 @@ __Events:__
 - Commited current workings to GitHub repository. 
 
 ## Meeting Three - 9th February 2017
-__Members Present:__ Ben Ashing, Charlie Howes, Constantinous Ioannou, Lewis Allen.
+__Members Present:__ Ben Ashing, Charlie Howes, Constantinos Ioannou, Lewis Allen.
 
 __Meeting Time:__ 10:30am - 11:00am
 
@@ -37,7 +37,7 @@ __Events:__
 - Arranged next tutorial session.
 
 ## Meeting Four - 13th February 2017
-__Members Present:__ Constantinous Ioannou, Charlie Howes, Adam Howes, Lewis Allen.
+__Members Present:__ Constantinos Ioannou, Charlie Howes, Adam Howes, Lewis Allen.
 
 __Meeting Time:__ 2:00pm - 3:00pm
 
@@ -76,7 +76,7 @@ __Events:__
 - Began to rework requirements.
 
 ## Meeting Seven - 20th February 2017
-__Members Present:__ Constantinous Ioannou, Lewis Allen, Ben Ashing, Charlie Howes
+__Members Present:__ Constantinos Ioannou, Lewis Allen, Ben Ashing, Charlie Howes
 
 __Meeting Time:__ 3:00pm - 5:00pm
 
@@ -88,7 +88,7 @@ __Events:__
 - Reorganized information on GitHub
 
 ## Meeting Eight - 21st February 2017
-__Members Present:__ Ben Ashing, Lewis Allen, Constantinous Ioannou, Charie Howes, Adam Howes
+__Members Present:__ Ben Ashing, Lewis Allen, Constantinos Ioannou, Charie Howes, Adam Howes
 
 __Meeting Time:__ 3:00pm - 4:00pm
 
@@ -109,7 +109,7 @@ __Events:__
 - Minorly modified requirements.
 
 ## Meeting Ten - 27th February 2017
-__Members Present:__ Lewis Allen, Ben Ashing, Constantinous Ioannou, Adam Howes, Charlie Howes
+__Members Present:__ Lewis Allen, Ben Ashing, Constantinos Ioannou, Adam Howes, Charlie Howes
 
 __Meeting Time:__ 2:00pm - 4:00pm
 
@@ -120,7 +120,7 @@ __Events:__
 - Worked on ERD.
 
 ## Meeting Eleven - 9th March 2017
-__Members Present:__ Ben Ashing, Lewis Allen, Adam Howes, Constantinous Ioannou
+__Members Present:__ Ben Ashing, Lewis Allen, Adam Howes, Constantinos Ioannou
 
 __Meeting Time:__ 12:00pm-13:00pm and 15:00pm-17:00pm
 
@@ -131,7 +131,7 @@ __Events:__
 - Discussed user specifications and wireframes.
 
 ## Meeting Twelve - 13th March 2017
-__Members Present:__ Ben Ashing, Constantinous Ioannou, Lewis Allen
+__Members Present:__ Ben Ashing, Constantinos Ioannou, Lewis Allen
 
 __Meeting Time:__ 14:00pm-16:00pm
 
