@@ -22,7 +22,7 @@ The class diagram consists of four main classes:
 
 - __Attendee - User:__ An attendee is a user who is attending an event. The attendee has all the attributes of a user but also contains the event ID for the event he/she is attending.
 
-- __User - EventRequest:__ The relationship between these classes is aggregation, as even if the user who send the request is deleted, the request can still exist as it links directly to the event. The multiplicity is one-to-many as a user can send many requests.
+- __User - EventRequest:__ The relationship between these classes is composition, as if the user of the creator of the event is deleted, then the event is also deleted. As a result of this, any event requests are also deleted.
 
 - __Event - EventRequests:__ The relationship between these classes is composition, as if the event a request points to is removed, any requests relating to it must also be removed. The multiplicity is one-to-many as an event can have many event requests.
 
