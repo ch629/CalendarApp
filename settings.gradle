@@ -1,0 +1,6 @@
+rootProject.name = "Calendar"
+
+include "Common"
+include "Client"
+include "Server"
+

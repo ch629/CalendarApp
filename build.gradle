@@ -1,0 +1,24 @@
+group "uk.ac.brighton.uni.na3"
+version "1.0-SNAPSHOT"
+
+
+
+repositories {
+    mavenCentral()
+}
+
+subprojects {
+    apply plugin: "idea"
+    apply plugin: "java"
+
+    sourceCompatibility = 1.8
+
+    dependencies {
+        testCompile "junit:junit:4.12"
+        testCompile "org.assertj:assertj-core:3.6.2"
+
+        compile "com.fasterxml.jackson.core:jackson-databind:2.9.0.pr1"
+        compile "com.fasterxml.jackson.core:jackson-core:2.9.0.pr1"
+        compile "com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr1"
+    }
+}
