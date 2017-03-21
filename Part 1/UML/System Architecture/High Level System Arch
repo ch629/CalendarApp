@@ -1,7 +1,0 @@
-##High Level System Architecture
-The System Architecture shows the three main components of the system. The first of which is the front end client that the 
-user will interact with, either the mobile application or the desktop client. The front-end act mostly as a gui and 
-relay of information between the back-end and the user. The back-end server takes requests and data from the user in the gui 
-and runs calculations and communicates data stored in the database back to the front-end. This seperation between the fron-end 
-and the back-end allows for better security and portability in the future as a mobile interface and desktop client can both
-communicate with the same back-end, rather than having to repeat yourself accross platforms.
