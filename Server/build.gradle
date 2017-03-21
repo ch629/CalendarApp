@@ -1,0 +1,11 @@
+repositories {
+    mavenCentral()
+    maven {
+        name "Spring"
+        url "https://repo.spring.io/libs-snapshot"
+    }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:2.0.0.BUILD-SNAPSHOT"
+}

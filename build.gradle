@@ -1,8 +1,6 @@
 group "uk.ac.brighton.uni.na3"
 version "1.0-SNAPSHOT"
 
-
-
 repositories {
     mavenCentral()
 }
@@ -11,7 +9,7 @@ subprojects {
     apply plugin: "idea"
     apply plugin: "java"
 
-    sourceCompatibility = 1.8
+    sourceCompatibility = targetCompatibility = 1.8
 
     dependencies {
         testCompile "junit:junit:4.12"
