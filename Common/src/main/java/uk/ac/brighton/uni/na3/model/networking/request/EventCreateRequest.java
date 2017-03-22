@@ -1,4 +1,4 @@
-package uk.ac.brighton.uni.na3.model.networking;
+package uk.ac.brighton.uni.na3.model.networking.request;
 
 import java.time.LocalDateTime;
 import java.util.Set;

@@ -1,22 +1,27 @@
-group "uk.ac.brighton.uni.na3"
-version "1.0-SNAPSHOT"
-
-repositories {
-    mavenCentral()
-}
-
 subprojects {
+    group "uk.ac.brighton.uni.na3"
+    version "1.0-SNAPSHOT"
+
     apply plugin: "idea"
     apply plugin: "java"
 
     sourceCompatibility = targetCompatibility = 1.8
 
+    repositories {
+        mavenCentral()
+    }
+
     dependencies {
         testCompile "junit:junit:4.12"
         testCompile "org.assertj:assertj-core:3.6.2"
+        testCompile "org.mockito:mockito-all:2.0.2-beta"
 
-        compile "com.fasterxml.jackson.core:jackson-databind:2.9.0.pr1"
         compile "com.fasterxml.jackson.core:jackson-core:2.9.0.pr1"
         compile "com.fasterxml.jackson.core:jackson-annotations:2.9.0.pr1"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.9.0.pr1"
+        compile "com.fasterxml.jackson.datatype:jackson-datatype-guava:2.9.0.pr1"
+        compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.0.pr1"
+
+        compile "com.google.guava:guava:21.0" //NOTE: Maybe just on Client for Caching Events
     }
 }
