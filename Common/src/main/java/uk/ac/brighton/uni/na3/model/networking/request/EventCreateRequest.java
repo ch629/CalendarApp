@@ -8,11 +8,10 @@ import java.util.Set;
 
 @JsonAutoDetect
 public class EventCreateRequest extends Request {
-    private String owner; //ID
-    private String description, location;
-    private LocalDateTime start, end;
-    private boolean isPrivate;
-    private Set<String> attendees;
+    private final String owner, description, location;
+    private final LocalDateTime start, end;
+    private final boolean isPrivate;
+    private final Set<String> attendees;
 
     @JsonCreator
     public EventCreateRequest(char[] authToken, String owner, String description, String location,

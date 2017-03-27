@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 @JsonAutoDetect
 public class LoginRequest {
-    private String username;
-    private char[] password;
+    private final String username;
+    private final char[] password;
 
     @JsonCreator
     public LoginRequest(String username, char[] password) {

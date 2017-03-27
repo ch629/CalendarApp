@@ -5,8 +5,8 @@ import java.util.Set;
 import java.util.UUID;
 
 public class AuthTokenManager {
-    public AuthTokenManager instance = new AuthTokenManager(); //TODO: Maybe put this in the DB & do: "SELECT UserName FROM AuthToken WHERE Token = ?" then check the usernames align.
-    private Set<AuthUser> authUsers = new HashSet<>(); //TODO: Timeouts? Require reauth on next request after x time? -> Client would store hashed password to send to the server on reauth requests
+    public static final AuthTokenManager instance = new AuthTokenManager(); //TODO: Maybe put this in the DB & do: "SELECT UserName FROM AuthToken WHERE Token = ?" then check the usernames align.
+    private final Set<AuthUser> authUsers = new HashSet<>(); //TODO: Timeouts? Require reauth on next request after x time? -> Client would store hashed password to send to the server on reauth requests
 
     private AuthTokenManager() {}
 
