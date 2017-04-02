@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.LoginResponse;
 
-@Controller
+@Controller("/")
 @EnableAutoConfiguration
 public class MainController {
     @RequestMapping("/")

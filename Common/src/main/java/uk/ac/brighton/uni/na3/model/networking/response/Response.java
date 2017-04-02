@@ -3,7 +3,7 @@ package uk.ac.brighton.uni.na3.model.networking.response;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 @JsonAutoDetect
-public abstract class Response {
+public class Response {
     private ResponseType type;
 
     public Response(ResponseType type) {

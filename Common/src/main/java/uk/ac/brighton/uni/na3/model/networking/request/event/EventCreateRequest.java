@@ -1,7 +1,8 @@
-package uk.ac.brighton.uni.na3.model.networking.request;
+package uk.ac.brighton.uni.na3.model.networking.request.event;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
 import java.time.LocalDateTime;
 import java.util.Set;
