@@ -4,19 +4,19 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @JsonAutoDetect
-public class EventCreateRequest extends Request {
+public class EventCreateRequest extends Request { //TODO: Could use SingleDataRequest with a different EventCreate Type for T
     private final String owner, description, location;
-    private final LocalDateTime start, end;
+    private final Timestamp start, end;
     private final boolean isPrivate;
     private final Set<String> attendees;
 
     @JsonCreator
     public EventCreateRequest(char[] authToken, String owner, String description, String location,
-                              LocalDateTime start, LocalDateTime end, boolean isPrivate, Set<String> attendees) {
+                              Timestamp start, Timestamp end, boolean isPrivate, Set<String> attendees) {
         super(authToken);
         this.owner = owner;
         this.description = description;
@@ -39,11 +39,11 @@ public class EventCreateRequest extends Request {
         return location;
     }
 
-    public LocalDateTime getStart() {
+    public Timestamp getStart() {
         return start;
     }
 
-    public LocalDateTime getEnd() {
+    public Timestamp getEnd() {
         return end;
     }
 

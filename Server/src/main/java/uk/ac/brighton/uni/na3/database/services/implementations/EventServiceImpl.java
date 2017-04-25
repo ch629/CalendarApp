@@ -7,6 +7,7 @@ import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -54,5 +55,11 @@ public class EventServiceImpl implements EventService {
     @Transactional
     public Event findById(int id) {
         return eventRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end) {
+        return eventRepository.findEventsOverlapping(start, end);
     }
 }

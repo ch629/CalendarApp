@@ -1,5 +1,8 @@
 package uk.ac.brighton.uni.na3.auth;
 
+import uk.ac.brighton.uni.na3.Application;
+import uk.ac.brighton.uni.na3.database.entities.User;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -28,7 +31,11 @@ public class AuthTokenManager { //TODO: This is kind of like a session in WebDev
                 .map(AuthUser::getToken).findFirst().orElse(null);
     }
 
-    public String getUser(char[] token) {
+    public User getUser(char[] token) {
+        return Application.instance.userService.findOne(getUserName(token));
+    }
+
+    public String getUserName(char[] token) {
         return authUsers.stream()
                 .filter(authUser -> authUser.getToken() == token)
                 .map(AuthUser::getUserName).findFirst().orElse(null);

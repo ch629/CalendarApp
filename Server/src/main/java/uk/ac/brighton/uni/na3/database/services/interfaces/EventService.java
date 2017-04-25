@@ -1,7 +1,9 @@
 package uk.ac.brighton.uni.na3.database.services.interfaces;
 
 import uk.ac.brighton.uni.na3.database.entities.Event;
+import uk.ac.brighton.uni.na3.database.entities.User;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface EventService {
@@ -14,4 +16,8 @@ public interface EventService {
     Event update(Event event);
 
     Event findById(int id);
+
+    List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user);
+
+    List<Event> findDatesOverlapping(Timestamp start, Timestamp end, String user);
 }
