@@ -40,7 +40,13 @@ public class EventServiceImpl implements EventService {
     public Event update(Event event) {
         Event updatedEvent = eventRepository.findOne(event.getEventId());
         if (updatedEvent == null) return null;
-        //TODO: Update all data
+        updatedEvent.setAttendees(event.getAttendees());
+        updatedEvent.setDescription(event.getDescription());
+        updatedEvent.setStartDate(event.getStartDate());
+        updatedEvent.setEndDate(event.getEndDate());
+        updatedEvent.setLocation(event.getLocation());
+        updatedEvent.setOwner(event.getOwner());
+        updatedEvent.setPrivate(event.isPrivate());
         return updatedEvent;
     }
 

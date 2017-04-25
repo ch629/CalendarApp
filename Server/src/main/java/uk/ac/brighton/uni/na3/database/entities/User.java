@@ -2,9 +2,9 @@ package uk.ac.brighton.uni.na3.database.entities;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
@@ -13,13 +13,14 @@ import java.util.Set;
 @JsonAutoDetect
 @Entity
 public class User {
-    @GeneratedValue
     @Id
-    private int userId;
+    private String username;
     private boolean isAdmin;
+    @JsonIgnore
     private char[] password;
     private String forename, surname, position, email, phoneNumber;
     @ManyToMany //TODO: Join Table
+    @JsonIgnore
     private Set<Event> attendingEvents;
 
     public User() {
@@ -27,18 +28,14 @@ public class User {
     }
 
     @JsonCreator //TODO: Check using @JsonProperty
-    public User(char[] password, String forename, String surname, String position, String email, String phoneNumber) {
+    public User(String username, String forename, String surname, String position, String email, String phoneNumber) {
         this();
-        this.password = password;
+        this.username = username;
         this.forename = forename;
         this.surname = surname;
         this.position = position;
         this.email = email;
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getUserId() {
-        return userId;
     }
 
     public boolean isAdmin() {
@@ -107,5 +104,13 @@ public class User {
 
     public void setAttendingEvents(Set<Event> attendingEvents) { //TODO: Check Use
         this.attendingEvents = attendingEvents;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

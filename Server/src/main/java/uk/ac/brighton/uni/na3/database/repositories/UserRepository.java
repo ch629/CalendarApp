@@ -7,7 +7,7 @@ import uk.ac.brighton.uni.na3.database.entities.User;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, String> {
     List<User> findByForename(String forename);
 
     List<User> findBySurname(String surname); //TODO: Check these, I may only need a search query: "forename LIKE %?% OR surname LIKE %?%";

@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User delete(int id) {
-        User deletedUser = userRepository.findOne(id);
+    public User delete(String username) {
+        User deletedUser = userRepository.findOne(username);
         if (deletedUser == null) return null;
         userRepository.delete(deletedUser);
         return deletedUser;
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User update(User user) {
-        User updatedUser = userRepository.findOne(user.getUserId());
+        User updatedUser = userRepository.findOne(user.getUsername());
         if (updatedUser == null) return null; //TODO: This depends on what needs updating with the user
         updatedUser.setAttendingEvents(user.getAttendingEvents());
         updatedUser.setAdmin(user.isAdmin());
@@ -53,8 +53,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User findById(int id) {
-        User user = userRepository.findOne(id);
+    public User findOne(String username) {
+        User user = userRepository.findOne(username);
         user.getAttendingEvents().size(); //Load the Lazy Collection
         return user;
     }
