@@ -1,4 +1,5 @@
-package uk.ac.brighton.uni.na3.javafx.editEventScreen;
+package uk.ac.brighton.uni.na3.screens.editEvent;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,7 +7,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class EditEventController {
-
     @FXML
     private TextField nameField;
 
@@ -26,5 +26,4 @@ public class EditEventController {
     void editClicked(ActionEvent event) {
 
     }
-
 }

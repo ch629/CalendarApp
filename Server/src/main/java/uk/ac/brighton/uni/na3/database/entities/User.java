@@ -18,6 +18,7 @@ public class User {
     private boolean isAdmin;
     @JsonIgnore
     private char[] password;
+    private char[] salt;
     private String forename, surname, position, email, phoneNumber;
     @ManyToMany //TODO: Join Table
     @JsonIgnore

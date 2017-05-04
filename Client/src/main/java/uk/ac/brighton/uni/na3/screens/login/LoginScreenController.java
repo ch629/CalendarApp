@@ -1,4 +1,4 @@
-package uk.ac.brighton.uni.na3.javafx.loginScreen;
+package uk.ac.brighton.uni.na3.screens.login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class loginScreenController {
+public class LoginScreenController {
 
     @FXML
     private TextField userNameField;
