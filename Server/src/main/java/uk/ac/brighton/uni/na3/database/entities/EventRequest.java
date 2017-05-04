@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Entity
 public class EventRequest {
     @Id
+    private int requestId; //TODO: This is temp, composite ID of EventID && Username are required
     @ManyToOne
     private Event event;
     private EventRequestResponseType response = EventRequestResponseType.NONE;
