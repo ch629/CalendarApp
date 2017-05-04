@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateEventController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateEventController">
    <children>
       <VBox alignment="TOP_CENTER" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
          <children>
@@ -52,8 +52,8 @@
                         <TextArea fx:id="descriptionField" prefHeight="200.0" prefWidth="200.0" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
                            <children>
-                              <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
-                              <Button fx:id="confirmButton" mnemonicParsing="false" text="Confirm" />
+                              <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelClicked" text="Cancel" />
+                              <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#comfirmClicked" text="Confirm" />
                            </children>
                         </HBox>
                      </children>
