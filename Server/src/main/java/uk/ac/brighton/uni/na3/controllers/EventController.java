@@ -52,7 +52,7 @@ public class EventController {
     SingleDataResponse<List<Event>> getEventsBetween(PairDataRequest<Long, Long> request) { //TODO: Long could probably just be the dates, as Jackson serializes these to longs by default
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp start = new Timestamp(request.getFirst()), end = new Timestamp(request.getSecond());
-        List<Event> events = eventService.findDatesOverlapping(start, end);
+        List<Event> events = eventService.findDatesOverlapping(start, end, user.getUsername());
         if (events == null) return new SingleDataResponse<>(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(ResponseType.NOT_IMPLEMENTED);
     }

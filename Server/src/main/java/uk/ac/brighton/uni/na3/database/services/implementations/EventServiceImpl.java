@@ -2,6 +2,7 @@ package uk.ac.brighton.uni.na3.database.services.implementations;
 
 import org.springframework.stereotype.Service;
 import uk.ac.brighton.uni.na3.database.entities.Event;
+import uk.ac.brighton.uni.na3.database.entities.User;
 import uk.ac.brighton.uni.na3.database.repositories.EventRepository;
 import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 
@@ -58,8 +59,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, String user) {
+        return eventRepository.findEventsOverlapping(start, end, user); //TODO: Possibly check if the user exists in the DB first.
+    }
+
+    @Override
     @Transactional
-    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end) {
-        return eventRepository.findEventsOverlapping(start, end);
+    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user) {
+        return eventRepository.findEventsOverlapping(start, end, user.getUsername());
     }
 }
