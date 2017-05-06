@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event, Integer> {
-    @Query("SELECT e FROM Event INNER JOIN EventAttendee ON EventAttendee.event = Event.eventId WHERE Event.startDate <= ?2 AND ?1 <= Event.endDate AND EventAttendee.User = ?3")
+    //    @Query("SELECT e FROM Event INNER JOIN EventAttendee ON EventAttendee.event = e.eventId WHERE e.startDate <= ?2 AND ?1 <= e.endDate AND EventAttendee.User = ?3")
+    @Query("SELECT e FROM Event INNER JOIN EventAttendee as a WHERE e.startDate <= ?2 AND ?1 <= e.endDate AND a.User = ?3")
     List<Event> findEventsOverlapping(Timestamp start, Timestamp end, String user);
 }

@@ -7,23 +7,29 @@ import uk.ac.brighton.uni.na3.Application;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @JsonAutoDetect
-public class Event {
+public class Event implements Serializable {
+    private static final long serialVersionUID = 1L;
     @GeneratedValue
     @Id
     private int eventId;
     @OneToOne
     private User owner;
     private String description, location;
-    private Timestamp startDate, endDate; //TODO: These may have to use the SQL Timestamp class
+    private Timestamp startDate, endDate;
     private boolean isPrivate;
-    @ManyToMany //TODO: Join table of Attendees
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+//    @JoinTable(name = "EventAttendee",
+//            joinColumns = @JoinColumn(name = "eventId"),
+//            inverseJoinColumns = @JoinColumn(name = "event")) //TODO: Check this is correct
     @JsonIgnore
-    private Set<User> attendees;
+    private Set<EventAttendee> attendees;
 
     @JsonCreator
     public Event(User owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
@@ -95,14 +101,14 @@ public class Event {
     }
 
     public void addAttendee(User user) {
-        attendees.add(user);
+        attendees.add(new EventAttendee(user, this));
     }
 
     public Set<User> getAttendees() {
-        return attendees;
+        return attendees.stream().map(EventAttendee::getUser).collect(Collectors.toSet());
     }
 
     public void setAttendees(Set<User> attendees) {
-        this.attendees = attendees;
+        this.attendees = attendees.stream().map(user -> new EventAttendee(user, this)).collect(Collectors.toSet());
     }
 }
