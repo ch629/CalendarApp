@@ -10,6 +10,7 @@ import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.Event;
 import uk.ac.brighton.uni.na3.database.entities.User;
 import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
+import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.networking.request.PairDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
@@ -24,10 +25,12 @@ import java.util.List;
 @EnableAutoConfiguration
 public class EventController {
     private final EventService eventService;
+    private final UserService userService;
 
     @Autowired
-    public EventController(EventService eventService) {
+    public EventController(EventService eventService, UserService userService) {
         this.eventService = eventService;
+        this.userService = userService;
     }
 
     @PostMapping("/create")
@@ -42,6 +45,8 @@ public class EventController {
 
     @PostMapping("/get")
     @ResponseBody
+    @Deprecated
+        //TODO: Remove?
     Response getEvent(SingleDataRequest<Integer> request) { //NOTE: This route probably wont be used and could be used to get events from another user.
         Event event = eventService.findById(request.getData());
         if (event == null) return new Response(ResponseType.NOT_FOUND);
@@ -60,8 +65,18 @@ public class EventController {
 
     @PostMapping("/invite")
     @ResponseBody
-    Response inviteToEvent(PairDataRequest<Integer, String> request) {
-        User user = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
-        return new Response(ResponseType.NOT_IMPLEMENTED);
+    Response inviteToEvent(PairDataRequest<Integer, String> request) { //NOTE: Only the owner can invite
+        User inviter = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
+        Event event = eventService.findById(request.getFirst());
+        if (event.getOwner().getUsername().equals(inviter.getUsername()) &&
+                !inviter.getUsername().equals(request.getSecond())) {
+            User invitee = userService.findOne(request.getSecond());
+            if (invitee != null) {
+                event.addAttendee(invitee);
+                eventService.update(event);
+                return new Response(ResponseType.OK);
+            }
+        }
+        return new Response(ResponseType.BAD_REQUEST); //TODO: Fix the error requests for all of the routes.
     }
 }
