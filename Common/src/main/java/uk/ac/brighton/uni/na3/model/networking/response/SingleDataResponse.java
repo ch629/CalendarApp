@@ -16,6 +16,10 @@ public class SingleDataResponse<T> extends Response {
         this.data = null;
     }
 
+    public SingleDataResponse(T data) {
+        this(ResponseType.OK, data);
+    }
+
     public T getData() {
         return data;
     }

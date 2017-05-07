@@ -36,7 +36,7 @@ public class EventController {
         if (newEvent == null)
             return new SingleDataResponse<>(ResponseType.BAD_REQUEST); //TODO: Maybe INVALID_PARAMETERS ResponseType
         newEvent = eventService.create(newEvent); //TODO: Send invites to the set attendees
-        return new SingleDataResponse<>(ResponseType.OK, newEvent.getEventId());
+        return new SingleDataResponse<>(newEvent.getEventId());
     }
 
     @PostMapping("/get")
@@ -44,7 +44,7 @@ public class EventController {
     SingleDataResponse<Event> getEvent(SingleDataRequest<Integer> request) {
         Event event = eventService.findById(request.getData());
         if (event == null) return new SingleDataResponse<>(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(ResponseType.OK, event);
+        return new SingleDataResponse<>(event);
     }
 
     @GetMapping("/between")

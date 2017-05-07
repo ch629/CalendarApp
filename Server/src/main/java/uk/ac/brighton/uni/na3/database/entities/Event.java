@@ -25,9 +25,6 @@ public class Event implements Serializable {
     private Timestamp startDate, endDate;
     private boolean isPrivate;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
-//    @JoinTable(name = "EventAttendee",
-//            joinColumns = @JoinColumn(name = "eventId"),
-//            inverseJoinColumns = @JoinColumn(name = "event")) //TODO: Check this is correct
     @JsonIgnore
     private Set<EventAttendee> attendees;
 

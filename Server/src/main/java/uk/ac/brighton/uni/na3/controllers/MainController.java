@@ -3,10 +3,7 @@ package uk.ac.brighton.uni.na3.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.User;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
@@ -14,6 +11,7 @@ import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.LoginResponse;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
+import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 @Controller("/")
 @EnableAutoConfiguration
@@ -43,5 +41,13 @@ public class MainController {
         }
         //Invalid username or password
         return new Response(ResponseType.BAD_REQUEST); //TODO: Check if BAD_REQUEST is correct, or UNAUTHORIZED
+    }
+
+    @GetMapping("/salt/{username}")
+    @ResponseBody
+    Response getSalt(@PathVariable("username") String username) {
+        User user = userService.findOne(username);
+        if (user == null) return new Response(ResponseType.NOT_FOUND);
+        return new SingleDataResponse<>(user.getSalt());
     }
 }

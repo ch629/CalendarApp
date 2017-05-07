@@ -26,9 +26,6 @@ public class User implements Serializable {
     private char[] salt; //TODO: Store in constructor
     private String forename, surname, position, email, phoneNumber;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    @JoinTable(name = "EventAttendee",
-//            joinColumns = @JoinColumn(name = "username"),
-//            inverseJoinColumns = @JoinColumn(name = "user")) //TODO: Check this is correct
     @JsonIgnore
     private Set<EventAttendee> attendingEvents;
 
@@ -37,7 +34,7 @@ public class User implements Serializable {
     }
 
     @JsonCreator //TODO: Check using @JsonProperty
-    public User(String username, String forename, String surname, String position, String email, String phoneNumber) {
+    public User(String username, String forename, String surname, String position, String email, String phoneNumber, char[] password, char[] salt) {
         this();
         this.username = username;
         this.forename = forename;
@@ -45,6 +42,8 @@ public class User implements Serializable {
         this.position = position;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.salt = salt;
     }
 
     public boolean isAdmin() {
@@ -121,5 +120,9 @@ public class User implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public char[] getSalt() {
+        return salt;
     }
 }
