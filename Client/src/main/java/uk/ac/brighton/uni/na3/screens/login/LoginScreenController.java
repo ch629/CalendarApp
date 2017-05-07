@@ -5,8 +5,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import uk.ac.brighton.uni.na3.CalendarApp;
+import uk.ac.brighton.uni.na3.ControlledView;
+import uk.ac.brighton.uni.na3.ScreenController;
 
-public class LoginScreenController {
+public class LoginScreenController implements ControlledView {
+	
+	private ScreenController parentController; 
 
     @FXML
     private TextField userNameField;
@@ -27,7 +32,12 @@ public class LoginScreenController {
 
     @FXML
     void loginButtonClicked(ActionEvent event) {
-
+    	parentController.setScreen(CalendarApp.calendarViewID);
     }
+
+	@Override
+	public void setParent(ScreenController controller) {
+		parentController = controller;
+	}
 
 }

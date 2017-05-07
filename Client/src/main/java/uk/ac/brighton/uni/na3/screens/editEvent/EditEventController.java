@@ -5,8 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import uk.ac.brighton.uni.na3.ControlledView;
+import uk.ac.brighton.uni.na3.ScreenController;
 
-public class EditEventController {
+public class EditEventController implements ControlledView {
+	
+	private ScreenController parentController; 
+	
     @FXML
     private TextField nameField;
 
@@ -26,4 +31,9 @@ public class EditEventController {
     void editClicked(ActionEvent event) {
 
     }
+
+	@Override
+	public void setParent(ScreenController controller) {
+		parentController = controller;	
+	}
 }
