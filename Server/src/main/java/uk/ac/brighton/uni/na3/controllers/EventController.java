@@ -13,6 +13,7 @@ import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 import uk.ac.brighton.uni.na3.model.networking.request.PairDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
+import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
@@ -31,29 +32,36 @@ public class EventController {
 
     @PostMapping("/create")
     @ResponseBody
-    SingleDataResponse<Integer> createEvent(EventCreateRequest request) { //TODO: Probably need to return the newly created Event or at least it's ID for the client to do stuff with it
+    Response createEvent(EventCreateRequest request) {
         Event newEvent = Event.fromCreateRequest(request);
         if (newEvent == null)
-            return new SingleDataResponse<>(ResponseType.BAD_REQUEST); //TODO: Maybe INVALID_PARAMETERS ResponseType
+            return new Response(ResponseType.BAD_REQUEST); //TODO: Maybe INVALID_PARAMETERS ResponseType
         newEvent = eventService.create(newEvent); //TODO: Send invites to the set attendees
         return new SingleDataResponse<>(newEvent.getEventId());
     }
 
     @PostMapping("/get")
     @ResponseBody
-    SingleDataResponse<Event> getEvent(SingleDataRequest<Integer> request) {
+    Response getEvent(SingleDataRequest<Integer> request) { //NOTE: This route probably wont be used and could be used to get events from another user.
         Event event = eventService.findById(request.getData());
-        if (event == null) return new SingleDataResponse<>(ResponseType.NOT_FOUND);
+        if (event == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(event);
     }
 
     @GetMapping("/between")
     @ResponseBody
-    SingleDataResponse<List<Event>> getEventsBetween(PairDataRequest<Long, Long> request) { //TODO: Long could probably just be the dates, as Jackson serializes these to longs by default
+    Response getEventsBetween(PairDataRequest<Long, Long> request) { //TODO: Long could probably just be the dates, as Jackson serializes these to longs by default
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp start = new Timestamp(request.getFirst()), end = new Timestamp(request.getSecond());
         List<Event> events = eventService.findDatesOverlapping(start, end, user.getUsername());
-        if (events == null) return new SingleDataResponse<>(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(ResponseType.NOT_IMPLEMENTED);
+        if (events == null) return new Response(ResponseType.NOT_FOUND);
+        return new SingleDataResponse<>(events);
+    }
+
+    @PostMapping("/invite")
+    @ResponseBody
+    Response inviteToEvent(PairDataRequest<Integer, String> request) {
+        User user = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
+        return new Response(ResponseType.NOT_IMPLEMENTED);
     }
 }
