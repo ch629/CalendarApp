@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EventServiceImpl implements EventService {
@@ -60,12 +61,15 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, String user) {
-        return eventRepository.findEventsOverlapping(start, end, user); //TODO: Possibly check if the user exists in the DB first.
+        List<Event> events = eventRepository.findEventsByAttendees(user);
+        return events.stream()
+                .filter(event -> event.getStartDate().before(end) && end.before(event.getEndDate()))
+                .collect(Collectors.toList());
     }
 
     @Override
     @Transactional
     public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user) {
-        return eventRepository.findEventsOverlapping(start, end, user.getUsername());
+        return findDatesOverlapping(start, end, user.getUsername());
     }
 }

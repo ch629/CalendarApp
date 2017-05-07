@@ -19,7 +19,7 @@ public class Event implements Serializable {
     @GeneratedValue
     @Id
     private int eventId;
-    @OneToOne
+    @ManyToOne
     private User owner;
     private String description, location;
     private Timestamp startDate, endDate;

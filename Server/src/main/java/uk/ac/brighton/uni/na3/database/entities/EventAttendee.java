@@ -10,13 +10,13 @@ import java.io.Serializable;
 public class EventAttendee implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @ManyToOne
     @Id
+    @ManyToOne
     @JoinColumn(name = "username")
     private User user;
 
-    @ManyToOne
     @Id
+    @ManyToOne
     @JoinColumn(name = "eventId")
     private Event event;
 
