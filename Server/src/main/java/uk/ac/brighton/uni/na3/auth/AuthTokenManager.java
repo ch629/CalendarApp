@@ -22,7 +22,7 @@ public class AuthTokenManager { //TODO: This is kind of like a session in WebDev
         authUsers.removeIf(authUser -> authUser.getUserName().equalsIgnoreCase(user)); //Remove already existing auth tokens for that user
         AuthUser authUser = new AuthUser(user);
         authUsers.add(authUser);
-        return authUser.getToken();
+        return authUser.getToken(); //TODO: Actually get user from DB and check admin etc.
     }
 
     public char[] getAuthToken(String user) {

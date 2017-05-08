@@ -6,40 +6,32 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class HashingUtils {
-    public static final HashingUtils instance = new HashingUtils(); //Singleton
-    private final Random rand = new Random();
-    private MessageDigest md;
+    private static final Random rand = new Random();
+    private static MessageDigest md;
 
-    private HashingUtils() {
+    static {
         try {
             md = MessageDigest.getInstance("SHA-1");
         } catch (NoSuchAlgorithmException ignored) {
         }
     }
 
-    public char[] getUserSalt(String username, char[] password) {
-      HttpResponse<Response> saltResponse = Unirest.get("http://localhost:8080/salt/" + username).asObject(Response.class);
-      Response salt = saltResponse.getBody();
-      if (saltResponse.getType == ResponseType.OK) saltHash(password, salt);
-      return null;
-    }
-
-    public char[] saltHash(char[] password) {
+    public static char[] saltHash(char[] password) {
         return saltHash(password, genSalt());
     }
 
-    public char[] saltHash(char[] password, byte[] uSalt) {
+    public static char[] saltHash(char[] password, byte[] uSalt) {
         byte[] hSPassword = getHash(password, uSalt);
         return Arrays.toString(hSPassword).toCharArray();
     }
 
-    public byte[] genSalt() {
+    public static byte[] genSalt() {
         byte[] salt = new byte[256];
         rand.nextBytes(salt);
         return salt;
     }
 
-    private byte[] getHash(char[] password, byte[] salt) {
+    private static byte[] getHash(char[] password, byte[] salt) {
         byte[] pWChar = Arrays.toString(password).getBytes();
         byte[] pWSalt = new byte[pWChar.length + salt.length];
         System.arraycopy(pWChar, 0, pWSalt, 0, pWChar.length);
