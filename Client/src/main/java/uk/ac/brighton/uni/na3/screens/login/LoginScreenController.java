@@ -33,6 +33,7 @@ public class LoginScreenController implements ControlledView {
     @FXML
     void loginButtonClicked(ActionEvent event) {
     	parentController.setScreen(CalendarApp.calendarViewID);
+    	CalendarApp.resizeScreen();
     }
 
 	@Override

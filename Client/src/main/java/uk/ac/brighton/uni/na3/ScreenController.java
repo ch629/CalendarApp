@@ -7,10 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ScreenController extends AnchorPane {
 
 	private HashMap<String, Node> screens = new HashMap<String, Node>();
+	
 	
 	/*
 	 * Get a screen from map.
@@ -44,14 +47,13 @@ public class ScreenController extends AnchorPane {
 	}
 	
 	/*
-	 * 
+	 * Set the current screens scene
 	 */
 	public boolean setScreen(String name){
 		if(screens.get(name) != null){			
 			if(!getChildren().isEmpty()){
 				getChildren().remove(0);
 				getChildren().add(0, screens.get(name));
-				CalendarApp.resizeScreen();
 			} else {
 				getChildren().add(screens.get(name));
 			}

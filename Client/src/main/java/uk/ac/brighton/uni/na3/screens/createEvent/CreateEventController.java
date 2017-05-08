@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
 
@@ -38,12 +39,12 @@ public class CreateEventController implements ControlledView {
 
     @FXML
     void cancelClicked(ActionEvent event) {
-
+    	CalendarApp.closeSecondaryScene();
     }
 
     @FXML
     void comfirmClicked(ActionEvent event) {
-
+    	CalendarApp.closeSecondaryScene();
     }
 
 	@Override

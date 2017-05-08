@@ -98,7 +98,7 @@
                         <VBox minWidth="85.0">
                            <children>
                               <TextField alignment="CENTER" maxWidth="85.0" prefHeight="50.0" text="Monday" />
-                              <TextArea editable="false" maxWidth="85.0" prefHeight="50.0" wrapText="true" />
+                              <TextArea editable="false" maxWidth="85.0" onMouseClicked="#monday1" prefHeight="50.0" wrapText="true" />
                               <TextArea editable="false" maxWidth="85.0" prefHeight="50.0" wrapText="true" />
                               <TextArea editable="false" maxWidth="85.0" prefHeight="50.0" wrapText="true" />
                               <TextArea editable="false" maxWidth="85.0" prefHeight="50.0" wrapText="true" />

@@ -1,8 +1,10 @@
 package uk.ac.brighton.uni.na3.screens.calendarView;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
 
@@ -24,6 +26,11 @@ public class CalendarViewController implements ControlledView {
 
     @FXML
     private Color x22;
+    
+    @FXML
+    void monday1(MouseEvent event) {
+    	CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Create Event");
+    }
 
 	@Override
 	public void setParent(ScreenController controller) {
