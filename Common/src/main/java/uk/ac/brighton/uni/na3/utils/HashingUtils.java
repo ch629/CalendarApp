@@ -17,6 +17,13 @@ public class HashingUtils {
         }
     }
 
+    public char[] getUserSalt(String username, char[] password) {
+      HttpResponse<Response> saltResponse = Unirest.get("http://localhost:8080/salt/" + username).asObject(Response.class);
+      Response salt = saltResponse.getBody();
+      if (saltResponse.getType == ResponseType.OK) saltHash(password, salt);
+      return null;
+    }
+
     public char[] saltHash(char[] password) {
         return saltHash(password, genSalt());
     }
