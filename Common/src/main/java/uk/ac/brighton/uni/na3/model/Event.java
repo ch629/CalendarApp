@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@Deprecated
 public class Event {
     private int eventId;
     private User owner;
