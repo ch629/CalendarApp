@@ -24,7 +24,7 @@ public class NetworkUtils {
         throw new NotImplementedException();
     }
 
-    public static NetworkOptional get(String route) {
+    public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type) { //TODO: Don't think java supports generating the T from a method, so may have to include this in Request to make it easier.
         Response response;
         try {
             response = Unirest.get(HOST_NAME + route).asObject(Response.class).getBody();
@@ -32,6 +32,10 @@ public class NetworkUtils {
             return null; //TODO: Return lambda object with error (ifOK = false)
         }
 
+        throw new NotImplementedException();
+    }
+
+    public static NetworkOptional post(String route, Request request) {
         throw new NotImplementedException();
     }
 }

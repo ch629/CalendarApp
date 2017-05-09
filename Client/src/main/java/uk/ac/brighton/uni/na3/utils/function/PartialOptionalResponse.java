@@ -1,13 +1,19 @@
 package uk.ac.brighton.uni.na3.utils.function;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
-import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
+
+import java.util.function.Predicate;
 
 public class PartialOptionalResponse<T extends Response> {
-    private ResponseType responseType;
+    private final Predicate<Response> predicate;
+    private T response;
+
+    public PartialOptionalResponse(Predicate<Response> previousPredicate, T response) {
+        this.response = response;
+        this.predicate = previousPredicate.negate();
+    }
 
     public void orElse(NetworkAction<T> res) {
-        throw new NotImplementedException();
+        if (predicate.test(response)) res.run(response);
     }
 }
