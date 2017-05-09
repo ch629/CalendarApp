@@ -24,18 +24,29 @@ public class NetworkUtils {
         throw new NotImplementedException();
     }
 
-    public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type) { //TODO: Don't think java supports generating the T from a method, so may have to include this in Request to make it easier.
-        Response response;
+    public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type) {
         try {
-            response = Unirest.get(HOST_NAME + route).asObject(Response.class).getBody();
+            Response response = Unirest.get(HOST_NAME + route).asObject(Response.class).getBody();
+            return new NetworkOptional<>((T) response);
         } catch (UnirestException ignored) {
-            return null; //TODO: Return lambda object with error (ifOK = false)
         }
-
-        throw new NotImplementedException();
+        return new NetworkOptional<>();
     }
 
-    public static NetworkOptional post(String route, Request request) {
-        throw new NotImplementedException();
+    public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type, Object... fmt) {
+        return get(String.format(route, fmt), type);
+    }
+
+    public static <T extends Response> NetworkOptional<T> post(String route, Request request, Class<T> type) {
+        try {
+            Response response = Unirest.post(HOST_NAME + route).body(request).asObject(Response.class).getBody();
+            return new NetworkOptional<>((T) response);
+        } catch (UnirestException e) {
+        }
+        return new NetworkOptional<>();
+    }
+
+    public static <T extends Response> NetworkOptional<T> post(String route, Request request, Class<T> type, Object... fmt) {
+        return post(String.format(route, fmt), request, type);
     }
 }
