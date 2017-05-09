@@ -20,4 +20,8 @@ public interface EventService {
     List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user);
 
     List<Event> findDatesOverlapping(Timestamp start, Timestamp end, String user);
+
+    List<Event> findDatesOnDay(Timestamp day, User user);
+
+    List<Event> findDatesOnDay(Timestamp day, String user);
 }

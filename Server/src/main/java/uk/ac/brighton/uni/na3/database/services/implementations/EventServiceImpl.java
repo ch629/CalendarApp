@@ -9,6 +9,7 @@ import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -68,8 +69,34 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
+    public List<Event> findDatesOnDay(Timestamp day, User user) {
+        return findDatesOnDay(day, user.getUsername());
+    }
+
+    @Override
+    public List<Event> findDatesOnDay(Timestamp day, String user) {
+        List<Event> events = eventRepository.findEventsByAttendees(user);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(day.getTime());
+
+        return events.stream().filter(event -> {
+            Calendar startCal = Calendar.getInstance(), endCal = Calendar.getInstance();
+            startCal.setTimeInMillis(event.getStartDate().getTime());
+            endCal.setTimeInMillis(event.getStartDate().getTime());
+            return isSameDay(startCal, calendar) || isSameDay(endCal, calendar); //TODO: Check if the start is before and end is after
+        }).collect(Collectors.toList());
+    }
+
+    private boolean isSameDay(Calendar one, Calendar two) {
+        return one.get(Calendar.YEAR) == two.get(Calendar.YEAR) &&
+                one.get(Calendar.DAY_OF_YEAR) == two.get(Calendar.DAY_OF_YEAR);
+    }
+
+    @Override
     @Transactional
     public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user) {
         return findDatesOverlapping(start, end, user.getUsername());
     }
+
+
 }
