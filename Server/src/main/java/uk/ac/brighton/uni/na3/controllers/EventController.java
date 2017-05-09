@@ -33,7 +33,7 @@ public class EventController {
         this.userService = userService;
     }
 
-    @PostMapping("/create")
+    @PostMapping("event/create")
     @ResponseBody
     Response createEvent(EventCreateRequest request) {
         Event newEvent = Event.fromCreateRequest(request);
@@ -43,7 +43,7 @@ public class EventController {
         return new SingleDataResponse<>(newEvent.getEventId());
     }
 
-    @PostMapping("/get")
+    @PostMapping("event/get")
     @ResponseBody
     @Deprecated
         //TODO: Remove?
@@ -53,7 +53,7 @@ public class EventController {
         return new SingleDataResponse<>(event);
     }
 
-    @GetMapping("/between")
+    @GetMapping("event/between")
     @ResponseBody
     Response getEventsBetween(PairDataRequest<Long, Long> request) { //TODO: Long could probably just be the dates, as Jackson serializes these to longs by default
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
@@ -63,7 +63,7 @@ public class EventController {
         return new SingleDataResponse<>(events);
     }
 
-    @GetMapping("/day")
+    @PostMapping("event/day")
     @ResponseBody
     Response getEventsOnDay(SingleDataRequest<Long> request) {
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
@@ -73,7 +73,7 @@ public class EventController {
         return new SingleDataResponse<>(events);
     }
 
-    @PostMapping("/invite")
+    @PostMapping("event/invite")
     @ResponseBody
     Response inviteToEvent(PairDataRequest<Integer, String> request) { //NOTE: Only the owner can invite
         User inviter = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
