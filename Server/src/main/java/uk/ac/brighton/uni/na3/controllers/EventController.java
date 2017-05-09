@@ -14,11 +14,13 @@ import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.networking.request.PairDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
+import uk.ac.brighton.uni.na3.model.networking.request.event.EventOnDayRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 @Controller("/event/")
@@ -65,9 +67,11 @@ public class EventController {
 
     @PostMapping("event/day")
     @ResponseBody
-    Response getEventsOnDay(SingleDataRequest<Long> request) {
+    Response getEventsOnDay(EventOnDayRequest request) {
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
-        Timestamp day = new Timestamp(request.getData());
+        Calendar calDay = Calendar.getInstance();
+        calDay.set(request.getYear(), request.getMonth(), request.getDay());
+        Timestamp day = new Timestamp(calDay.getTimeInMillis());
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(events);
