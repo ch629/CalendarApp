@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.brighton.uni.na3.screens.dayView.dayController">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" />
+      <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" onAction="#dateChanged" />
       <Label layoutX="67.0" layoutY="82.0" text="Todays Events:" />
       <Button layoutX="462.0" layoutY="78.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
       <TableView fx:id="table" layoutX="67.0" layoutY="108.0" prefHeight="208.0" prefWidth="466.0">
