@@ -12,8 +12,7 @@ import javafx.stage.Stage;
 
 public class ScreenController extends AnchorPane {
 
-	private HashMap<String, Node> screens = new HashMap<String, Node>();
-	
+	private HashMap<String, Node> screens = new HashMap<String, Node>();	
 	
 	/*
 	 * Get a screen from map.

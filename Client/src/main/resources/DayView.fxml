@@ -7,19 +7,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.brighton.uni.na3.screens.dayView.dayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="572.0" prefWidth="946.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.brighton.uni.na3.screens.dayView.DayController">
    <children>
-      <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" onAction="#dateChanged" />
-      <Label layoutX="67.0" layoutY="82.0" text="Todays Events:" />
-      <Button layoutX="462.0" layoutY="78.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
-      <TableView fx:id="table" layoutX="67.0" layoutY="108.0" prefHeight="208.0" prefWidth="466.0">
+      <DatePicker fx:id="datePicker" layoutX="386.0" layoutY="65.0" onAction="#dateChanged" />
+      <Label layoutX="72.0" layoutY="126.0" text="Todays Events:" />
+      <Button layoutX="803.0" layoutY="122.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
+      <TableView fx:id="table" layoutX="72.0" layoutY="154.0" prefHeight="312.0" prefWidth="802.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="Name" />
-          <TableColumn prefWidth="75.0" text="Time" />
-          <TableColumn prefWidth="315.0" text="Description" />
+            <TableColumn fx:id="nameCol" prefWidth="204.0" text="Name" />
+          <TableColumn fx:id="timeCol" prefWidth="85.0" text="Time" />
+            <TableColumn fx:id="durationCol" prefWidth="85.0" text="Duration" />
+            <TableColumn fx:id="locationCol" prefWidth="157.0" text="Location" />
+          <TableColumn fx:id="descCol" prefWidth="270.0" text="Description" />
         </columns>
       </TableView>
-      <Button layoutX="213.0" layoutY="325.0" mnemonicParsing="false" onAction="#previousDayPressed" text="Prev Day" />
-      <Button layoutX="322.0" layoutY="325.0" mnemonicParsing="false" onAction="#nextDayPressed" text="Next Day" />
+      <Button layoutX="386.0" layoutY="493.0" mnemonicParsing="false" onAction="#previousDayPressed" text="Prev Day" />
+      <Button layoutX="495.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextDayPressed" text="Next Day" />
    </children>
 </AnchorPane>
