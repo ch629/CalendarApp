@@ -14,6 +14,8 @@ public class CalendarApp extends Application {
     public static String createEventFXML  = "/Create Event.fxml";
     public static String editEventID      = "editEvent";
     public static String editEventFXML    = "/Edit Event.fxml";
+    public static String dayViewID        = "dayView";
+    public static String dayViewFXML      = "/DayView.fxml";
     public static String calendarViewID   = "calendarView";
     public static String calendarViewFXML = "/Calendar_View.fxml";
     
@@ -30,9 +32,8 @@ public class CalendarApp extends Application {
     	//Initialise primary screen
     	ScreenController mainController = new ScreenController();
     	mainController.loadScreen(loginScreenID , loginScreenFXML );
-    	mainController.loadScreen(createEventID , createEventFXML );
-    	mainController.loadScreen(editEventID   , editEventFXML   );
     	mainController.loadScreen(calendarViewID, calendarViewFXML);
+    	mainController.loadScreen(dayViewID     , dayViewFXML);
     	
     	mainController.setScreen(loginScreenID);
     	
