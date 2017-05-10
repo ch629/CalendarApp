@@ -1,10 +1,15 @@
 package uk.ac.brighton.uni.na3;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mashape.unirest.http.ObjectMapper;
+import com.mashape.unirest.http.Unirest;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class CalendarApp extends Application {
 	
@@ -28,9 +33,30 @@ public class CalendarApp extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {	
-    	//Initialise primary screen
-    	ScreenController mainController = new ScreenController();
+    public void start(Stage stage) throws Exception {
+        Unirest.setObjectMapper(new ObjectMapper() {
+            private com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+
+            @Override
+            public <T> T readValue(String value, Class<T> valueType) {
+                try {
+                    return mapper.readValue(value, valueType);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            @Override
+            public String writeValue(Object value) {
+                try {
+                    return mapper.writeValueAsString(value);
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        //Initialise primary screen
+        ScreenController mainController = new ScreenController();
     	mainController.loadScreen(loginScreenID , loginScreenFXML );
     	mainController.loadScreen(calendarViewID, calendarViewFXML);
     	mainController.loadScreen(dayViewID     , dayViewFXML);
