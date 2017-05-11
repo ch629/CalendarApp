@@ -55,6 +55,7 @@ public class CalendarApp extends Application {
                 }
             }
         });
+        
         //Initialise primary screen
         ScreenController mainController = new ScreenController();
     	mainController.loadScreen(loginScreenID , loginScreenFXML );

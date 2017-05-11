@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import com.sun.javafx.scene.control.skin.DatePickerSkin;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -57,7 +60,7 @@ public class DayController implements ControlledView {
 	    ObservableList<EventData> eventsInTable = table.getItems();
 	    List<NewEvent> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
 	    
-	    for( NewEvent n : eventsToDisplay){
+	    for( NewEvent n : eventsToDisplay ){
 	    	EventData event = new EventData(n.getDescription(), LocalTime.now(), n.getDescription(), n.getDescription(), n.getLocation() );
 	    	eventsInTable.add(event);
 	    }
@@ -87,6 +90,9 @@ public class DayController implements ControlledView {
 		descCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("desc"));
 		durationCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("duration"));
 		locationCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("location"));
+		
+		// DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
+		// Node popupContent = datePickerSkin.getPopupContent();
 		
 		dateChanged(null);
 	}

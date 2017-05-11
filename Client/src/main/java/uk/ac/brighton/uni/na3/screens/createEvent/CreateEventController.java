@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
@@ -50,5 +51,10 @@ public class CreateEventController implements ControlledView {
 	@Override
 	public void setParent(ScreenController controller) {
 		parentController = controller;		
+	}
+		
+	// Example input data "Lewis Allen,Constantinos Ioannou,Charlie Howes"
+	public String[] getAttendees(){
+		throw new NotImplementedException();
 	}
 }

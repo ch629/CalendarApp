@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
+import uk.ac.brighton.uni.na3.utils.AuthUtils;
 
 public class LoginScreenController implements ControlledView {
 	
@@ -32,8 +33,16 @@ public class LoginScreenController implements ControlledView {
 
     @FXML
     void loginButtonClicked(ActionEvent event) {
-    	parentController.setScreen(CalendarApp.dayViewID);
-    	CalendarApp.resizeScreen();
+    	
+    	
+    	
+    	//if( AuthUtils.newLogin(userNameField.getText(), passwordField.getText().toCharArray()) ){
+    		System.out.println("WAS TRUE");
+    		parentController.setScreen(CalendarApp.dayViewID);
+    		CalendarApp.resizeScreen();
+    	//} else {
+    		System.out.println("NOPE");
+    	//}
     }
 
 	@Override
