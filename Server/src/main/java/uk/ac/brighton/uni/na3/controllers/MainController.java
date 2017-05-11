@@ -8,6 +8,7 @@ import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.User;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
+import uk.ac.brighton.uni.na3.model.networking.request.RegisterRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.LoginResponse;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
@@ -49,5 +50,18 @@ public class MainController {
         User user = userService.findOne(username);
         if (user == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(user.getSalt());
+    }
+
+    @PostMapping("/register")
+    @ResponseBody
+    Response register(@RequestBody RegisterRequest request) {
+        if (userService.findOne(request.getUsername()) == null) { //User doesn't exist
+            User user = new User(request.getUsername(), "", "", "", "", "",
+                    request.getPassword(), request.getSalt());
+            userService.create(user);
+
+            return new Response(ResponseType.OK);
+        }
+        return new Response(ResponseType.BAD_REQUEST); //TODO: More error types?
     }
 }
