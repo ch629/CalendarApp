@@ -1,4 +1,5 @@
-package uk.ac.brighton.uni.na3.screens.login;
+package uk.ac.brighton.uni.na3.screens.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,16 +34,16 @@ public class LoginScreenController implements ControlledView {
     void loginButtonClicked(ActionEvent event) {
         //if( AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray()) ){
         System.out.println("WAS TRUE");
-    		parentController.setScreen(CalendarApp.dayViewID);
-    		CalendarApp.resizeScreen();
-    	//} else {
-    		System.out.println("NOPE");
-    	//}
+        parentController.setScreen(CalendarApp.dayViewID);
+        CalendarApp.resizeScreen();
+        //} else {
+        System.out.println("NOPE");
+        //}
     }
 
-	@Override
-	public void setParent(ScreenController controller) {
-		parentController = controller;
-	}
+    @Override
+    public void setParent(ScreenController controller) {
+        parentController = controller;
+    }
 
 }

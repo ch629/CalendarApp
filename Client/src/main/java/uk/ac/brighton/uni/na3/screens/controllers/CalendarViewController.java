@@ -1,4 +1,4 @@
-package uk.ac.brighton.uni.na3.screens.calendarView;
+package uk.ac.brighton.uni.na3.screens.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -9,8 +9,8 @@ import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
 
 public class CalendarViewController implements ControlledView {
-	
-	ScreenController parentController;
+
+    ScreenController parentController;
 
     @FXML
     private Color x232;
@@ -26,15 +26,15 @@ public class CalendarViewController implements ControlledView {
 
     @FXML
     private Color x22;
-    
+
     @FXML
     void monday1(MouseEvent event) {
-    	CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Create Event");
+        CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Create Event");
     }
 
-	@Override
-	public void setParent(ScreenController controller) {
-		parentController = controller;		
-	}
+    @Override
+    public void setParent(ScreenController controller) {
+        parentController = controller;
+    }
 
 }

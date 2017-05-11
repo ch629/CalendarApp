@@ -1,4 +1,4 @@
-package uk.ac.brighton.uni.na3.screens.editEvent;
+package uk.ac.brighton.uni.na3.screens.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,9 +9,9 @@ import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
 
 public class EditEventController implements ControlledView {
-	
-	private ScreenController parentController; 
-	
+
+    private ScreenController parentController;
+
     @FXML
     private TextField nameField;
 
@@ -32,8 +32,8 @@ public class EditEventController implements ControlledView {
 
     }
 
-	@Override
-	public void setParent(ScreenController controller) {
-		parentController = controller;	
-	}
+    @Override
+    public void setParent(ScreenController controller) {
+        parentController = controller;
+    }
 }

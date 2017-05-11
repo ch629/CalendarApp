@@ -6,7 +6,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="276.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8.0.121"
-            fx:controller="uk.ac.brighton.uni.na3.screens.login.LoginScreenController">
+            fx:controller="uk.ac.brighton.uni.na3.screens.controllers.LoginScreenController">
     <TextField fx:id="userNameField" layoutX="61.0" layoutY="85.0" prefHeight="25.0" prefWidth="200.0"/>
     <TextField fx:id="passwordField" layoutX="61.0" layoutY="145.0" prefHeight="25.0" prefWidth="200.0"/>
     <Label layoutX="61.0" layoutY="68.0" text="Username"/>

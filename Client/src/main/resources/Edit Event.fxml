@@ -5,7 +5,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity"
             prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="uk.ac.brighton.uni.na3.screens.editEvent.EditEventController">
+            fx:controller="uk.ac.brighton.uni.na3.screens.controllers.EditEventController">
     <VBox prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0"
           AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <VBox prefHeight="200.0" prefWidth="300.0" spacing="5.0" VBox.vgrow="ALWAYS">

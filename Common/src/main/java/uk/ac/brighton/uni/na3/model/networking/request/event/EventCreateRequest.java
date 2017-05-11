@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @JsonAutoDetect
-public class EventCreateRequest extends Request { //TODO: Could use SingleDataRequest with a different EventCreate Type for T
+public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for this.
     private final String owner, description, location;
     private final Timestamp start, end;
     private final boolean isPrivate;

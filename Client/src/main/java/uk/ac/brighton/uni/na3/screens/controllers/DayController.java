@@ -1,4 +1,4 @@
-package uk.ac.brighton.uni.na3.screens.dayView;
+package uk.ac.brighton.uni.na3.screens.controllers;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
