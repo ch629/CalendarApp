@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,9 +18,10 @@ public class User implements Serializable {
     private String username;
     private boolean isAdmin;
     @JsonIgnore
+    @Column(nullable = false)
     private char[] password;
     @JsonIgnore
-    private char[] salt; //TODO: Store in constructor
+    private byte[] salt; //TODO: Store in constructor
     private String forename, surname, position, email, phoneNumber;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonIgnore
@@ -34,7 +32,7 @@ public class User implements Serializable {
     }
 
     @JsonCreator //TODO: Check using @JsonProperty
-    public User(String username, String forename, String surname, String position, String email, String phoneNumber, char[] password, char[] salt) {
+    public User(String username, String forename, String surname, String position, String email, String phoneNumber, char[] password, byte[] salt) {
         this();
         this.username = username;
         this.forename = forename;
@@ -122,7 +120,7 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public char[] getSalt() {
+    public byte[] getSalt() {
         return salt;
     }
 }
