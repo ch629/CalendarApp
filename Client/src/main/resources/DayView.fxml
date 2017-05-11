@@ -23,5 +23,6 @@
       </TableView>
       <Button layoutX="386.0" layoutY="493.0" mnemonicParsing="false" onAction="#previousDayPressed" text="Prev Day" />
       <Button layoutX="495.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextDayPressed" text="Next Day" />
+      <Button layoutX="715.0" layoutY="122.0" mnemonicParsing="false" onAction="#editEvent" text="Edit Event" />
    </children>
 </AnchorPane>

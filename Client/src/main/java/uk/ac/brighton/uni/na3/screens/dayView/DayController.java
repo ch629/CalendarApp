@@ -46,7 +46,12 @@ public class DayController implements ControlledView {
 
     @FXML
     private TableColumn<EventData, String> locationCol;
+    
+    @FXML
+    void editEvent(ActionEvent event) {
 
+    }
+    
 	@FXML
 	void addEvent(ActionEvent event) {
 		CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Add New Event");
