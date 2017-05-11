@@ -1,7 +1,7 @@
 package uk.ac.brighton.uni.na3.screens;
 
 import javafx.beans.property.SimpleStringProperty;
-import uk.ac.brighton.uni.na3.model.NewEvent;
+import uk.ac.brighton.uni.na3.model.Event;
 
 import java.time.LocalTime;
 
@@ -13,7 +13,7 @@ public class EventData {
 	private final SimpleStringProperty duration = new SimpleStringProperty("");
 	private final SimpleStringProperty location = new SimpleStringProperty("");
 
-    public EventData(NewEvent event) { //TODO: Update Event type to be LocalTime or easily converted. add name
+    public EventData(Event event) { //TODO: Update Event type to be LocalTime or easily converted. add name
         this(event.getDescription(), LocalTime.now(), event.getDescription(), event.getDescription(), event.getLocation());
     }
 

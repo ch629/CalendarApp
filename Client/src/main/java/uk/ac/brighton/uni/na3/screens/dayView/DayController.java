@@ -11,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
-import uk.ac.brighton.uni.na3.model.NewEvent;
+import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.screens.EventData;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
 
@@ -59,7 +59,7 @@ public class DayController implements ControlledView {
                 : "You have no events planned for this day."));
 
         ObservableList<EventData> eventsInTable = table.getItems();
-        List<NewEvent> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
+        List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
 
         eventsInTable.addAll(
                 eventsToDisplay.stream()
