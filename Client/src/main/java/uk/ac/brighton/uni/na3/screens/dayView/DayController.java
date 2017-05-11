@@ -1,15 +1,8 @@
 package uk.ac.brighton.uni.na3.screens.dayView;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -21,6 +14,10 @@ import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.model.NewEvent;
 import uk.ac.brighton.uni.na3.screens.EventData;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DayController implements ControlledView {
 
@@ -64,13 +61,18 @@ public class DayController implements ControlledView {
 		
 	    ObservableList<EventData> eventsInTable = table.getItems();
 	    List<NewEvent> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
-	    
-	    for( NewEvent n : eventsToDisplay ){
-	    	EventData event = new EventData(n.getDescription(), LocalTime.now(), n.getDescription(), n.getDescription(), n.getLocation() );
-	    	eventsInTable.add(event);
-	    }
-	    
-	    //TODO: Grab events from server and insert into table.getItems()
+
+        eventsInTable.addAll(
+                eventsToDisplay.stream()
+                        .map(EventData::new)
+                        .collect(Collectors.toList()));
+
+//	    for( NewEvent n : eventsToDisplay ){
+//	    	EventData event = new EventData(n.getDescription(), LocalTime.now(), n.getDescription(), n.getDescription(), n.getLocation() );
+//	    	eventsInTable.add(event);
+//	    }
+
+        //TODO: Grab events from server and insert into table.getItems()
 	}
 
 	@FXML
