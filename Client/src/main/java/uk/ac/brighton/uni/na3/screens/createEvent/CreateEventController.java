@@ -55,6 +55,9 @@ public class CreateEventController implements ControlledView {
 		
 	// Example input data "Lewis Allen,Constantinos Ioannou,Charlie Howes"
 	public String[] getAttendees(){
-		throw new NotImplementedException();
+		String attendee = attendeeField.getText();		//gets the attendeeField input
+		String eventAttendee[] =  attendee.split(",");	//it split the String attendee after 
+														//the comma and stores it in array
+		return eventAttendee;
 	}
 }
