@@ -11,14 +11,14 @@ import java.util.Set;
 public class NewEvent implements Serializable {
     private static final long serialVersionUID = 1L;
     private int eventId;
-    private User owner;
+    private NewUser owner;
     private String description, location;
     private Timestamp startDate, endDate;
     private boolean isPrivate;
-    private Set<User> attendees;
+    private Set<NewUser> attendees;
 
     @JsonCreator
-    public NewEvent(int eventId, User owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate, Set<User> attendees) {
+    public NewEvent(int eventId, NewUser owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate, Set<NewUser> attendees) {
         this.eventId = eventId;
         this.owner = owner;
         this.description = description;
@@ -37,11 +37,11 @@ public class NewEvent implements Serializable {
         this.eventId = eventId;
     }
 
-    public User getOwner() {
+    public NewUser getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(NewUser owner) {
         this.owner = owner;
     }
 
@@ -85,11 +85,11 @@ public class NewEvent implements Serializable {
         isPrivate = aPrivate;
     }
 
-    public Set<User> getAttendees() {
+    public Set<NewUser> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(Set<User> attendees) {
+    public void setAttendees(Set<NewUser> attendees) {
         this.attendees = attendees;
     }
 }

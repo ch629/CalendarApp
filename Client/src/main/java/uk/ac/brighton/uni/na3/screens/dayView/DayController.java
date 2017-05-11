@@ -20,15 +20,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DayController implements ControlledView {
+    private ScreenController parent;
 
-	private ScreenController parent;
+    @FXML
+    private DatePicker datePicker;
 
-	@FXML
-	private DatePicker datePicker;
+    @FXML
+    private TableView<EventData> table;
 
-	@FXML
-	private TableView<EventData> table;
-	
     @FXML
     private TableColumn<EventData, String> nameCol;
 
@@ -37,71 +36,65 @@ public class DayController implements ControlledView {
 
     @FXML
     private TableColumn<EventData, String> descCol;
-    
+
     @FXML
     private TableColumn<EventData, String> durationCol;
 
     @FXML
     private TableColumn<EventData, String> locationCol;
-    
+
     @FXML
     void editEvent(ActionEvent event) {
 
     }
-    
-	@FXML
-	void addEvent(ActionEvent event) {
-		CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Add New Event");
-	}
 
-	@FXML
-	void dateChanged(ActionEvent e) {
-		table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
-				: "You have no events planned for this day."));
-		
-	    ObservableList<EventData> eventsInTable = table.getItems();
-	    List<NewEvent> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
+    @FXML
+    void addEvent(ActionEvent event) {
+        CalendarApp.newSecondaryScene(CalendarApp.createEventID, "Add New Event");
+    }
+
+    @FXML
+    void dateChanged(ActionEvent e) {
+        table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
+                : "You have no events planned for this day."));
+
+        ObservableList<EventData> eventsInTable = table.getItems();
+        List<NewEvent> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
 
         eventsInTable.addAll(
                 eventsToDisplay.stream()
                         .map(EventData::new)
                         .collect(Collectors.toList()));
-
-//	    for( NewEvent n : eventsToDisplay ){
-//	    	EventData event = new EventData(n.getDescription(), LocalTime.now(), n.getDescription(), n.getDescription(), n.getLocation() );
-//	    	eventsInTable.add(event);
-//	    }
-
         //TODO: Grab events from server and insert into table.getItems()
-	}
+    }
 
-	@FXML
-	void nextDayPressed(ActionEvent event) {
-		datePicker.setValue(datePicker.getValue().plusDays(1));
-	}
+    @FXML
+    void nextDayPressed(ActionEvent event) {
+        datePicker.setValue(datePicker.getValue().plusDays(1));
+    }
 
-	@FXML
-	void previousDayPressed(ActionEvent event) {
-		datePicker.setValue(datePicker.getValue().minusDays(1));
-	}
+    @FXML
+    void previousDayPressed(ActionEvent event) {
+        datePicker.setValue(datePicker.getValue().minusDays(1));
+    }
 
-	@Override
-	public void setParent(ScreenController controller) {
-		parent = controller;
-	}
+    @Override
+    public void setParent(ScreenController controller) {
+        parent = controller;
+    }
 
-	public void initialize() {
-		datePicker.setValue(LocalDate.now());
-		nameCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("name"));
-		timeCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("time"));
-		descCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("desc"));
-		durationCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("duration"));
-		locationCol.setCellValueFactory(new PropertyValueFactory<EventData,String>("location"));
-		
-		// DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
-		// Node popupContent = datePickerSkin.getPopupContent();
-		
-		dateChanged(null);
-	}
+    public void initialize() {
+        datePicker.setValue(LocalDate.now());
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        descCol.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
+        locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
+
+        // DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
+        // Node popupContent = datePickerSkin.getPopupContent();
+
+        dateChanged(null);
+    }
 
 }

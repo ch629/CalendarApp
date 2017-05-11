@@ -11,16 +11,15 @@ import uk.ac.brighton.uni.na3.database.entities.Event;
 import uk.ac.brighton.uni.na3.database.entities.User;
 import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
+import uk.ac.brighton.uni.na3.model.SimpleDate;
 import uk.ac.brighton.uni.na3.model.networking.request.PairDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
-import uk.ac.brighton.uni.na3.model.networking.request.event.EventOnDayRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.List;
 
 @Controller("/event/")
@@ -67,11 +66,9 @@ public class EventController {
 
     @PostMapping("event/day")
     @ResponseBody
-    Response getEventsOnDay(EventOnDayRequest request) {
+    Response getEventsOnDay(SingleDataRequest<SimpleDate> request) {
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
-        Calendar calDay = Calendar.getInstance();
-        calDay.set(request.getYear(), request.getMonth(), request.getDay());
-        Timestamp day = new Timestamp(calDay.getTimeInMillis());
+        Timestamp day = request.getData().toTimestamp();
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(events);
