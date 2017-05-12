@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class Response {
     private ResponseType type;
 
+    public Response() {}
+
     public Response(ResponseType type) {
         this.type = type;
     }

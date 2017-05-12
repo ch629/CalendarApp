@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.Event;
@@ -36,7 +37,7 @@ public class EventController {
 
     @PostMapping("event/create")
     @ResponseBody
-    Response createEvent(EventCreateRequest request) {
+    Response createEvent(@RequestBody EventCreateRequest request) {
         Event newEvent = Event.fromCreateRequest(request);
         if (newEvent == null)
             return new Response(ResponseType.BAD_REQUEST); //TODO: Maybe INVALID_PARAMETERS ResponseType
@@ -48,7 +49,7 @@ public class EventController {
     @ResponseBody
     @Deprecated
         //TODO: Remove?
-    Response getEvent(SingleDataRequest<Integer> request) { //NOTE: This route probably wont be used and could be used to get events from another user.
+    Response getEvent(@RequestBody SingleDataRequest<Integer> request) { //NOTE: This route probably wont be used and could be used to get events from another user.
         Event event = eventService.findById(request.getData());
         if (event == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(event);
@@ -66,7 +67,7 @@ public class EventController {
 
     @PostMapping("event/day")
     @ResponseBody
-    Response getEventsOnDay(SingleDataRequest<SimpleDate> request) {
+    Response getEventsOnDay(@RequestBody SingleDataRequest<SimpleDate> request) {
         User user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp day = request.getData().toTimestamp();
         List<Event> events = eventService.findDatesOnDay(day, user);
@@ -76,7 +77,7 @@ public class EventController {
 
     @PostMapping("event/invite")
     @ResponseBody
-    Response inviteToEvent(PairDataRequest<Integer, String> request) { //NOTE: Only the owner can invite
+    Response inviteToEvent(@RequestBody PairDataRequest<Integer, String> request) { //NOTE: Only the owner can invite
         User inviter = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
         Event event = eventService.findById(request.getFirst());
         if (event.getOwner().getUsername().equals(inviter.getUsername()) &&

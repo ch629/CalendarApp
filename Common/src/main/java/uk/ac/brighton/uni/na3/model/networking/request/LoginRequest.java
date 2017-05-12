@@ -2,15 +2,16 @@ package uk.ac.brighton.uni.na3.model.networking.request;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonAutoDetect
-public class LoginRequest extends Request {
+public class LoginRequest {
     private final String username;
     private final char[] password;
 
     @JsonCreator
-    public LoginRequest(String username, char[] password) {
-        super(new char[]{}); //No AuthToken so just blank
+    public LoginRequest(@JsonProperty("username") String username,
+                        @JsonProperty("password") char[] password) {
         this.username = username;
         this.password = password;
     }

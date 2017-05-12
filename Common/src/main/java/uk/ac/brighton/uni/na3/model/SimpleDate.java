@@ -2,6 +2,7 @@ package uk.ac.brighton.uni.na3.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -28,10 +29,12 @@ public class SimpleDate implements Serializable {
         this(timestamp.toLocalDateTime().toLocalDate()); //TODO: This is a pretty gross way to do this.
     }
 
+    @JsonIgnore
     public LocalDate toLocalDate() {
         return LocalDate.of(year, month, dayOfMonth);
     }
 
+    @JsonIgnore
     public Timestamp toTimestamp() {
         Calendar cal = Calendar.getInstance();
         cal.set(year, month, dayOfMonth);

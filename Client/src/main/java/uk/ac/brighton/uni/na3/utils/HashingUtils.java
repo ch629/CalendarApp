@@ -26,7 +26,7 @@ public class HashingUtils {
     }
 
     public static byte[] genSalt() {
-        byte[] salt = new byte[256];
+        byte[] salt = new byte[128];
         rand.nextBytes(salt);
         return salt;
     }

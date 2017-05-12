@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User findOne(String username) {
         User user = userRepository.findOne(username);
-        user.getAttendingEvents().size(); //Load the Lazy Collection
+        if (user != null) user.getAttendingEvents().size();
         return user;
     }
 }

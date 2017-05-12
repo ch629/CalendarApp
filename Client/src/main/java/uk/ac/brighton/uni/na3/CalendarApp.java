@@ -67,7 +67,9 @@ public class CalendarApp extends Application {
             @Override
             public String writeValue(Object value) {
                 try {
-                    return mapper.writeValueAsString(value);
+                    String map = mapper.writeValueAsString(value);
+                    System.out.println(map);
+                    return mapper.writeValueAsString(map);
                 } catch (JsonProcessingException e) {
                     throw new RuntimeException(e);
                 }

@@ -1,4 +1,5 @@
-package uk.ac.brighton.uni.na3.screens.login;
+package uk.ac.brighton.uni.na3.screens.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

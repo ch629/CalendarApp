@@ -32,7 +32,9 @@ public class AuthTokenManager { //TODO: This is kind of like a session in WebDev
     }
 
     public User getUser(char[] token) {
-        return Application.instance.userService.findOne(getUserName(token));
+        String username = getUserName(token);
+        return username != null && !username.isEmpty() ?
+                Application.instance.userService.findOne(getUserName(token)) : null;
     }
 
     public String getUserName(char[] token) {
