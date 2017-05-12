@@ -26,6 +26,9 @@ public class LoginScreenController implements ControlledView {
 
     @FXML
     private Label createAccountButton;
+    
+    @FXML
+    private Label outputText;
 
     @FXML
     void createNewAccountClick(MouseEvent event) {
@@ -37,11 +40,12 @@ public class LoginScreenController implements ControlledView {
     void loginButtonClicked(ActionEvent event) {
         System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if (AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray())) {
-            CalendarApp.postLoginLoad();
+            outputText.setText("Successful Login");
+        	CalendarApp.postLoginLoad();
             parent.setScreen(CalendarApp.dayViewID);
             CalendarApp.resizeScreen();
         } else {
-            System.out.println("Login Failed");
+            outputText.setText("Incorrect Login Credentials");
         }
     }
 
