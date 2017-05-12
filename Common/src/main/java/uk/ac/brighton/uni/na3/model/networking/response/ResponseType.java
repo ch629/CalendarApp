@@ -1,7 +1,10 @@
 package uk.ac.brighton.uni.na3.model.networking.response;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ResponseType {
     OK(200),
     BAD_REQUEST(400), //Invalid parameters
@@ -15,6 +18,13 @@ public enum ResponseType {
 
     ResponseType(int code) {
         this.code = code;
+    }
+
+    @JsonCreator
+    static ResponseType fromCode(int code) {
+        for (ResponseType type : values())
+            if (type.getCode() == code) return type;
+        return null;
     }
 
     @JsonValue

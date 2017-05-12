@@ -26,8 +26,8 @@ public class NetworkUtils {
 
     public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type) {
         try {
-            Response response = Unirest.get(HOST_NAME + route).asObject(Response.class).getBody();
-            return new NetworkOptional<>((T) response);
+            T response = Unirest.get(HOST_NAME + route).asObject(type).getBody();
+            return new NetworkOptional<>(response);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -40,8 +40,8 @@ public class NetworkUtils {
 
     public static <T extends Response> NetworkOptional<T> post(String route, Object request, Class<T> type) {
         try {
-            Response response = Unirest.post(HOST_NAME + route).body(request).asObject(Response.class).getBody();
-            return new NetworkOptional<>((T) response);
+            T response = Unirest.post(HOST_NAME + route).header("Content-Type", "application/json").body(request).asObject(type).getBody();
+            return new NetworkOptional<>(response);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

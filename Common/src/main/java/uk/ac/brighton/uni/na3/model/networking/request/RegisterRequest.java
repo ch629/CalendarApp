@@ -10,6 +10,8 @@ public class RegisterRequest { //TODO: Add other fields.
     private char[] password;
     private byte[] salt;
 
+    public RegisterRequest() {}
+
     @JsonCreator
     public RegisterRequest(@JsonProperty("username") String username,
                            @JsonProperty("password") char[] password,

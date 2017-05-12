@@ -33,9 +33,12 @@ public class MainController {
     @PostMapping("/login")
     @ResponseBody
     Response login(@RequestBody LoginRequest login) {
+        System.out.println("LOGIN");
         User user = userService.findOne(login.getUsername());
         if (user != null) {
+            System.out.println("NOT NULL");
             if (passwordsEqual(login.getPassword(), user.getPassword())) {
+                System.out.println("PASSWORDS EQUAL");
                 char[] authToken = AuthTokenManager.instance.generateAndUseAuthToken(user.getUsername());
                 return new LoginResponse(ResponseType.OK, authToken);
             }
