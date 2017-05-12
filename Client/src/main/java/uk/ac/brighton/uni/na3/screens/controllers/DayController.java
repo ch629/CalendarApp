@@ -44,6 +44,11 @@ public class DayController implements ControlledView {
     private TableColumn<EventData, String> locationCol;
 
     @FXML
+    void Logout(ActionEvent event) {
+
+    }
+    
+    @FXML
     void editEvent(ActionEvent event) {
 
     }
