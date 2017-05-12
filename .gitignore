@@ -71,3 +71,6 @@ Thumbs.db
 =======
 *.swp
 >>>>>>> b61592c5eba79d21313dda68cdc9c36a258378e9
+
+### Derby Database ###
+calendardb/
