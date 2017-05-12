@@ -58,6 +58,7 @@ public class CalendarApp extends Application {
             @Override
             public <T> T readValue(String value, Class<T> valueType) {
                 try {
+                    System.out.println(value);
                     return mapper.readValue(value, valueType);
                 } catch (IOException e) {
                     throw new RuntimeException(e);

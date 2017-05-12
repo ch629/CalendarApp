@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
-import uk.ac.brighton.uni.na3.database.entities.User;
+import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.RegisterRequest;
@@ -33,12 +33,9 @@ public class MainController {
     @PostMapping("/login")
     @ResponseBody
     Response login(@RequestBody LoginRequest login) {
-        System.out.println("LOGIN");
-        User user = userService.findOne(login.getUsername());
+        UserAccount user = userService.findOne(login.getUsername());
         if (user != null) {
-            System.out.println("NOT NULL");
             if (passwordsEqual(login.getPassword(), user.getPassword())) {
-                System.out.println("PASSWORDS EQUAL");
                 char[] authToken = AuthTokenManager.instance.generateAndUseAuthToken(user.getUsername());
                 return new LoginResponse(ResponseType.OK, authToken);
             }
@@ -56,7 +53,7 @@ public class MainController {
     @GetMapping("/salt/{username}")
     @ResponseBody
     Response getSalt(@PathVariable("username") String username) {
-        User user = userService.findOne(username);
+        UserAccount user = userService.findOne(username);
         if (user == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(user.getSalt());
     }
@@ -65,7 +62,7 @@ public class MainController {
     @ResponseBody
     Response register(@RequestBody RegisterRequest request) {
         if (userService.findOne(request.getUsername()) == null) { //User doesn't exist
-            User user = new User(request.getUsername(), "", "", "", "", "",
+            UserAccount user = new UserAccount(request.getUsername(), "", "", "", "", "",
                     request.getPassword(), request.getSalt());
             userService.create(user);
 

@@ -20,7 +20,7 @@ public class Event implements Serializable {
     @Id
     private int eventId;
     @ManyToOne
-    private User owner;
+    private UserAccount owner;
     private String description, location;
     private Timestamp startDate, endDate;
     private boolean isPrivate;
@@ -29,7 +29,7 @@ public class Event implements Serializable {
     private Set<EventAttendee> attendees;
 
     @JsonCreator
-    public Event(User owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
+    public Event(UserAccount owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
         this.owner = owner;
         this.description = description;
         this.location = location;
@@ -39,7 +39,7 @@ public class Event implements Serializable {
     }
 
     public static Event fromCreateRequest(EventCreateRequest request) {
-        User owner = Application.instance.userService.findOne(request.getOwner());
+        UserAccount owner = Application.instance.userService.findOne(request.getOwner());
         if (owner == null) return null;
         return new Event(owner, request.getDescription(), request.getLocation(),
                 request.getStart(), request.getEnd(), request.isPrivate());
@@ -49,11 +49,11 @@ public class Event implements Serializable {
         return eventId;
     }
 
-    public User getOwner() {
+    public UserAccount getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(UserAccount owner) {
         this.owner = owner;
     }
 
@@ -97,15 +97,15 @@ public class Event implements Serializable {
         isPrivate = aPrivate;
     }
 
-    public void addAttendee(User user) {
+    public void addAttendee(UserAccount user) {
         attendees.add(new EventAttendee(user, this));
     }
 
-    public Set<User> getAttendees() {
+    public Set<UserAccount> getAttendees() {
         return attendees.stream().map(EventAttendee::getUser).collect(Collectors.toSet());
     }
 
-    public void setAttendees(Set<User> attendees) {
+    public void setAttendees(Set<UserAccount> attendees) {
         this.attendees = attendees.stream().map(user -> new EventAttendee(user, this)).collect(Collectors.toSet());
     }
 }

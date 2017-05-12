@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.Event;
-import uk.ac.brighton.uni.na3.database.entities.User;
+import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.SimpleDate;
@@ -58,7 +58,7 @@ public class EventController {
     @GetMapping("event/between")
     @ResponseBody
     Response getEventsBetween(PairDataRequest<Long, Long> request) { //TODO: Long could probably just be the dates, as Jackson serializes these to longs by default
-        User user = AuthTokenManager.instance.getUser(request.getAuthToken());
+        UserAccount user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp start = new Timestamp(request.getFirst()), end = new Timestamp(request.getSecond());
         List<Event> events = eventService.findDatesOverlapping(start, end, user.getUsername());
         if (events == null) return new Response(ResponseType.NOT_FOUND);
@@ -68,7 +68,7 @@ public class EventController {
     @PostMapping("event/day")
     @ResponseBody
     Response getEventsOnDay(@RequestBody SingleDataRequest<SimpleDate> request) {
-        User user = AuthTokenManager.instance.getUser(request.getAuthToken());
+        UserAccount user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp day = request.getData().toTimestamp();
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
@@ -78,11 +78,11 @@ public class EventController {
     @PostMapping("event/invite")
     @ResponseBody
     Response inviteToEvent(@RequestBody PairDataRequest<Integer, String> request) { //NOTE: Only the owner can invite
-        User inviter = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
+        UserAccount inviter = AuthTokenManager.instance.getUser(request.getAuthToken()); //TODO: IMPLEMENT
         Event event = eventService.findById(request.getFirst());
         if (event.getOwner().getUsername().equals(inviter.getUsername()) &&
                 !inviter.getUsername().equals(request.getSecond())) {
-            User invitee = userService.findOne(request.getSecond());
+            UserAccount invitee = userService.findOne(request.getSecond());
             if (invitee != null) {
                 event.addAttendee(invitee);
                 eventService.update(event);

@@ -18,6 +18,6 @@ public class EventRequest implements Serializable {
     @ManyToOne
     @Id
     @JoinColumn(name = "username")
-    private User user;
+    private UserAccount user;
     private EventRequestResponseType response = EventRequestResponseType.NONE;
 }

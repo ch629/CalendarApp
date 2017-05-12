@@ -2,7 +2,7 @@ package uk.ac.brighton.uni.na3.database.services.implementations;
 
 import org.springframework.stereotype.Service;
 import uk.ac.brighton.uni.na3.database.entities.Event;
-import uk.ac.brighton.uni.na3.database.entities.User;
+import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 import uk.ac.brighton.uni.na3.database.repositories.EventRepository;
 import uk.ac.brighton.uni.na3.database.services.interfaces.EventService;
 
@@ -69,7 +69,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public List<Event> findDatesOnDay(Timestamp day, User user) {
+    public List<Event> findDatesOnDay(Timestamp day, UserAccount user) {
         return findDatesOnDay(day, user.getUsername());
     }
 
@@ -94,7 +94,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     @Transactional
-    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, User user) {
+    public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, UserAccount user) {
         return findDatesOverlapping(start, end, user.getUsername());
     }
 

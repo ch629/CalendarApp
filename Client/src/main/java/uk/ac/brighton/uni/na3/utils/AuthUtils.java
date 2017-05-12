@@ -3,6 +3,7 @@ package uk.ac.brighton.uni.na3.utils;
 import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.RegisterRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.LoginResponse;
+import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 import java.util.Base64;
@@ -28,6 +29,7 @@ public class AuthUtils {
         final boolean[] ret = {false};
         byte[] salt = HashingUtils.genSalt();
         RegisterRequest registerRequest = new RegisterRequest(username, HashingUtils.saltHash(password, salt), salt);
+        NetworkUtils.post("register", registerRequest, Response.class).ifOK(res -> ret[0] = true);
         return ret[0];
     }
 

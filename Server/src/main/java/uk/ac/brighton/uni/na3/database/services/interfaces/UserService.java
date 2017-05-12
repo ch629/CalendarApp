@@ -1,17 +1,17 @@
 package uk.ac.brighton.uni.na3.database.services.interfaces;
 
-import uk.ac.brighton.uni.na3.database.entities.User;
+import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 
 import java.util.List;
 
 public interface UserService {
-    User create(User user);
+    UserAccount create(UserAccount user);
 
-    User delete(String username);
+    UserAccount delete(String username);
 
-    List<User> findAll();
+    List<UserAccount> findAll();
 
-    User update(User user);
+    UserAccount update(UserAccount user);
 
-    User findOne(String username);
+    UserAccount findOne(String username);
 }

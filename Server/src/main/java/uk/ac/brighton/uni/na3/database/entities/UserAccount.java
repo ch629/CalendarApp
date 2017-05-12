@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 @JsonAutoDetect
 @Entity
-public class User implements Serializable {
+public class UserAccount implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     private String username;
@@ -27,12 +27,12 @@ public class User implements Serializable {
     @JsonIgnore
     private Set<EventAttendee> attendingEvents;
 
-    public User() {
+    public UserAccount() {
         attendingEvents = new HashSet<>();
     }
 
     @JsonCreator //TODO: Check using @JsonProperty
-    public User(String username, String forename, String surname, String position, String email, String phoneNumber, char[] password, byte[] salt) {
+    public UserAccount(String username, String forename, String surname, String position, String email, String phoneNumber, char[] password, byte[] salt) {
         this();
         this.username = username;
         this.forename = forename;

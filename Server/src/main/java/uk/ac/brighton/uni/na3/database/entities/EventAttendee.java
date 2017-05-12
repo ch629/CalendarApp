@@ -13,19 +13,19 @@ public class EventAttendee implements Serializable {
     @Id
     @ManyToOne
     @JoinColumn(name = "username")
-    private User user;
+    private UserAccount user;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "eventId")
     private Event event;
 
-    public EventAttendee(User user, Event event) {
+    public EventAttendee(UserAccount user, Event event) {
         this.user = user;
         this.event = event;
     }
 
-    public User getUser() {
+    public UserAccount getUser() {
         return user;
     }
 
