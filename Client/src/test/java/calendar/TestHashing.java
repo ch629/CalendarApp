@@ -4,6 +4,7 @@ import org.junit.Test;
 import uk.ac.brighton.uni.na3.utils.HashingUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 
 public class TestHashing {
@@ -24,7 +25,6 @@ public class TestHashing {
     @Test
     public void testUnique() {
         String[] hashedPasswords = new String[256];
-        String password = "password";
         byte[][] salt = new byte[256][];
 
         Boolean collision = false;
@@ -32,18 +32,17 @@ public class TestHashing {
 
         for (int i = 0; i < hashedPasswords.length; i++) {
             salt[i] = HashingUtils.genSalt();
-            hashedPasswords[i] = String.valueOf(HashingUtils.saltHash(password.toCharArray(), salt[i]));
+            hashedPasswords[i] = String.valueOf(HashingUtils.saltHash(PASS, salt[i]));
         }
 
         for (int n = 0; n < hashedPasswords.length; n++) {
-            if (hashedPasswords[n] !=
-                    (String.valueOf(HashingUtils.saltHash(password.toCharArray(), salt[n]))))
+            if (!hashedPasswords[n].equals(String.valueOf(HashingUtils.saltHash(PASS, salt[n]))))
                 encode = false;
+
             for (int m = n + 1; m < hashedPasswords.length; m++) {
-                if (m != n && hashedPasswords[m] == hashedPasswords[n]) collision = true;
+                if (m != n && hashedPasswords[m].equals(hashedPasswords[n])) collision = true;
             }
         }
-
-        assertThat(collision == false && encode == true);
+        assertTrue(!collision && encode);
     }
 }
