@@ -27,7 +27,7 @@ public class CalendarApp extends Application {
 
     private static Stage primaryStage, secondaryStage;
 
-    private static ScreenController secondaryController;
+    private static ScreenController mainController, secondaryController;
 
     public static void main(String[] args) {
         launch(args);
@@ -78,11 +78,8 @@ public class CalendarApp extends Application {
         });
 
         //Initialise primary screen
-        ScreenController mainController = new ScreenController();
+        mainController = new ScreenController();
         mainController.loadScreen(loginScreenID, loginScreenFXML);
-        mainController.loadScreen(calendarViewID, calendarViewFXML);
-        
-
         mainController.setScreen(loginScreenID);
 
         Group root = new Group();
@@ -95,8 +92,6 @@ public class CalendarApp extends Application {
         secondaryStage = new Stage();
         secondaryStage.initModality(Modality.APPLICATION_MODAL);
         secondaryController = new ScreenController();
-        secondaryController.loadScreen(createEventID, createEventFXML);
-        secondaryController.loadScreen(createEventID, createEventFXML);
 
         root = new Group();
         root.getChildren().addAll(secondaryController);
@@ -104,6 +99,12 @@ public class CalendarApp extends Application {
         secondaryStage.setScene(scene);
 
         primaryStage.show();
+    }
+    
+    public static void postLoginLoad(){
+    	mainController.loadScreen(CalendarApp.dayViewID, CalendarApp.dayViewFXML);
+    	secondaryController.loadScreen(createEventID, createEventFXML);
+        secondaryController.loadScreen(  editEventID,   editEventFXML);
     }
   
     //TODO: When logged in, check settings the user has specified i.e. default calendar view && color scheme. -> Would have to be done with CSS (Provide themes? or just allow color customization)

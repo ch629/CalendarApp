@@ -37,7 +37,7 @@ public class LoginScreenController implements ControlledView {
     void loginButtonClicked(ActionEvent event) {
     	System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if( AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray()) ){
-        	loadDayView();
+        	CalendarApp.postLoginLoad();
     		parent.setScreen(CalendarApp.dayViewID);
     		CalendarApp.resizeScreen();
     	} else {
@@ -50,8 +50,4 @@ public class LoginScreenController implements ControlledView {
 		parent = controller;
 	}
 	
-	private void loadDayView(){
-        parent.loadScreen(CalendarApp.dayViewID, CalendarApp.dayViewFXML);
-    }
-
 }
