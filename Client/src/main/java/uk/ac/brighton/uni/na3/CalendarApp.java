@@ -1,15 +1,16 @@
 package uk.ac.brighton.uni.na3;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mashape.unirest.http.ObjectMapper;
 import com.mashape.unirest.http.Unirest;
+
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class CalendarApp extends Application {
 
@@ -80,7 +81,7 @@ public class CalendarApp extends Application {
         ScreenController mainController = new ScreenController();
         mainController.loadScreen(loginScreenID, loginScreenFXML);
         mainController.loadScreen(calendarViewID, calendarViewFXML);
-        mainController.loadScreen(dayViewID, dayViewFXML);
+        
 
         mainController.setScreen(loginScreenID);
 
@@ -104,6 +105,6 @@ public class CalendarApp extends Application {
 
         primaryStage.show();
     }
-
+  
     //TODO: When logged in, check settings the user has specified i.e. default calendar view && color scheme. -> Would have to be done with CSS (Provide themes? or just allow color customization)
 }

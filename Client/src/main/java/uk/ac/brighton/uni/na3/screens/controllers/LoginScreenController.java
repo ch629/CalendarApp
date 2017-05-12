@@ -12,7 +12,8 @@ import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 
 public class LoginScreenController implements ControlledView {
-    private ScreenController parentController;
+	
+    private ScreenController parent;
 
     @FXML
     private TextField userNameField;
@@ -36,7 +37,8 @@ public class LoginScreenController implements ControlledView {
     void loginButtonClicked(ActionEvent event) {
     	System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if( AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray()) ){
-    		parentController.setScreen(CalendarApp.dayViewID);
+        	loadDayView();
+    		parent.setScreen(CalendarApp.dayViewID);
     		CalendarApp.resizeScreen();
     	} else {
     		System.out.println("Login Failed");
@@ -45,7 +47,11 @@ public class LoginScreenController implements ControlledView {
 
 	@Override
 	public void setParent(ScreenController controller) {
-		parentController = controller;
+		parent = controller;
 	}
+	
+	private void loadDayView(){
+        parent.loadScreen(CalendarApp.dayViewID, CalendarApp.dayViewFXML);
+    }
 
 }
