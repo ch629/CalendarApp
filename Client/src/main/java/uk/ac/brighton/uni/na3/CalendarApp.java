@@ -16,6 +16,8 @@ public class CalendarApp extends Application {
 
     public static String loginScreenID = "login";
     public static String loginScreenFXML = "/Login.fxml";
+    public static String createAccountID = "createAccount";
+    public static String createAccountFXML = "/CreateAccount.fxml";
     public static String createEventID = "createEvent";
     public static String createEventFXML = "/Create Event.fxml";
     public static String editEventID = "editEvent";
@@ -82,6 +84,8 @@ public class CalendarApp extends Application {
         mainController = new ScreenController();
         mainController.loadScreen(loginScreenID, loginScreenFXML);
         mainController.setScreen(loginScreenID);
+        mainController.loadScreen(createAccountID, createAccountFXML);
+        
 
         Group root = new Group();
         root.getChildren().addAll(mainController);

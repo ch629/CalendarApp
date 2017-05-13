@@ -33,10 +33,8 @@ public class LoginScreenController implements ControlledView {
 
     @FXML
     void createNewAccountClick(MouseEvent event) {
-    	outputText.setText("Creating new account...");
-        System.out.printf("Running create with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
-        boolean res = AuthUtils.register(userNameField.getText(), passwordField.getText().toCharArray());
-        outputText.setText(res ? "Account created successfully." : "Unable to create account." );
+    	parent.setScreen(CalendarApp.createAccountID);
+        CalendarApp.resizeScreen();
     }
 
     @FXML
