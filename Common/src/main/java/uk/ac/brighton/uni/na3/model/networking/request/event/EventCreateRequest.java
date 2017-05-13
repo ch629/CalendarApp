@@ -7,7 +7,7 @@ import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
 @JsonAutoDetect
-public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for this.
+public class EventCreateRequest extends Request {
     private final String title, description, location;
     private final SimpleDateTime start, end;
     private final boolean isPrivate;

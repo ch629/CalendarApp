@@ -1,11 +1,13 @@
 package uk.ac.brighton.uni.na3.database.services.interfaces;
 
+import org.springframework.stereotype.Service;
 import uk.ac.brighton.uni.na3.database.entities.Event;
 import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 
 import java.sql.Timestamp;
 import java.util.List;
 
+@Service
 public interface EventService {
     Event create(Event event);
 
