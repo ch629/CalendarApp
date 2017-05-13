@@ -44,7 +44,9 @@ public class LoginScreenController implements ControlledView {
     	outputText.setText("Attempting to login...");
         System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if (AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray())) {
-            outputText.setText("Successful Login");
+            outputText.setText("");
+            userNameField.clear();
+            passwordField.clear();
         	CalendarApp.postLoginLoad();
             parent.setScreen(CalendarApp.dayViewID);
             CalendarApp.resizeScreen();

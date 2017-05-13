@@ -1,8 +1,13 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -13,11 +18,8 @@ import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.screens.EventData;
+import uk.ac.brighton.uni.na3.utils.AuthUtils;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DayController implements ControlledView {
     private ScreenController parent;
@@ -42,15 +44,21 @@ public class DayController implements ControlledView {
 
     @FXML
     private TableColumn<EventData, String> locationCol;
+    
+    @FXML
+    private Button editEventButton;
 
     @FXML
     void Logout(ActionEvent event) {
-
+    	AuthUtils.resetToken();
+    	parent.setScreen(CalendarApp.loginScreenID);
+    	parent.unloadScreen(CalendarApp.dayViewID);
+    	CalendarApp.resizeScreen();
     }
     
     @FXML
     void editEvent(ActionEvent event) {
-
+    	CalendarApp.newSecondaryScene(CalendarApp.editEventID, "Edit Event");
     }
 
     @FXML
