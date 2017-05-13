@@ -68,7 +68,8 @@ public class DayController implements ControlledView {
     void dateChanged(ActionEvent event) {
         table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
                 : "You have no events planned for this day."));
-
+        
+        table.getItems().clear();
         ObservableList<EventData> eventsInTable = table.getItems();
         List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
         
