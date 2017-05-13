@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Set;
 
 @JsonAutoDetect
@@ -13,12 +12,12 @@ public class Event implements Serializable {
     private int eventId;
     private User owner;
     private String description, location;
-    private Timestamp startDate, endDate;
+    private SimpleDateTime startDate, endDate;
     private boolean isPrivate;
     private Set<User> attendees;
 
     @JsonCreator
-    public Event(int eventId, User owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate, Set<User> attendees) {
+    public Event(int eventId, User owner, String description, String location, SimpleDateTime startDate, SimpleDateTime endDate, boolean isPrivate, Set<User> attendees) {
         this.eventId = eventId;
         this.owner = owner;
         this.description = description;
@@ -61,19 +60,19 @@ public class Event implements Serializable {
         this.location = location;
     }
 
-    public Timestamp getStartDate() {
+    public SimpleDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Timestamp startDate) {
+    public void setStartDate(SimpleDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public Timestamp getEndDate() {
+    public SimpleDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Timestamp endDate) {
+    public void setEndDate(SimpleDateTime endDate) {
         this.endDate = endDate;
     }
 

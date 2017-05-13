@@ -55,4 +55,8 @@ public class SimpleDate implements Serializable {
     public int getYear() {
         return year;
     }
+
+    public SimpleDateTime toSimpleDateTime() {
+        return new SimpleDateTime(dayOfMonth, month, year);
+    }
 }
