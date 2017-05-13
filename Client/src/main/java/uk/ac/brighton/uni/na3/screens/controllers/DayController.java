@@ -13,8 +13,6 @@ import uk.ac.brighton.uni.na3.utils.AuthUtils;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -107,9 +105,5 @@ public class DayController extends ControlledView {
 
     public LocalDate getDate() {
         return datePicker.getValue();
-    }
-
-    private int minutesBetweenDates(LocalDateTime start, LocalDateTime end) {
-        return (int) start.until(end, ChronoUnit.MINUTES);
     }
 }
