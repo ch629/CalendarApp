@@ -1,15 +1,20 @@
 package calendar;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.Assert.*;
+public class TestAuth {
+    @BeforeClass
+    public static void setupUnirest() {
+        CalendarApp.setupUnirest();
+    }
 
-public class testLogin {
-	
-	@Test
+    @Test
     public void testLoginSuccessful() {
         assertTrue(AuthUtils.login("root","root".toCharArray()));
     }
