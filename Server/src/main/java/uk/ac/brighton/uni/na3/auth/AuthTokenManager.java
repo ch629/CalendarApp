@@ -39,8 +39,14 @@ public class AuthTokenManager { //TODO: This is kind of like a session in WebDev
 
     public String getUserName(char[] token) {
         return authUsers.stream()
-                .filter(authUser -> authUser.getToken() == token)
+                .filter(authUser -> isEqualTo(authUser.getToken(), token))
                 .map(AuthUser::getUserName).findFirst().orElse(null);
+    }
+
+    private boolean isEqualTo(char[] par1, char[] par2) {
+        for (int i = 0; i < par1.length; i++)
+            if (par1[i] != par2[i]) return false;
+        return true;
     }
 }
 

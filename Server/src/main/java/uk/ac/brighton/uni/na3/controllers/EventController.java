@@ -70,6 +70,8 @@ public class EventController {
     Response getEventsOnDay(@RequestBody SingleDataRequest<SimpleDate> request) {
         UserAccount user = AuthTokenManager.instance.getUser(request.getAuthToken());
         Timestamp day = request.getData().toTimestamp();
+        if (user == null) System.out.println("USER NULL");
+        if (day == null) System.out.println("DAY NULL");
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
         return new SingleDataResponse<>(events);

@@ -62,7 +62,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findDatesOverlapping(Timestamp start, Timestamp end, String user) {
-        List<Event> events = eventRepository.findEventsByAttendees(user);
+        List<Event> events = findEventsByAttendees(user);
         return events.stream()
                 .filter(event -> event.getStartDate().before(end) && end.before(event.getEndDate()))
                 .collect(Collectors.toList());
@@ -75,7 +75,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findDatesOnDay(Timestamp day, String user) {
-        List<Event> events = eventRepository.findEventsByAttendees(user);
+        List<Event> events = findEventsByAttendees(user);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(day.getTime());
 
@@ -90,6 +90,13 @@ public class EventServiceImpl implements EventService {
     private boolean isSameDay(Calendar one, Calendar two) {
         return one.get(Calendar.YEAR) == two.get(Calendar.YEAR) &&
                 one.get(Calendar.DAY_OF_YEAR) == two.get(Calendar.DAY_OF_YEAR);
+    }
+
+    private List<Event> findEventsByAttendees(String user) {
+        List<Event> events = eventRepository.findAll();
+        return events.stream().filter(event -> event.getAttendees().stream()
+                .anyMatch(userAccount -> userAccount.getUsername().equals(user)) ||
+                event.getOwner().getUsername().equals(user)).collect(Collectors.toList());
     }
 
     @Override

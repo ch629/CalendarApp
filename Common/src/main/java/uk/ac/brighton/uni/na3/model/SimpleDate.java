@@ -3,6 +3,7 @@ package uk.ac.brighton.uni.na3.model;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -15,7 +16,9 @@ public class SimpleDate implements Serializable {
     private final int dayOfMonth, month, year;
 
     @JsonCreator
-    public SimpleDate(int dayOfMonth, int month, int year) {
+    public SimpleDate(@JsonProperty("dayOfMonth") int dayOfMonth,
+                      @JsonProperty("month") int month,
+                      @JsonProperty("year") int year) {
         this.dayOfMonth = dayOfMonth;
         this.month = month;
         this.year = year;
