@@ -19,6 +19,7 @@ public class Event implements Serializable {
     @GeneratedValue
     @Id
     private int eventId;
+    private String title;
     @ManyToOne
     private UserAccount owner;
     private String description, location;
@@ -29,7 +30,8 @@ public class Event implements Serializable {
     private Set<EventAttendee> attendees;
 
     @JsonCreator
-    public Event(UserAccount owner, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
+    public Event(UserAccount owner, String title, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
+        this.title = title;
         this.owner = owner;
         this.description = description;
         this.location = location;
@@ -41,12 +43,20 @@ public class Event implements Serializable {
     public static Event fromCreateRequest(EventCreateRequest request) {
         UserAccount creator = AuthTokenManager.instance.getUser(request.getAuthToken());
         if (creator == null) return null;
-        return new Event(creator, request.getDescription(), request.getLocation(),
+        return new Event(creator, request.getTitle(), request.getDescription(), request.getLocation(),
                 request.getStart().toTimestamp(), request.getEnd().toTimestamp(), request.isPrivate());
     }
 
     public int getEventId() {
         return eventId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public UserAccount getOwner() {

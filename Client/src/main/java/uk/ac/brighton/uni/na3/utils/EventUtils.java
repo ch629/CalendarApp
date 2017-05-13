@@ -26,9 +26,9 @@ public class EventUtils {
         return returnEvents;
     }
 
-    public static boolean createEvent(String description, String location, SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
+    public static boolean createEvent(String title, String description, String location, SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
         final boolean[] ret = {false};
-        EventCreateRequest request = new EventCreateRequest(AuthUtils.getAuthToken(), description, location, start, end, isPrivate, attendees);
+        EventCreateRequest request = new EventCreateRequest(AuthUtils.getAuthToken(), title, description, location, start, end, isPrivate, attendees);
         NetworkUtils.post("event/create", request, Response.class).ifOK(res -> ret[0] = true);
         return ret[0];
     }

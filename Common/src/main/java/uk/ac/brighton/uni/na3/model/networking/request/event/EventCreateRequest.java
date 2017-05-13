@@ -7,21 +7,26 @@ import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
 @JsonAutoDetect
 public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for this.
-    private final String description, location;
+    private final String title, description, location;
     private final SimpleDateTime start, end;
     private final boolean isPrivate;
     private final String[] attendees;
 
     @JsonCreator
-    public EventCreateRequest(char[] authToken, String description, String location,
+    public EventCreateRequest(char[] authToken, String title, String description, String location,
                               SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
         super(authToken);
+        this.title = title;
         this.description = description;
         this.location = location;
         this.start = start;
         this.end = end;
         this.isPrivate = isPrivate;
         this.attendees = attendees;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {

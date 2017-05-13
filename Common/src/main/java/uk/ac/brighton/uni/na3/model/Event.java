@@ -12,13 +12,14 @@ public class Event implements Serializable {
     private static final long serialVersionUID = 1L;
     private int eventId;
     private User owner;
-    private String description, location;
+    private String title, description, location;
     private SimpleDateTime startDate, endDate;
     private boolean isPrivate;
     private Set<User> attendees;
 
     @JsonCreator
     public Event(@JsonProperty("eventId") int eventId,
+                 @JsonProperty("title") String title,
                  @JsonProperty("owner") User owner,
                  @JsonProperty("description") String description,
                  @JsonProperty("location") String location,
@@ -27,6 +28,7 @@ public class Event implements Serializable {
                  @JsonProperty("isPrivate") boolean isPrivate,
                  @JsonProperty("attendees") Set<User> attendees) {
         this.eventId = eventId;
+        this.title = title;
         this.owner = owner;
         this.description = description;
         this.location = location;
@@ -34,6 +36,14 @@ public class Event implements Serializable {
         this.endDate = endDate;
         this.isPrivate = isPrivate;
         this.attendees = attendees;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getEventId() {
