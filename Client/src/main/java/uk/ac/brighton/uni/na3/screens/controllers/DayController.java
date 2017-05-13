@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DayController extends ControlledView {
     @FXML
@@ -69,24 +70,10 @@ public class DayController extends ControlledView {
         ObservableList<EventData> eventsInTable = table.getItems();
         List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
 
-        for (Event e : eventsToDisplay) {
-            LocalDateTime startTime = e.getStartDate().toLocalDateTime();
-            LocalDateTime endTime = e.getEndDate().toLocalDateTime();
-
-            EventData eventToAdd = new EventData(e.getTitle(),
-                    startTime.toLocalTime(),
-                    e.getDescription(),
-                    Integer.toString(minutesBetweenDates(startTime, endTime)),
-                    e.getLocation());
-
-            eventsInTable.add(eventToAdd);
-        }
-
-        /*eventsInTable.addAll(
+        eventsInTable.addAll(
                 eventsToDisplay.stream()
                         .map(EventData::new)
-                        .collect(Collectors.toList()));*/
-
+                        .collect(Collectors.toList()));
     }
 
     @FXML

@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Calendar;
 
 @JsonAutoDetect
@@ -71,5 +72,10 @@ public class SimpleDateTime extends SimpleDate {
     @JsonIgnore
     public LocalDateTime toLocalDateTime() {
         return LocalDateTime.of(getYear(), getMonth(), getDayOfMonth(), getHour(), getMinute());
+    }
+
+    @JsonIgnore
+    public LocalTime toLocalTime() {
+        return LocalTime.of(hour, minute);
     }
 }

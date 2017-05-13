@@ -3,7 +3,9 @@ package uk.ac.brighton.uni.na3.screens;
 import javafx.beans.property.SimpleStringProperty;
 import uk.ac.brighton.uni.na3.model.Event;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 public class EventData {
     private final SimpleStringProperty name = new SimpleStringProperty("");
@@ -12,8 +14,10 @@ public class EventData {
     private final SimpleStringProperty duration = new SimpleStringProperty("");
     private final SimpleStringProperty location = new SimpleStringProperty("");
 
-    public EventData(Event event) { //TODO: Update Event type to be LocalTime or easily converted. add name
-        this(event.getDescription(), LocalTime.now(), event.getDescription(), event.getDescription(), event.getLocation());
+    public EventData(Event event) {
+        this(event.getTitle(), event.getStartDate().toLocalTime(), event.getDescription(),
+                Integer.toString(minutesBetweenDates(event.getStartDate().toLocalDateTime(),
+                        event.getEndDate().toLocalDateTime())), event.getLocation());
     }
 
     public EventData(String name, LocalTime time, String desc, String duration, String location) {
@@ -62,5 +66,9 @@ public class EventData {
 
     public void setLocation(String location) {
         this.location.set(location);
+    }
+
+    private static int minutesBetweenDates(LocalDateTime start, LocalDateTime end) {
+        return (int) start.until(end, ChronoUnit.MINUTES);
     }
 }
