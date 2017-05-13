@@ -31,6 +31,8 @@ public class Event implements Serializable {
     @JsonIgnore
     private Set<EventAttendee> attendees;
 
+    public Event() {}
+
     @JsonCreator
     public Event(UserAccount owner, String title, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
         this.title = title;
