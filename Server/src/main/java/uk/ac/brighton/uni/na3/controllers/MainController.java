@@ -9,6 +9,7 @@ import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 import uk.ac.brighton.uni.na3.database.services.interfaces.UserService;
 import uk.ac.brighton.uni.na3.model.networking.request.LoginRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.RegisterRequest;
+import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.response.LoginResponse;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
@@ -65,5 +66,12 @@ public class MainController {
             return new Response(ResponseType.OK);
         }
         return new Response(ResponseType.BAD_REQUEST); //TODO: More error types?
+    }
+
+    @PostMapping("/test")
+    @ResponseBody
+    Response test(@RequestBody SingleDataRequest<Integer> request) {
+        if (request.getData() == 1) return new Response(ResponseType.OK);
+        return new Response(ResponseType.BAD_REQUEST);
     }
 }
