@@ -109,5 +109,9 @@ public class DayController implements ControlledView {
 
         dateChanged(null);
     }
+    
+    public LocalDate getDate(){
+    	return datePicker.getValue();
+    }
 
 }
