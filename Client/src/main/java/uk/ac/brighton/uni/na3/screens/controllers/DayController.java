@@ -68,7 +68,8 @@ public class DayController implements ControlledView {
     void dateChanged(ActionEvent event) {
         table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
                 : "You have no events planned for this day."));
-
+        
+        table.getItems().clear();
         ObservableList<EventData> eventsInTable = table.getItems();
         List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
         
@@ -126,10 +127,6 @@ public class DayController implements ControlledView {
     }
 
     private int minutesBetweenDates(LocalDateTime start, LocalDateTime end){
-    	long days    = start.until(end, ChronoUnit.DAYS);
-    	long hours   = start.until(end, ChronoUnit.HOURS);
-    	long minutes = start.until(end, ChronoUnit.MINUTES);
-    	
-    	return (int) ((days * 1440) + (hours * 60) + minutes);
+    	return (int) start.until(end, ChronoUnit.MINUTES);
     }
 }
