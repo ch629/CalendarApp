@@ -11,10 +11,15 @@ public class NetworkOptional<T extends Response> {
 
     public NetworkOptional(T response) {
         this.response = response;
-        isOK = res -> res.getType() == ResponseType.OK;
+        if (response != null) isOK = res -> res.getType() == ResponseType.OK;
+        else setInvalid();
     }
 
     public NetworkOptional() {
+        setInvalid();
+    }
+
+    private void setInvalid() {
         isOK = res -> false;
     }
 
