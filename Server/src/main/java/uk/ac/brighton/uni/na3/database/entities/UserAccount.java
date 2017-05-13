@@ -3,6 +3,7 @@ package uk.ac.brighton.uni.na3.database.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import uk.ac.brighton.uni.na3.model.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -122,5 +123,9 @@ public class UserAccount implements Serializable {
 
     public byte[] getSalt() {
         return salt;
+    }
+
+    public User toCommonUser() {
+        return new User(username, forename, surname, position, email, phoneNumber, isAdmin);
     }
 }

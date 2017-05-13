@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @JsonAutoDetect
 public class Event implements Serializable {
@@ -15,7 +14,7 @@ public class Event implements Serializable {
     private String title, description, location;
     private SimpleDateTime startDate, endDate;
     private boolean isPrivate;
-    private Set<User> attendees;
+    private User[] attendees;
 
     @JsonCreator
     public Event(@JsonProperty("eventId") int eventId,
@@ -26,7 +25,7 @@ public class Event implements Serializable {
                  @JsonProperty("startDate") SimpleDateTime startDate,
                  @JsonProperty("endDate") SimpleDateTime endDate,
                  @JsonProperty("isPrivate") boolean isPrivate,
-                 @JsonProperty("attendees") Set<User> attendees) {
+                 @JsonProperty("attendees") User[] attendees) {
         this.eventId = eventId;
         this.title = title;
         this.owner = owner;
@@ -102,11 +101,11 @@ public class Event implements Serializable {
         isPrivate = aPrivate;
     }
 
-    public Set<User> getAttendees() {
+    public User[] getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(Set<User> attendees) {
+    public void setAttendees(User[] attendees) {
         this.attendees = attendees;
     }
 }

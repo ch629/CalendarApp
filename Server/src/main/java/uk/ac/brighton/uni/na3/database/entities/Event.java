@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
+import uk.ac.brighton.uni.na3.model.SimpleDateTime;
+import uk.ac.brighton.uni.na3.model.User;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
 
 import javax.persistence.*;
@@ -117,5 +119,11 @@ public class Event implements Serializable {
 
     public void setAttendees(Set<UserAccount> attendees) {
         this.attendees = attendees.stream().map(user -> new EventAttendee(user, this)).collect(Collectors.toSet());
+    }
+
+    public uk.ac.brighton.uni.na3.model.Event toCommonEvent() {
+        return new uk.ac.brighton.uni.na3.model.Event(eventId, title, owner.toCommonUser(), description,
+                location, new SimpleDateTime(startDate), new SimpleDateTime(endDate), isPrivate,
+                (User[]) attendees.stream().map(eventAttendee -> eventAttendee.getUser().toCommonUser()).toArray());
     }
 }

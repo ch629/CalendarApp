@@ -22,6 +22,7 @@ import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller("/event/")
 @EnableAutoConfiguration
@@ -52,7 +53,7 @@ public class EventController {
     Response getEvent(@RequestBody SingleDataRequest<Integer> request) { //NOTE: This route probably wont be used and could be used to get events from another user.
         Event event = eventService.findById(request.getData());
         if (event == null) return new Response(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(event);
+        return new SingleDataResponse<>(event.toCommonEvent());
     }
 
     @GetMapping("event/between")
@@ -62,7 +63,7 @@ public class EventController {
         Timestamp start = new Timestamp(request.getFirst()), end = new Timestamp(request.getSecond());
         List<Event> events = eventService.findDatesOverlapping(start, end, user.getUsername());
         if (events == null) return new Response(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(events);
+        return new SingleDataResponse<>(events.stream().map(Event::toCommonEvent).collect(Collectors.toList()));
     }
 
     @PostMapping("event/day")
@@ -74,7 +75,7 @@ public class EventController {
         if (day == null) System.out.println("DAY NULL");
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(events);
+        return new SingleDataResponse<>(events.stream().map(Event::toCommonEvent).collect(Collectors.toList()));
     }
 
     @PostMapping("event/invite")
