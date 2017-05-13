@@ -1,18 +1,9 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
@@ -21,6 +12,11 @@ import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.screens.EventData;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 public class DayController implements ControlledView {
 	

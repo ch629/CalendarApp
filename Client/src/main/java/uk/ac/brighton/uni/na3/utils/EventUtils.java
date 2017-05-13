@@ -1,6 +1,8 @@
 package uk.ac.brighton.uni.na3.utils;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.model.SimpleDate;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
@@ -18,10 +20,12 @@ public class EventUtils {
     }
 
     public static List<Event> getEventsOnDay(SimpleDate date) {
+        ObjectMapper mapper = new ObjectMapper();
         final List<Event> returnEvents = new ArrayList<>();
         NetworkUtils.post("event/day",
                 new SingleDataRequest<>(AuthUtils.getAuthToken(), date), SingleDataResponse.class)
-                .ifOK(res -> returnEvents.addAll((List<Event>) res.getData()));
+                .ifOK(res ->
+                        returnEvents.addAll(mapper.convertValue(res.getData(), new TypeReference<List<Event>>() {})));
         return returnEvents;
     }
 
