@@ -52,8 +52,7 @@ public class CalendarApp extends Application {
         secondaryStage.close();
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
+    public static void setupUnirest() {
         Unirest.setObjectMapper(new ObjectMapper() {
             private com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
 
@@ -78,13 +77,23 @@ public class CalendarApp extends Application {
                 }
             }
         });
+    }
 
+    public static void postLoginLoad() {
+        mainController.loadScreen(CalendarApp.dayViewID, CalendarApp.dayViewFXML);
+        secondaryController.loadScreen(createEventID, createEventFXML);
+        secondaryController.loadScreen(editEventID, editEventFXML);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        setupUnirest();
         //Initialise primary screen
         mainController = new ScreenController();
         mainController.loadScreen(loginScreenID, loginScreenFXML);
         mainController.loadScreen(createAccountID, createAccountFXML);
         mainController.setScreen(loginScreenID);
-        
+
 
         Group root = new Group();
         root.getChildren().addAll(mainController);
@@ -103,12 +112,6 @@ public class CalendarApp extends Application {
         secondaryStage.setScene(scene);
 
         primaryStage.show();
-    }
-    
-    public static void postLoginLoad(){
-    	mainController.loadScreen(CalendarApp.dayViewID, CalendarApp.dayViewFXML);
-    	secondaryController.loadScreen(createEventID, createEventFXML);
-        secondaryController.loadScreen(  editEventID,   editEventFXML);
     }
   
     //TODO: When logged in, check settings the user has specified i.e. default calendar view && color scheme. -> Would have to be done with CSS (Provide themes? or just allow color customization)
