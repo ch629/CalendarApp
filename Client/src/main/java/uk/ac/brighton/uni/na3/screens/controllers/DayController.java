@@ -127,10 +127,6 @@ public class DayController implements ControlledView {
     }
 
     private int minutesBetweenDates(LocalDateTime start, LocalDateTime end){
-    	long days    = start.until(end, ChronoUnit.DAYS);
-    	long hours   = start.until(end, ChronoUnit.HOURS);
-    	long minutes = start.until(end, ChronoUnit.MINUTES);
-    	
-    	return (int) ((days * 1440) + (hours * 60) + minutes);
+    	return (int) start.until(end, ChronoUnit.MINUTES);
     }
 }
