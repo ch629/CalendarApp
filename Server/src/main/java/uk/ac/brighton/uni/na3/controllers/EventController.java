@@ -63,7 +63,7 @@ public class EventController {
         Timestamp start = new Timestamp(request.getFirst()), end = new Timestamp(request.getSecond());
         List<Event> events = eventService.findDatesOverlapping(start, end, user.getUsername());
         if (events == null) return new Response(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(events.stream().map(Event::toCommonEvent).collect(Collectors.toList()));
+        return new SingleDataResponse<>(toCommonEvent(events));
     }
 
     @PostMapping("event/day")
@@ -75,7 +75,11 @@ public class EventController {
         if (day == null) System.out.println("DAY NULL");
         List<Event> events = eventService.findDatesOnDay(day, user);
         if (events == null) return new Response(ResponseType.NOT_FOUND);
-        return new SingleDataResponse<>(events.stream().map(Event::toCommonEvent).collect(Collectors.toList()));
+        return new SingleDataResponse<>(toCommonEvent(events));
+    }
+
+    private List<uk.ac.brighton.uni.na3.model.Event> toCommonEvent(List<Event> from) {
+        return from.stream().map(Event::toCommonEvent).collect(Collectors.toList());
     }
 
     @PostMapping("event/invite")

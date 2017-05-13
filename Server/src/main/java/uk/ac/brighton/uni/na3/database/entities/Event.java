@@ -11,6 +11,7 @@ import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -126,6 +127,11 @@ public class Event implements Serializable {
     public uk.ac.brighton.uni.na3.model.Event toCommonEvent() {
         return new uk.ac.brighton.uni.na3.model.Event(eventId, title, owner.toCommonUser(), description,
                 location, new SimpleDateTime(startDate), new SimpleDateTime(endDate), isPrivate,
-                (User[]) attendees.stream().map(eventAttendee -> eventAttendee.getUser().toCommonUser()).toArray());
+                getAttendeesAsUsers().toArray(new User[0]));
+    }
+
+    @JsonIgnore
+    private List<User> getAttendeesAsUsers() {
+        return attendees.stream().map(eventAttendee -> eventAttendee.getUser().toCommonUser()).collect(Collectors.toList());
     }
 }
