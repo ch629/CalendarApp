@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
-import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.screens.EventData;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
@@ -18,10 +17,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class DayController implements ControlledView {
-	
-    private ScreenController parent;
-
+public class DayController extends ControlledView {
     @FXML
     private DatePicker datePicker;
 
@@ -42,21 +38,21 @@ public class DayController implements ControlledView {
 
     @FXML
     private TableColumn<EventData, String> locationCol;
-    
+
     @FXML
     private Button editEventButton;
 
     @FXML
     void Logout(ActionEvent event) {
-    	AuthUtils.resetToken();
-    	parent.setScreen(CalendarApp.loginScreenID);
-    	parent.unloadScreen(CalendarApp.dayViewID);
-    	CalendarApp.resizeScreen();
+        AuthUtils.resetToken();
+        getParent().setScreen(CalendarApp.loginScreenID);
+        getParent().unloadScreen(CalendarApp.dayViewID);
+        CalendarApp.resizeScreen();
     }
-    
+
     @FXML
     void editEvent(ActionEvent event) {
-    	CalendarApp.newSecondaryScene(CalendarApp.editEventID, "Edit Event");
+        CalendarApp.newSecondaryScene(CalendarApp.editEventID, "Edit Event");
     }
 
     @FXML
@@ -68,29 +64,29 @@ public class DayController implements ControlledView {
     void dateChanged(ActionEvent event) {
         table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
                 : "You have no events planned for this day."));
-        
+
         table.getItems().clear();
         ObservableList<EventData> eventsInTable = table.getItems();
         List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
-        
-        for(Event e : eventsToDisplay){
-        	LocalDateTime startTime = e.getStartDate().toLocalDateTime();
-        	LocalDateTime endTime = e.getEndDate().toLocalDateTime();
-        	   	
-        	EventData eventToAdd = new EventData(e.getTitle(),
-        						  	             startTime.toLocalTime(),
-        							             e.getDescription(),
-        							             Integer.toString(minutesBetweenDates(startTime, endTime)),
-        							             e.getLocation());
-        	
-        	eventsInTable.add(eventToAdd);
+
+        for (Event e : eventsToDisplay) {
+            LocalDateTime startTime = e.getStartDate().toLocalDateTime();
+            LocalDateTime endTime = e.getEndDate().toLocalDateTime();
+
+            EventData eventToAdd = new EventData(e.getTitle(),
+                    startTime.toLocalTime(),
+                    e.getDescription(),
+                    Integer.toString(minutesBetweenDates(startTime, endTime)),
+                    e.getLocation());
+
+            eventsInTable.add(eventToAdd);
         }
 
         /*eventsInTable.addAll(
                 eventsToDisplay.stream()
                         .map(EventData::new)
                         .collect(Collectors.toList()));*/
-        
+
     }
 
     @FXML
@@ -102,15 +98,10 @@ public class DayController implements ControlledView {
     void previousDayPressed(ActionEvent event) {
         datePicker.setValue(datePicker.getValue().minusDays(1));
     }
-    
+
     @FXML
     void refreshPage(ActionEvent event) {
-    	dateChanged(null);
-    }
-
-    @Override
-    public void setParent(ScreenController controller) {
-        parent = controller;
+        dateChanged(null);
     }
 
     public void initialize() {
@@ -126,12 +117,12 @@ public class DayController implements ControlledView {
 
         dateChanged(null);
     }
-    
-    public LocalDate getDate(){
-    	return datePicker.getValue();
+
+    public LocalDate getDate() {
+        return datePicker.getValue();
     }
 
-    private int minutesBetweenDates(LocalDateTime start, LocalDateTime end){
-    	return (int) start.until(end, ChronoUnit.MINUTES);
+    private int minutesBetweenDates(LocalDateTime start, LocalDateTime end) {
+        return (int) start.until(end, ChronoUnit.MINUTES);
     }
 }

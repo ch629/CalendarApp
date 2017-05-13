@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CalendarApp extends Application {
-
     public static String loginScreenID = "login";
     public static String loginScreenFXML = "/Login.fxml";
     public static String createAccountID = "createAccount";
@@ -112,6 +111,4 @@ public class CalendarApp extends Application {
 
         primaryStage.show();
     }
-  
-    //TODO: When logged in, check settings the user has specified i.e. default calendar view && color scheme. -> Would have to be done with CSS (Provide themes? or just allow color customization)
 }

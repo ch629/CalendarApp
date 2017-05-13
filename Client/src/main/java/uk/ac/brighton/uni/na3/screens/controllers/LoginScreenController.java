@@ -9,12 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
-import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 
-public class LoginScreenController implements ControlledView {
-
-    private ScreenController parent;
+public class LoginScreenController extends ControlledView {
 
     @FXML
     private TextField userNameField;
@@ -27,38 +24,32 @@ public class LoginScreenController implements ControlledView {
 
     @FXML
     private Label createAccountButton;
-    
+
     @FXML
     private Label outputText;
 
     @FXML
     void createNewAccountClick(MouseEvent event) {
-    	clearFields();
-    	parent.setScreen(CalendarApp.createAccountID);
+        clearFields();
+        getParent().setScreen(CalendarApp.createAccountID);
     }
 
     @FXML
     void loginButtonClicked(ActionEvent event) {
-    	outputText.setText("Attempting to login...");
+        outputText.setText("Attempting to login...");
         if (AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray())) {
             outputText.setText("");
             clearFields();
-        	CalendarApp.postLoginLoad();
-            parent.setScreen(CalendarApp.dayViewID);
+            CalendarApp.postLoginLoad();
+            getParent().setScreen(CalendarApp.dayViewID);
             CalendarApp.resizeScreen();
         } else {
             outputText.setText("Incorrect Login Credentials");
         }
     }
 
-    @Override
-    public void setParent(ScreenController controller) {
-        parent = controller;
+    private void clearFields() {
+        userNameField.clear();
+        passwordField.clear();
     }
-    
-    private void clearFields(){
-    	userNameField.clear();
-    	passwordField.clear();
-    }
-
 }

@@ -22,58 +22,51 @@ import static org.junit.Assert.assertTrue;
 public class TestEvent extends BaseTest {
 
     @Before
-	/*
-	 * Theres an extremely low chance this could generate an already utilised username and pass.
+    /*
+     * Theres an extremely low chance this could generate an already utilised username and pass.
 	 */
-	public void setUp(){
-		Random rng = new Random();
-		String possibleChars = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQuRsStTuUvVwWxXyYzZ";
-		String username = randomString(rng, possibleChars, 50);
-		String password = randomString(rng, possibleChars, 50);
-		
-		AuthUtils.register(username, password.toCharArray());
-		AuthUtils.login(username, password.toCharArray());	
-	}
+    public void setUp() {
+        Random rng = new Random();
+        String possibleChars = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQuRsStTuUvVwWxXyYzZ";
+        String username = randomString(rng, possibleChars, 50);
+        String password = randomString(rng, possibleChars, 50);
 
-	@Test
-	/**
-	 * Test creating an event
-	 */
-	public void createEvent() {
-		assertTrue(EventUtils.createEvent("test", "test", "test", new SimpleDateTime(LocalDateTime.now()), new SimpleDateTime(LocalDateTime.now()), false, new String[] {"Hello", "World"}));
-		List<Event> e = EventUtils.getEventsOnDay(LocalDate.now());
-		assertTrue(e.size() > 0);
-	}
-	
-	@Test
-	/**
-	 * Test grabbing events for different days
-	 */
-	public void getEventsOnDay(){
-		//Create ten events tomorrow
-		for(int i = 0; i < 10; i++){
-			assertTrue(EventUtils.createEvent(Integer.toString(i), "test", "test", new SimpleDateTime(LocalDateTime.now().plusDays(1)), new SimpleDateTime(LocalDateTime.now().plusDays(1)), false, new String[] {"Hello", "World"}));
-		}
-		List<Event> e = EventUtils.getEventsOnDay(LocalDate.now().plusDays(1));
-		assertEquals(e.size(), 10);
-		
-		//Create five events today
-		for(int i = 0; i < 5; i++){
-			assertTrue(EventUtils.createEvent(Integer.toString(i), "test", "test", new SimpleDateTime(LocalDateTime.now().minusDays(1)), new SimpleDateTime(LocalDateTime.now().minusDays(1)), false, new String[] {"Hello", "World"}));
-		}
-		e = EventUtils.getEventsOnDay(LocalDate.now().minusDays(1));
-		assertEquals(e.size(), 5);
-	}
-	
-	public String randomString(Random random, String chars, int length)
-	{
-	    char[] string = new char[length];
-	    for (int i = 0; i < length; i++)
-	    {
-	        string[i] = chars.charAt(random.nextInt(chars.length()));
-	    }
-	    return new String(string);
-	}
+        AuthUtils.register(username, password.toCharArray());
+        AuthUtils.login(username, password.toCharArray());
+    }
 
-	
+    /**
+     * Test creating an event
+     */
+    @Test
+    public void createEvent() {
+        assertTrue(EventUtils.createEvent("test", "test", "test", new SimpleDateTime(LocalDateTime.now()), new SimpleDateTime(LocalDateTime.now()), false, new String[]{"Hello", "World"}));
+        List<Event> e = EventUtils.getEventsOnDay(LocalDate.now());
+        assertTrue(e.size() > 0);
+    }
+
+    /**
+     * Test grabbing events for different days
+     */
+    @Test
+    public void getEventsOnDay() {
+        //Create ten events tomorrow
+        for (int i = 0; i < 10; i++)
+            assertTrue(EventUtils.createEvent(Integer.toString(i), "test", "test", new SimpleDateTime(LocalDateTime.now().plusDays(1)), new SimpleDateTime(LocalDateTime.now().plusDays(1)), false, new String[]{"Hello", "World"}));
+        List<Event> e = EventUtils.getEventsOnDay(LocalDate.now().plusDays(1));
+        assertEquals(e.size(), 10);
+
+        //Create five events today
+        for (int i = 0; i < 5; i++)
+            assertTrue(EventUtils.createEvent(Integer.toString(i), "test", "test", new SimpleDateTime(LocalDateTime.now().minusDays(1)), new SimpleDateTime(LocalDateTime.now().minusDays(1)), false, new String[]{"Hello", "World"}));
+        e = EventUtils.getEventsOnDay(LocalDate.now().minusDays(1));
+        assertEquals(e.size(), 5);
+    }
+
+    private String randomString(Random random, String chars, int length) {
+        char[] string = new char[length];
+        for (int i = 0; i < length; i++)
+            string[i] = chars.charAt(random.nextInt(chars.length()));
+        return new String(string);
+    }
 }

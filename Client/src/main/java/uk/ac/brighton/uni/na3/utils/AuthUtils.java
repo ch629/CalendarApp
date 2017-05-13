@@ -36,8 +36,8 @@ public class AuthUtils {
     public static char[] getAuthToken() {
         return authToken;
     }
-    
-    public static void resetToken(){
-    	authToken = null;
+
+    public static void resetToken() {
+        authToken = null;
     }
 }

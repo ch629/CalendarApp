@@ -6,7 +6,6 @@ import uk.ac.brighton.uni.na3.model.Event;
 import java.time.LocalTime;
 
 public class EventData {
-
     private final SimpleStringProperty name = new SimpleStringProperty("");
     private final SimpleStringProperty time = new SimpleStringProperty("");
     private final SimpleStringProperty desc = new SimpleStringProperty("");
@@ -64,5 +63,4 @@ public class EventData {
     public void setLocation(String location) {
         this.location.set(location);
     }
-
 }

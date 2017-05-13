@@ -1,6 +1,13 @@
 package uk.ac.brighton.uni.na3;
 
-public interface ControlledView {
+public abstract class ControlledView {
+    private ScreenController parent;
 
-    public void setParent(ScreenController controller);
+    public ScreenController getParent() {
+        return parent;
+    }
+
+    public void setParent(ScreenController parent) {
+        this.parent = parent;
+    }
 }

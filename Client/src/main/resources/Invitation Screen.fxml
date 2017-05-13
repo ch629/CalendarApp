@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0"
             prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.111"
-            fx:controller="uk.ac.brighton.uni.na3.screens.invitationScreen.InvitationScreenController">
+            fx:controller="uk.ac.brighton.uni.na3.screens.controllers.InvitationScreenController">
     <VBox alignment="TOP_CENTER" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0"
           AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="20.0">
         <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">

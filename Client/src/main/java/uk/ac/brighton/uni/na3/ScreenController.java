@@ -9,31 +9,37 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ScreenController extends AnchorPane {
+    private HashMap<String, Node> screens = new HashMap<>();
 
-    private HashMap<String, Node> screens = new HashMap<String, Node>();
-
-    /*
+    /**
      * Get a screen from map.
+     * @param name The name of the screen
+     * @return The screen from the map.
      */
     public Node getScreen(String name) {
         return screens.get(name);
     }
 
-    /*
-     * add a screen to the map
+    /**
+     * Add a screen to the map
+     * @param name The name of the screen
+     * @param screen The screen
      */
     public void addScreen(String name, Node screen) {
         screens.put(name, screen);
     }
 
-    /*
-     *  Load a screen, place it in hashmap.
+    /**
+     * Load a screen, place it in hashmap
+     * @param name The name of the screen
+     * @param res The screen resource
+     * @return Whether it was successfully loaded
      */
     public boolean loadScreen(String name, String res) {
         try {
             FXMLLoader screenLoader = new FXMLLoader(getClass().getResource(res));
-            Parent loadedScreen = (Parent) screenLoader.load();
-            ControlledView controlledView = ((ControlledView) screenLoader.getController());
+            Parent loadedScreen = screenLoader.load();
+            ControlledView controlledView = screenLoader.getController();
             controlledView.setParent(this);
             addScreen(name, loadedScreen);
             return true;
@@ -43,8 +49,10 @@ public class ScreenController extends AnchorPane {
         }
     }
 
-    /*
-     * Set the current screens scene
+    /**
+     * Sets the current screens scene
+     * @param name The screen
+     * @return Whether it was loaded successfully
      */
     public boolean setScreen(String name) {
         if (screens.get(name) != null) {
@@ -61,8 +69,10 @@ public class ScreenController extends AnchorPane {
         }
     }
 
-    /*
-     * delete screen from hashmap
+    /**
+     * Delete a screen from the map
+     * @param name The name of the screen
+     * @return Whether it was deleted
      */
     public boolean unloadScreen(String name) {
         if (screens.remove(name) == null) {

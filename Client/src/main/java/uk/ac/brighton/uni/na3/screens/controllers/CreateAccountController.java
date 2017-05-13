@@ -6,16 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
-import uk.ac.brighton.uni.na3.ScreenController;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 
-public class CreateAccountController implements ControlledView {
-
-	private ScreenController parent;
-	
+public class CreateAccountController extends ControlledView {
     @FXML
     private Label outputText;
 
@@ -35,7 +30,7 @@ public class CreateAccountController implements ControlledView {
     void backToLoginClicked(ActionEvent event) {
     	userNameField.clear();
         passwordField.clear();
-        parent.setScreen(CalendarApp.loginScreenID);
+        getParent().setScreen(CalendarApp.loginScreenID);
         CalendarApp.resizeScreen();
     }
 
@@ -53,16 +48,10 @@ public class CreateAccountController implements ControlledView {
 	        userNameField.clear();
 	        passwordField.clear();
 	    	CalendarApp.postLoginLoad();
-	        parent.setScreen(CalendarApp.dayViewID);
-	        CalendarApp.resizeScreen();
+            getParent().setScreen(CalendarApp.dayViewID);
+            CalendarApp.resizeScreen();
         } else {
         	outputText.setText("Error Logging in");
         }
     }
-    
-    @Override
-    public void setParent(ScreenController controller) {
-        parent = controller;
-    }
-
 }
