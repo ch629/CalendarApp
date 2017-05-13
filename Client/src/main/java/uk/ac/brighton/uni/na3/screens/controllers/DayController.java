@@ -1,8 +1,9 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +23,7 @@ import uk.ac.brighton.uni.na3.utils.AuthUtils;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
 
 public class DayController implements ControlledView {
+	
     private ScreenController parent;
 
     @FXML
@@ -67,18 +69,31 @@ public class DayController implements ControlledView {
     }
 
     @FXML
-    void dateChanged(ActionEvent e) {
+    void dateChanged(ActionEvent event) {
         table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
                 : "You have no events planned for this day."));
 
         ObservableList<EventData> eventsInTable = table.getItems();
         List<Event> eventsToDisplay = EventUtils.getEventsOnDay(datePicker.getValue());
+        
+        for(Event e : eventsToDisplay){
+        	LocalDateTime startTime = e.getStartDate().toLocalDateTime();
+        	LocalDateTime endTime = e.getEndDate().toLocalDateTime();
+        	   	
+        	EventData eventToAdd = new EventData(e.getTitle(),
+        						  	             startTime.toLocalTime(),
+        							             e.getDescription(),
+        							             Integer.toString(minutesBetweenDates(startTime, endTime)),
+        							             e.getLocation());
+        	
+        	eventsInTable.add(eventToAdd);
+        }
 
-        eventsInTable.addAll(
+        /*eventsInTable.addAll(
                 eventsToDisplay.stream()
                         .map(EventData::new)
-                        .collect(Collectors.toList()));
-        //TODO: Grab events from server and insert into table.getItems()
+                        .collect(Collectors.toList()));*/
+        
     }
 
     @FXML
@@ -114,4 +129,11 @@ public class DayController implements ControlledView {
     	return datePicker.getValue();
     }
 
+    private int minutesBetweenDates(LocalDateTime start, LocalDateTime end){
+    	long days    = start.until(end, ChronoUnit.DAYS);
+    	long hours   = start.until(end, ChronoUnit.HOURS);
+    	long minutes = start.until(end, ChronoUnit.MINUTES);
+    	
+    	return (int) ((days * 1440) + (hours * 60) + minutes);
+    }
 }
