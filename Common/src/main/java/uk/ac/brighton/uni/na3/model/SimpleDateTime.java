@@ -67,4 +67,9 @@ public class SimpleDateTime extends SimpleDate {
         cal.set(getYear(), getMonth(), getDayOfMonth(), getHour(), getMinute());
         return new Timestamp(cal.getTimeInMillis());
     }
+
+    @JsonIgnore
+    public LocalDateTime toLocalDateTime() {
+        return LocalDateTime.of(getYear(), getMonth(), getDayOfMonth(), getHour(), getMinute());
+    }
 }
