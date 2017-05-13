@@ -40,7 +40,6 @@ public class LoginScreenController implements ControlledView {
     @FXML
     void loginButtonClicked(ActionEvent event) {
     	outputText.setText("Attempting to login...");
-        System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if (AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray())) {
             outputText.setText("");
             clearFields();
