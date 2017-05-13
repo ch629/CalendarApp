@@ -1,11 +1,18 @@
 package uk.ac.brighton.uni.na3.model;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonAutoDetect
 public class EventRequest {
     private final Event event;
     private final User sender, receiver;
     private final EventRequestResponseType response; //TODO: Maybe remove this
 
-    public EventRequest(Event event, User sender, User receiver, EventRequestResponseType response) {
+    public EventRequest(@JsonProperty("event") Event event,
+                        @JsonProperty("sender") User sender,
+                        @JsonProperty("receiver") User receiver,
+                        @JsonProperty("response") EventRequestResponseType response) {
         this.event = event;
         this.sender = sender;
         this.receiver = receiver;

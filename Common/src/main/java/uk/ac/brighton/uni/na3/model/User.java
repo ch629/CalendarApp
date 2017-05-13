@@ -2,6 +2,7 @@ package uk.ac.brighton.uni.na3.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
@@ -12,7 +13,13 @@ public class User implements Serializable {
     private boolean isAdmin;
 
     @JsonCreator
-    public User(String username, String forename, String surname, String position, String email, String phoneNumber, boolean isAdmin) {
+    public User(@JsonProperty("username") String username,
+                @JsonProperty("forename") String forename,
+                @JsonProperty("surname") String surname,
+                @JsonProperty("position") String position,
+                @JsonProperty("email") String email,
+                @JsonProperty("phoneNumber") String phoneNumber,
+                @JsonProperty("isAdmin") boolean isAdmin) {
         this.username = username;
         this.forename = forename;
         this.surname = surname;

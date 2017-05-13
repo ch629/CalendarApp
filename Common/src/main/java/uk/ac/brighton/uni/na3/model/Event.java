@@ -2,6 +2,7 @@ package uk.ac.brighton.uni.na3.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -17,7 +18,14 @@ public class Event implements Serializable {
     private Set<User> attendees;
 
     @JsonCreator
-    public Event(int eventId, User owner, String description, String location, SimpleDateTime startDate, SimpleDateTime endDate, boolean isPrivate, Set<User> attendees) {
+    public Event(@JsonProperty("eventId") int eventId,
+                 @JsonProperty("owner") User owner,
+                 @JsonProperty("description") String description,
+                 @JsonProperty("location") String location,
+                 @JsonProperty("startDate") SimpleDateTime startDate,
+                 @JsonProperty("endDate") SimpleDateTime endDate,
+                 @JsonProperty("isPrivate") boolean isPrivate,
+                 @JsonProperty("attendees") Set<User> attendees) {
         this.eventId = eventId;
         this.owner = owner;
         this.description = description;
