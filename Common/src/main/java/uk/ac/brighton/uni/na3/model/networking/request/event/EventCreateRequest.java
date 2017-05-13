@@ -2,6 +2,7 @@ package uk.ac.brighton.uni.na3.model.networking.request.event;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
@@ -13,8 +14,14 @@ public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for
     private final String[] attendees;
 
     @JsonCreator
-    public EventCreateRequest(char[] authToken, String title, String description, String location,
-                              SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
+    public EventCreateRequest(@JsonProperty("authToken") char[] authToken,
+                              @JsonProperty("title") String title,
+                              @JsonProperty("description") String description,
+                              @JsonProperty("location") String location,
+                              @JsonProperty("start") SimpleDateTime start,
+                              @JsonProperty("end") SimpleDateTime end,
+                              @JsonProperty("private") boolean isPrivate,
+                              @JsonProperty("attendees") String[] attendees) {
         super(authToken);
         this.title = title;
         this.description = description;
