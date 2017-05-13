@@ -3,6 +3,7 @@ package uk.ac.brighton.uni.na3.auth;
 import uk.ac.brighton.uni.na3.Application;
 import uk.ac.brighton.uni.na3.database.entities.UserAccount;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -39,14 +40,7 @@ public class AuthTokenManager { //TODO: This is kind of like a session in WebDev
 
     public String getUserName(char[] token) {
         return authUsers.stream()
-                .filter(authUser -> isEqualTo(authUser.getToken(), token))
+                .filter(authUser -> Arrays.equals(authUser.getToken(), token))
                 .map(AuthUser::getUserName).findFirst().orElse(null);
     }
-
-    private boolean isEqualTo(char[] par1, char[] par2) {
-        for (int i = 0; i < par1.length; i++)
-            if (par1[i] != par2[i]) return false;
-        return true;
-    }
 }
-

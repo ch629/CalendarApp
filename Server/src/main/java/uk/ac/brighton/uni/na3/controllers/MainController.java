@@ -14,6 +14,8 @@ import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.ResponseType;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
+import java.util.Arrays;
+
 @Controller("/")
 @EnableAutoConfiguration
 public class MainController {
@@ -35,19 +37,13 @@ public class MainController {
     Response login(@RequestBody LoginRequest login) {
         UserAccount user = userService.findOne(login.getUsername());
         if (user != null) {
-            if (passwordsEqual(login.getPassword(), user.getPassword())) {
+            if (Arrays.equals(login.getPassword(), user.getPassword())) {
                 char[] authToken = AuthTokenManager.instance.generateAndUseAuthToken(user.getUsername());
                 return new LoginResponse(ResponseType.OK, authToken);
             }
         }
         //Invalid username or password
         return new Response(ResponseType.BAD_REQUEST); //TODO: Check if BAD_REQUEST is correct, or UNAUTHORIZED
-    }
-
-    private boolean passwordsEqual(char[] pw1, char[] pw2) {
-        for (int i = 0; i < pw1.length; i++)
-            if (pw1[i] != pw2[i]) return false;
-        return true;
     }
 
     @GetMapping("/salt/{username}")
