@@ -3,7 +3,7 @@ package uk.ac.brighton.uni.na3.database.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import uk.ac.brighton.uni.na3.Application;
+import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
 
 import javax.persistence.*;
@@ -39,10 +39,10 @@ public class Event implements Serializable {
     }
 
     public static Event fromCreateRequest(EventCreateRequest request) {
-        UserAccount owner = Application.instance.userService.findOne(request.getOwner());
-        if (owner == null) return null;
-        return new Event(owner, request.getDescription(), request.getLocation(),
-                request.getStart(), request.getEnd(), request.isPrivate());
+        UserAccount creator = AuthTokenManager.instance.getUser(request.getAuthToken());
+        if (creator == null) return null;
+        return new Event(creator, request.getDescription(), request.getLocation(),
+                request.getStart().toTimestamp(), request.getEnd().toTimestamp(), request.isPrivate());
     }
 
     public int getEventId() {

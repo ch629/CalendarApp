@@ -5,30 +5,23 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.model.networking.request.Request;
 
-import java.util.Set;
-
 @JsonAutoDetect
 public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for this.
-    private final String owner, description, location;
+    private final String description, location;
     private final SimpleDateTime start, end;
     private final boolean isPrivate;
-    private final Set<String> attendees;
+    private final String[] attendees;
 
     @JsonCreator
-    public EventCreateRequest(char[] authToken, String owner, String description, String location,
-                              SimpleDateTime start, SimpleDateTime end, boolean isPrivate, Set<String> attendees) {
+    public EventCreateRequest(char[] authToken, String description, String location,
+                              SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
         super(authToken);
-        this.owner = owner;
         this.description = description;
         this.location = location;
         this.start = start;
         this.end = end;
         this.isPrivate = isPrivate;
         this.attendees = attendees;
-    }
-
-    public String getOwner() {
-        return owner;
     }
 
     public String getDescription() {
@@ -51,7 +44,7 @@ public class EventCreateRequest extends Request { //TODO: New SimpleDateTime for
         return isPrivate;
     }
 
-    public Set<String> getAttendees() {
+    public String[] getAttendees() {
         return attendees;
     }
 }
