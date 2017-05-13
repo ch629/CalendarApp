@@ -6,7 +6,6 @@ import uk.ac.brighton.uni.na3.model.SimpleDate;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.model.networking.request.SingleDataRequest;
 import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
-import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 
 import java.time.LocalDate;
@@ -29,7 +28,7 @@ public class EventUtils {
     public static boolean createEvent(String title, String description, String location, SimpleDateTime start, SimpleDateTime end, boolean isPrivate, String[] attendees) {
         final boolean[] ret = {false};
         EventCreateRequest request = new EventCreateRequest(AuthUtils.getAuthToken(), title, description, location, start, end, isPrivate, attendees);
-        NetworkUtils.post("event/create", request, Response.class).ifOK(res -> ret[0] = true);
+        NetworkUtils.post("event/create", request, SingleDataResponse.class).ifOK(res -> ret[0] = true);
         return ret[0];
     }
 }
