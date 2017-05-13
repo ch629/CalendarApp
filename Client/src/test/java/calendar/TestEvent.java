@@ -1,35 +1,31 @@
 package calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+import uk.ac.brighton.uni.na3.model.Event;
+import uk.ac.brighton.uni.na3.model.SimpleDateTime;
+import uk.ac.brighton.uni.na3.utils.AuthUtils;
+import uk.ac.brighton.uni.na3.utils.EventUtils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import uk.ac.brighton.uni.na3.CalendarApp;
-import uk.ac.brighton.uni.na3.model.Event;
-import uk.ac.brighton.uni.na3.model.SimpleDateTime;
-import uk.ac.brighton.uni.na3.utils.AuthUtils;
-import uk.ac.brighton.uni.na3.utils.EventUtils;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /*
  * Testing for the EventUtilities class. 
  * THE SERVER MUST BE RUNNING TO PERFORM THESE TESTS.
  */
-public class TestEvent {
-	
-	@Before
+public class TestEvent extends BaseTest {
+
+    @Before
 	/*
 	 * Theres an extremely low chance this could generate an already utilised username and pass.
 	 */
 	public void setUp(){
-		CalendarApp.setupUnirest();
-		
 		Random rng = new Random();
 		String possibleChars = "aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQuRsStTuUvVwWxXyYzZ";
 		String username = randomString(rng, possibleChars, 50);

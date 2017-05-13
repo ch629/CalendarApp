@@ -1,20 +1,13 @@
 package calendar;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
-import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.model.networking.response.SingleDataResponse;
 import uk.ac.brighton.uni.na3.utils.NetworkUtils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestNetworkUtils {
-    @BeforeClass
-    public static void setupUnirest() {
-        CalendarApp.setupUnirest();
-    }
-
+public class TestNetworkUtils extends BaseTest {
     @Test
     public void testGetRequest() {
         final boolean[] ok = {false};
