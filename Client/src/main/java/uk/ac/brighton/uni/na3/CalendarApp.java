@@ -98,9 +98,11 @@ public class CalendarApp extends Application {
 
         primaryStage = stage;
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
 
         secondaryStage = new Stage();
         secondaryStage.initModality(Modality.APPLICATION_MODAL);
+        secondaryStage.setResizable(false);
         secondaryController = new ScreenController();
 
         root = new Group();
