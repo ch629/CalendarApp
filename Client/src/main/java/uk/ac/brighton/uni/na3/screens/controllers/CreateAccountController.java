@@ -36,12 +36,17 @@ public class CreateAccountController implements ControlledView {
         outputText.setText(res ? "Account created successfully." : "Unable to create account." );
         outputText.setText("Attempting to login...");
         System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
-        outputText.setText("");
-        userNameField.clear();
-        passwordField.clear();
-    	CalendarApp.postLoginLoad();
-        parent.setScreen(CalendarApp.dayViewID);
-        CalendarApp.resizeScreen();
+        res = AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray());
+        if(res) {
+	        outputText.setText("");
+	        userNameField.clear();
+	        passwordField.clear();
+	    	CalendarApp.postLoginLoad();
+	        parent.setScreen(CalendarApp.dayViewID);
+	        CalendarApp.resizeScreen();
+        } else {
+        	outputText.setText("Error Logging in");
+        }
     }
     
     @Override

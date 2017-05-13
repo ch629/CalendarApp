@@ -102,6 +102,11 @@ public class CreateEventController implements ControlledView {
         String attendee = attendeeField.getText();        //gets the attendeeField input
         String eventAttendee[] = attendee.split(",");    //it split the String attendee after
         //the comma and stores it in array
+        
+        // Trim results
+        for(String s : eventAttendee)
+        	s.trim();
+        
         return eventAttendee;
     }
     
@@ -111,7 +116,6 @@ public class CreateEventController implements ControlledView {
     	timeField.clear();
     	durationField.clear();
     	attendeeField.clear();
-    	descriptionField.clear();
-    	
+    	descriptionField.clear(); 	
     }
 }

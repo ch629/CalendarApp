@@ -83,8 +83,8 @@ public class CalendarApp extends Application {
         //Initialise primary screen
         mainController = new ScreenController();
         mainController.loadScreen(loginScreenID, loginScreenFXML);
-        mainController.setScreen(loginScreenID);
         mainController.loadScreen(createAccountID, createAccountFXML);
+        mainController.setScreen(loginScreenID);
         
 
         Group root = new Group();
