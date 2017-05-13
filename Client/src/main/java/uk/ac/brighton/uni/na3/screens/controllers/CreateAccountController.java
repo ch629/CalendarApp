@@ -27,6 +27,17 @@ public class CreateAccountController implements ControlledView {
 
     @FXML
     private Button createAccountButton;
+    
+    @FXML
+    private Button backToLogin;
+
+    @FXML
+    void backToLoginClicked(ActionEvent event) {
+    	userNameField.clear();
+        passwordField.clear();
+        parent.setScreen(CalendarApp.loginScreenID);
+        CalendarApp.resizeScreen();
+    }
 
     @FXML
     void createAccountButtonClicked(ActionEvent event) {
