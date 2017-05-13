@@ -33,8 +33,8 @@ public class LoginScreenController implements ControlledView {
 
     @FXML
     void createNewAccountClick(MouseEvent event) {
+    	clearFields();
     	parent.setScreen(CalendarApp.createAccountID);
-        CalendarApp.resizeScreen();
     }
 
     @FXML
@@ -43,8 +43,7 @@ public class LoginScreenController implements ControlledView {
         System.out.printf("Running login with --- username: %s, password %s\n", userNameField.getText(), passwordField.getText());
         if (AuthUtils.login(userNameField.getText(), passwordField.getText().toCharArray())) {
             outputText.setText("");
-            userNameField.clear();
-            passwordField.clear();
+            clearFields();
         	CalendarApp.postLoginLoad();
             parent.setScreen(CalendarApp.dayViewID);
             CalendarApp.resizeScreen();
@@ -56,6 +55,11 @@ public class LoginScreenController implements ControlledView {
     @Override
     public void setParent(ScreenController controller) {
         parent = controller;
+    }
+    
+    private void clearFields(){
+    	userNameField.clear();
+    	passwordField.clear();
     }
 
 }
