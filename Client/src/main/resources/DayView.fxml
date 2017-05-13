@@ -24,4 +24,5 @@
     <Button layoutX="495.0" layoutY="493.0" mnemonicParsing="false" onAction="#nextDayPressed" text="Next Day" />
     <Button fx:id="editEventButton" disable="true" layoutX="715.0" layoutY="122.0" mnemonicParsing="false" onAction="#editEvent" text="Edit Event" />
    <Button layoutX="820.0" layoutY="493.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
+   <Button layoutX="72.0" layoutY="493.0" mnemonicParsing="false" onAction="#refreshPage" text="Refresh" />
 </AnchorPane>

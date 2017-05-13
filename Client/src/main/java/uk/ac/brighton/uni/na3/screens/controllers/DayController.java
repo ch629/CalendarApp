@@ -102,6 +102,11 @@ public class DayController implements ControlledView {
     void previousDayPressed(ActionEvent event) {
         datePicker.setValue(datePicker.getValue().minusDays(1));
     }
+    
+    @FXML
+    void refreshPage(ActionEvent event) {
+    	dateChanged(null);
+    }
 
     @Override
     public void setParent(ScreenController controller) {
