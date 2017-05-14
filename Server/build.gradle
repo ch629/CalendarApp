@@ -29,3 +29,12 @@ dependencies {
 
     compile project(":Common")
 }
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'uk.ac.brighton.uni.na3.Application'
+        )
+    }
+}
