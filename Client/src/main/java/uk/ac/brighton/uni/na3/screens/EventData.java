@@ -41,7 +41,7 @@ public class EventData {
 
     public void setName(String name) {
         this.name.set(name);
-        event.setTitle(name);
+        if (event != null) event.setTitle(name);
     }
 
     public String getTime() {
@@ -57,7 +57,7 @@ public class EventData {
     }
 
     public void setDate(LocalDate date) {
-        event.getStartDate().setDate(date);
+        if (event != null) event.getStartDate().setDate(date);
     }
 
     public String getDesc() {
@@ -66,7 +66,7 @@ public class EventData {
 
     public void setDesc(String desc) {
         this.desc.set(desc);
-        event.setDescription(desc);
+        if (event != null) event.setDescription(desc);
     }
 
     public String getDuration() {
@@ -75,7 +75,7 @@ public class EventData {
 
     public void setDuration(String duration) {
         this.duration.set(duration);
-        event.setEndDate(new SimpleDateTime(
+        if (event != null) event.setEndDate(new SimpleDateTime(
                 event.getStartDate().toLocalDateTime().plus(Integer.parseInt(duration), ChronoUnit.MINUTES)));
     }
 
@@ -85,7 +85,7 @@ public class EventData {
 
     public void setLocation(String location) {
         this.location.set(location);
-        event.setLocation(location);
+        if (event != null) event.setLocation(location);
     }
 
     public Event toCommonEvent() {
