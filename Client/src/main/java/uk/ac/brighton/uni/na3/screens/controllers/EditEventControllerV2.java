@@ -57,8 +57,9 @@ public class EditEventControllerV2 extends ControlledView {
     	d.setDuration(durationField.getText());
     	d.setDate(datePicker.getValue());
     	
-    	boolean res = EventUtils.editEvent(d);
-    	System.out.println(res);
+    	EventUtils.editEvent(d);
+    	
+    	c.dateChanged(null);
     	
     	CalendarApp.closeSecondaryScene();
     }

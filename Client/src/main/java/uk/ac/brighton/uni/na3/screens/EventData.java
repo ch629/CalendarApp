@@ -91,4 +91,8 @@ public class EventData {
     public Event toCommonEvent() {
         return event;
     }
+    
+    public int getID(){
+    	return event.getEventId();
+    }
 }

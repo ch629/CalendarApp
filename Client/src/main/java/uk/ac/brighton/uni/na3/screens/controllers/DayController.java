@@ -49,7 +49,12 @@ public class DayController extends ControlledView {
     
     @FXML
     void remove(ActionEvent event) {
-
+    	EventData e = table.getSelectionModel().getSelectedItem();
+    	if( e == null )
+    		return;
+    	
+    	EventUtils.removeEvent(e.getID());
+    	dateChanged(null);
     }
 
     @FXML

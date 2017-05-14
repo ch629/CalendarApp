@@ -82,6 +82,9 @@ public class CreateEventController extends ControlledView {
             System.out.println("Error adding event");
             return;
         }
+        
+        DayController c = (DayController) CalendarApp.getMainController().getScreen(CalendarApp.dayViewID).getValue();
+        c.dateChanged(null);
 
         clearFields();
         CalendarApp.closeSecondaryScene();
