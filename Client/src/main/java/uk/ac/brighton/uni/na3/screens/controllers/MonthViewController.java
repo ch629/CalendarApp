@@ -1,7 +1,9 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -67,6 +69,8 @@ public class MonthViewController extends ControlledView{
     void dateChanged(ActionEvent event) {
     	table.setPlaceholder(new Label(datePicker.getValue().equals(LocalDate.now()) ? "You have no events today."
                 : "You have no events planned for this day."));
+    	
+    	monthViewDate.setText( generateMonthText() );
 
         table.getItems().clear();
         ObservableList<EventData> eventsInTable = table.getItems();
@@ -119,6 +123,11 @@ public class MonthViewController extends ControlledView{
         locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
 
         dateChanged(null);
+    }
+    
+    private String generateMonthText(){
+    	DateTimeFormatter df = DateTimeFormatter.ofPattern("MMMM yyyy");
+    	return df.format(datePicker.getValue());
     }
 }
 
