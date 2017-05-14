@@ -168,7 +168,8 @@ public class MonthViewController extends ControlledView{
     			b.setPrefSize(100, 100);
     			b.setText(Integer.toString(buttonCount));
     			b.setOnAction(event -> {
-    				
+    				int day = Integer.parseInt(b.getText());
+    				datePicker.setValue(LocalDate.of(datePicker.getValue().getYear(), datePicker.getValue().getMonth(), day));
     			});
     			buttonCount++;
     		}
