@@ -4,10 +4,13 @@ import javafx.beans.property.SimpleStringProperty;
 import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 public class EventData {
+    private Event event = null;
+
     private final SimpleStringProperty name = new SimpleStringProperty("");
     private final SimpleStringProperty time = new SimpleStringProperty("");
     private final SimpleStringProperty desc = new SimpleStringProperty("");
@@ -16,6 +19,7 @@ public class EventData {
 
     public EventData(Event event) {
         this(event.getTitle(), event.getStartDate(), event.getEndDate(), event.getDescription(), event.getLocation());
+        this.event = event;
     }
 
     public EventData(String name, SimpleDateTime start, SimpleDateTime end, String desc, String location) {
@@ -37,6 +41,7 @@ public class EventData {
 
     public void setName(String name) {
         this.name.set(name);
+        event.setTitle(name);
     }
 
     public String getTime() {
@@ -45,6 +50,7 @@ public class EventData {
 
     public void setTime(String time) {
         this.time.set(time);
+        event.setStartDate(new SimpleDateTime(LocalDateTime.parse(time))); //TODO: CHECK?
     }
 
     public String getDesc() {
@@ -53,6 +59,7 @@ public class EventData {
 
     public void setDesc(String desc) {
         this.desc.set(desc);
+        event.setDescription(desc);
     }
 
     public String getDuration() {
@@ -61,6 +68,8 @@ public class EventData {
 
     public void setDuration(String duration) {
         this.duration.set(duration);
+        event.setEndDate(new SimpleDateTime(
+                event.getStartDate().toLocalDateTime().plus(Integer.parseInt(duration), ChronoUnit.MINUTES)));
     }
 
     public String getLocation() {
@@ -69,5 +78,10 @@ public class EventData {
 
     public void setLocation(String location) {
         this.location.set(location);
+        event.setLocation(location);
+    }
+
+    public Event toCommonEvent() {
+        return event;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import uk.ac.brighton.uni.na3.Application;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.database.entities.Event;
 import uk.ac.brighton.uni.na3.database.entities.UserAccount;
@@ -95,5 +96,30 @@ public class EventController {
             }
         }
         return new Response(ResponseType.BAD_REQUEST); //TODO: Fix the error requests for all of the routes.
+    }
+
+    @PostMapping("event/edit")
+    @ResponseBody
+    Response editEvent(@RequestBody SingleDataRequest<uk.ac.brighton.uni.na3.model.Event> request) {
+        UserAccount user = AuthTokenManager.instance.getUser(request.getAuthToken());
+        Event event = Event.fromCommon(request.getData());
+        if (event != null && user != null) {
+            //Check user is attending or owner
+            if (event.getOwner().getUsername().equals(user.getUsername())
+                    || event.getAttendees().stream()
+                    .anyMatch(userAccount -> userAccount.getUsername().equals(user.getUsername()))) {
+                Event oldEvent = Application.instance.eventService.findById(event.getEventId());
+                oldEvent.setTitle(event.getTitle());
+                oldEvent.setAttendees(event.getAttendees());
+                oldEvent.setDescription(event.getDescription());
+                oldEvent.setStartDate(event.getStartDate());
+                oldEvent.setEndDate(event.getEndDate());
+                oldEvent.setPrivate(event.isPrivate());
+
+                Application.instance.eventService.update(oldEvent); //Update in the DB
+                return new Response(ResponseType.OK);
+            }
+        }
+        return new Response(ResponseType.BAD_REQUEST);
     }
 }

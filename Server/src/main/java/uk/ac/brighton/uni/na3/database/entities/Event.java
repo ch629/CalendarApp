@@ -3,6 +3,7 @@ package uk.ac.brighton.uni.na3.database.entities;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import uk.ac.brighton.uni.na3.Application;
 import uk.ac.brighton.uni.na3.auth.AuthTokenManager;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.model.User;
@@ -43,6 +44,15 @@ public class Event implements Serializable {
         this.startDate = startDate;
         this.endDate = endDate;
         this.isPrivate = isPrivate;
+    }
+
+    public static Event fromCommon(uk.ac.brighton.uni.na3.model.Event event) {
+        UserAccount owner = Application.instance.userService.findOne(event.getOwner().getUsername());
+        if (owner != null) {
+            return new Event(owner, event.getTitle(), event.getDescription(), event.getLocation(),
+                    event.getStartDate().toTimestamp(), event.getEndDate().toTimestamp(), event.isPrivate());
+        }
+        return null;
     }
 
     public static Event fromCreateRequest(EventCreateRequest request) {
