@@ -43,6 +43,14 @@ public class DayController extends ControlledView {
 
     @FXML
     private Button editEventButton;
+    
+    @FXML
+    private Button RemoveButton;
+    
+    @FXML
+    void remove(ActionEvent event) {
+
+    }
 
     @FXML
     void Logout(ActionEvent event) {
