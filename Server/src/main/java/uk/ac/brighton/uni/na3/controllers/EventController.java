@@ -124,4 +124,16 @@ public class EventController {
         }
         return new Response(ResponseType.BAD_REQUEST);
     }
+
+    @PostMapping("event/delete")
+    @ResponseBody
+    Response deleteEvent(@RequestBody SingleDataRequest<Integer> request) {
+        UserAccount userAccount = AuthTokenManager.instance.getUser(request.getAuthToken());
+        Event event = Application.instance.eventService.findById(request.getData());
+        if (event != null && event.getOwner().getUsername().equals(userAccount.getUsername())) {
+            Application.instance.eventService.delete(request.getData());
+            return new Response(ResponseType.OK);
+        }
+        return new Response(ResponseType.BAD_REQUEST);
+    }
 }

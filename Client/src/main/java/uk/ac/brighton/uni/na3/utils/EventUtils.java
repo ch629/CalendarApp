@@ -44,4 +44,11 @@ public class EventUtils {
                 .ifOK(res -> ret[0] = true);
         return ret[0];
     }
+
+    public static boolean removeEvent(int eventId) {
+        final boolean[] ret = {false};
+        NetworkUtils.post("event/delete", new SingleDataRequest<>(AuthUtils.getAuthToken(), eventId), Response.class)
+                .ifOK(res -> ret[0] = true);
+        return ret[0];
+    }
 }
