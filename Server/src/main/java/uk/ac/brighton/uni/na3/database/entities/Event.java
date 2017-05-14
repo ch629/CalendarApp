@@ -12,6 +12,8 @@ import uk.ac.brighton.uni.na3.model.networking.request.event.EventCreateRequest;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -132,7 +134,7 @@ public class Event implements Serializable {
     }
 
     public Set<UserAccount> getAttendees() {
-        return attendees.stream().map(EventAttendee::getUser).collect(Collectors.toSet());
+        return attendees != null ? attendees.stream().map(EventAttendee::getUser).collect(Collectors.toSet()) : new HashSet<>();
     }
 
     public void setAttendees(Set<UserAccount> attendees) {
@@ -147,6 +149,9 @@ public class Event implements Serializable {
 
     @JsonIgnore
     private List<User> getAttendeesAsUsers() {
-        return attendees.stream().map(eventAttendee -> eventAttendee.getUser().toCommonUser()).collect(Collectors.toList());
+        return attendees != null ?
+                attendees.stream()
+                        .map(eventAttendee -> eventAttendee.getUser().toCommonUser()).collect(Collectors.toList())
+                : new ArrayList<>();
     }
 }
