@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -50,7 +50,14 @@ public class EventData {
 
     public void setTime(String time) {
         this.time.set(time);
-        event.setStartDate(new SimpleDateTime(LocalDateTime.parse(time))); //TODO: CHECK?
+        boolean successful = event.getStartDate().setTime(time);
+        if (!successful) {
+            //TODO: ERROR WITH TIME PARSING
+        }
+    }
+
+    public void setDate(LocalDate date) {
+        event.getStartDate().setDate(date);
     }
 
     public String getDesc() {

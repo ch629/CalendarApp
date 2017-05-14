@@ -9,6 +9,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 @JsonAutoDetect
@@ -53,6 +54,14 @@ public class SimpleDateTime extends SimpleDate {
         minute = calendar.get(Calendar.MINUTE);
     }
 
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
     public int getHour() {
         return hour;
     }
@@ -77,5 +86,26 @@ public class SimpleDateTime extends SimpleDate {
     @JsonIgnore
     public LocalTime toLocalTime() {
         return LocalTime.of(hour, minute);
+    }
+
+    public void setTime(LocalTime localTime) {
+        this.hour = localTime.getHour();
+        this.minute = localTime.getMinute();
+    }
+
+    public void setTime(int hour, int minute) {
+        this.hour = hour;
+        this.minute = minute;
+    }
+
+    public boolean setTime(String string) {
+        try {
+            LocalTime time = LocalTime.parse(string);
+            this.hour = time.getHour();
+            this.minute = time.getMinute();
+            return true;
+        } catch (DateTimeParseException ignored) {}
+
+        return false;
     }
 }

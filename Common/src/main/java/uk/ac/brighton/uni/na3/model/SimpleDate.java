@@ -13,7 +13,7 @@ import java.util.Calendar;
 @JsonAutoDetect
 public class SimpleDate implements Serializable {
     private static final long serialVersionUID = 1L;
-    private final int dayOfMonth, month, year;
+    private int dayOfMonth, month, year;
 
     @JsonCreator
     public SimpleDate(@JsonProperty("dayOfMonth") int dayOfMonth,
@@ -44,6 +44,18 @@ public class SimpleDate implements Serializable {
         return new Timestamp(cal.getTimeInMillis());
     }
 
+    public void setDayOfMonth(int dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public int getDayOfMonth() {
         return dayOfMonth;
     }
@@ -58,5 +70,11 @@ public class SimpleDate implements Serializable {
 
     public SimpleDateTime toSimpleDateTime() {
         return new SimpleDateTime(dayOfMonth, month, year);
+    }
+
+    public void setDate(LocalDate localDate) {
+        this.dayOfMonth = localDate.getDayOfMonth();
+        this.month = localDate.getMonthValue();
+        this.year = localDate.getYear();
     }
 }
