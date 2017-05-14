@@ -22,8 +22,6 @@ public class CalendarApp extends Application {
     public static String editEventFXML = "/EditEventV2.fxml";
     public static String dayViewID = "dayView";
     public static String dayViewFXML = "/DayView.fxml";
-    public static String calendarViewID = "calendarView";
-    public static String calendarViewFXML = "/Calendar_View.fxml";
     
     public static String monthViewID = "monthView";
     public static String monthViewFXML = "/MonthView.fxml";
