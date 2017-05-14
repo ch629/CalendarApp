@@ -22,3 +22,11 @@ subprojects {
         compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.0.pr1"
     }
 }
+
+task runServer() << {
+    project(':Server').tasks.run.execute()
+}
+
+task runClient() << {
+    project(':Client').tasks.run.execute()
+}

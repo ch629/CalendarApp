@@ -1,3 +1,7 @@
+apply plugin: "application"
+
+mainClassName = "uk.ac.brighton.uni.na3.CalendarApp"
+
 dependencies {
     compile "com.mashape.unirest:unirest-java:1.4.9"
 

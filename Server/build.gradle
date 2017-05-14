@@ -12,6 +12,9 @@ apply plugin: "org.springframework.boot"
 apply plugin: "java"
 apply plugin: "idea"
 apply plugin: "eclipse"
+apply plugin: "application"
+
+mainClassName = "uk.ac.brighton.uni.na3.Application"
 
 repositories {
     mavenCentral()
