@@ -8,6 +8,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
+import uk.ac.brighton.uni.na3.screens.EventData;
+import uk.ac.brighton.uni.na3.utils.EventUtils;
 
 public class EditEventControllerV2 extends ControlledView {
 
@@ -45,8 +47,20 @@ public class EditEventControllerV2 extends ControlledView {
 
     @FXML
     void comfirmClicked(ActionEvent event) {
-    	CalendarApp.closeSecondaryScene();
+    	DayController c = (DayController) CalendarApp.getMainController().getScreen(CalendarApp.dayViewID).getValue();
+    	EventData d = c.getSelectedEvent();
     	
+    	d.setName(nameField.getText());
+    	d.setTime(timeField.getText());
+    	d.setLocation(locationField.getText());
+    	d.setDesc(descriptionField.getText());
+    	d.setDuration(durationField.getText());
+    	d.setDate(datePicker.getValue());
+    	
+    	boolean res = EventUtils.editEvent(d);
+    	System.out.println(res);
+    	
+    	CalendarApp.closeSecondaryScene();
     }
 
 }

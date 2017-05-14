@@ -112,7 +112,7 @@ public class CalendarApp extends Application {
         primaryStage.show();
     }
     
-    public ScreenController getMainController(){
+    public static ScreenController getMainController(){
     	return mainController;
     }
 }

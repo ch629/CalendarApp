@@ -1,22 +1,23 @@
 package uk.ac.brighton.uni.na3;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
-import java.util.HashMap;
+import javafx.util.Pair;
 
 public class ScreenController extends AnchorPane {
-    private HashMap<String, Node> screens = new HashMap<>();
+    private HashMap<String, Pair<Node,ControlledView>> screens = new HashMap<>();
 
     /**
      * Get a screen from map.
      * @param name The name of the screen
      * @return The screen from the map.
      */
-    public Node getScreen(String name) {
+    public Pair<Node,ControlledView> getScreen(String name) {
         return screens.get(name);
     }
 
@@ -25,8 +26,8 @@ public class ScreenController extends AnchorPane {
      * @param name The name of the screen
      * @param screen The screen
      */
-    public void addScreen(String name, Node screen) {
-        screens.put(name, screen);
+    public void addScreen(String name, Pair<Node,ControlledView> pair ) {
+        screens.put(name, pair);
     }
 
     /**
@@ -41,7 +42,7 @@ public class ScreenController extends AnchorPane {
             Parent loadedScreen = screenLoader.load();
             ControlledView controlledView = screenLoader.getController();
             controlledView.setParent(this);
-            addScreen(name, loadedScreen);
+            addScreen(name, new Pair<Node, ControlledView>(loadedScreen,controlledView));
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,9 +59,9 @@ public class ScreenController extends AnchorPane {
         if (screens.get(name) != null) {
             if (!getChildren().isEmpty()) {
                 getChildren().remove(0);
-                getChildren().add(0, screens.get(name));
+                getChildren().add(0, screens.get(name).getKey());
             } else {
-                getChildren().add(screens.get(name));
+                getChildren().add(screens.get(name).getKey());
             }
             return true;
         } else {
