@@ -106,10 +106,6 @@ public class DayController extends ControlledView {
         datePicker.setValue(datePicker.getValue().minusDays(1));
     }
 
-    @FXML
-    void refreshPage(ActionEvent event) {
-        dateChanged(null);
-    }
 
     public void initialize() {
         datePicker.setValue(LocalDate.now());
