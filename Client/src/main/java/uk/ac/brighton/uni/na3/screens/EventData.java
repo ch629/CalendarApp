@@ -50,7 +50,7 @@ public class EventData {
 
     public void setTime(String time) {
         this.time.set(time);
-        boolean successful = event.getStartDate().setTime(time);
+        boolean successful = event != null && event.getStartDate().setTime(time);
         if (!successful) {
             //TODO: ERROR WITH TIME PARSING
         }
