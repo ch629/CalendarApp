@@ -85,12 +85,13 @@ public class MonthViewController extends ControlledView{
     	int daysInMonth = datePicker.getValue().getMonth().length(leapyear);
     	LocalDate currentDate = datePicker.getValue();
     	LocalDate monthFirstDay = LocalDate.of(currentDate.getYear(), currentDate.getMonth(), 1);
+    	int lastMonthDays = currentDate.minusMonths(1).getMonth().length(leapyear);
     	DayOfWeek firstDay = monthFirstDay.getDayOfWeek();
     	int offset = getOffset(firstDay);
     	
     	for(int i = 0; i < buttons.size(); i++){
     		if(i < offset){
-    			buttons.get(i).setText("");
+    			buttons.get(i).setText(Integer.toString(lastMonthDays - offset + 1 + i));
     			buttons.get(i).setDisable(true);
     			continue;
     		}
@@ -173,8 +174,7 @@ public class MonthViewController extends ControlledView{
     			});
     			buttonCount++;
     		}
-    	}
-    	
+    	}	
     	
         datePicker.setValue(LocalDate.now());
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
