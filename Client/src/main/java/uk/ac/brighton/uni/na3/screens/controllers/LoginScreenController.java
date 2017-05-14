@@ -41,7 +41,7 @@ public class LoginScreenController extends ControlledView {
             outputText.setText("");
             clearFields();
             CalendarApp.postLoginLoad();
-            getParent().setScreen(CalendarApp.dayViewID);
+            getParent().setScreen(CalendarApp.monthViewID);
             CalendarApp.resizeScreen();
         } else {
             outputText.setText("Incorrect Login Credentials");

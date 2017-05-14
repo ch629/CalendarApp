@@ -48,7 +48,7 @@ public class CreateAccountController extends ControlledView {
 	        userNameField.clear();
 	        passwordField.clear();
 	    	CalendarApp.postLoginLoad();
-            getParent().setScreen(CalendarApp.dayViewID);
+            getParent().setScreen(CalendarApp.monthViewID);
             CalendarApp.resizeScreen();
         } else {
         	outputText.setText("Error Logging in");

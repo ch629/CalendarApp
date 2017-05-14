@@ -1,6 +1,10 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,10 +15,6 @@ import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
 import uk.ac.brighton.uni.na3.model.SimpleDateTime;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class CreateEventController extends ControlledView {
     @FXML
@@ -83,7 +83,7 @@ public class CreateEventController extends ControlledView {
             return;
         }
         
-        DayController c = (DayController) CalendarApp.getMainController().getScreen(CalendarApp.dayViewID).getValue();
+        MonthViewController c = (MonthViewController) CalendarApp.getMainController().getScreen(CalendarApp.monthViewID).getValue();
         c.dateChanged(null);
 
         clearFields();

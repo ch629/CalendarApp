@@ -47,7 +47,7 @@ public class EditEventControllerV2 extends ControlledView {
 
     @FXML
     void comfirmClicked(ActionEvent event) {
-    	DayController c = (DayController) CalendarApp.getMainController().getScreen(CalendarApp.dayViewID).getValue();
+    	MonthViewController c = (MonthViewController) CalendarApp.getMainController().getScreen(CalendarApp.monthViewID).getValue();
     	EventData d = c.getSelectedEvent();
     	
     	d.setName(nameField.getText());

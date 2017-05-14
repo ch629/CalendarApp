@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.brighton.uni.na3.screens.controllers.DayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="1110.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.brighton.uni.na3.screens.controllers.MonthViewController">
    <Label fx:id="monthViewDate" layoutX="58.0" layoutY="115.0" prefHeight="17.0" prefWidth="120.0" />
     <Button layoutX="982.0" layoutY="111.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
-    <Button layoutX="213.0" layoutY="538.0" mnemonicParsing="false" onAction="#previousDayPressed" text="Prev Month" />
-    <Button layoutX="313.0" layoutY="538.0" mnemonicParsing="false" onAction="#nextDayPressed" text="Next Month" />
-   <Button layoutX="999.0" layoutY="538.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
+    <Button layoutX="213.0" layoutY="538.0" mnemonicParsing="false" onAction="#previousMonthPressed" text="Prev Month" />
+    <Button layoutX="313.0" layoutY="538.0" mnemonicParsing="false" onAction="#nextMonthPressed" text="Next Month" />
+   <Button layoutX="999.0" layoutY="538.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
    <GridPane layoutX="58.0" layoutY="146.0" prefHeight="377.0" prefWidth="490.0">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -97,7 +97,7 @@
       </columns>
    </TableView>
    <Label layoutX="565.0" layoutY="123.0" text="The Days Events:" />
-   <DatePicker layoutX="216.0" layoutY="111.0" />
-   <Button fx:id="RemoveButton" layoutX="923.0" layoutY="538.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
-   <Button fx:id="editEventButton" layoutX="889.0" layoutY="111.0" mnemonicParsing="false" onAction="#editEvent" text="Edit Event" />
+   <DatePicker fx:id="datePicker" layoutX="226.0" layoutY="111.0" onAction="#dateChanged" />
+   <Button layoutX="923.0" layoutY="538.0" mnemonicParsing="false" onAction="#remove" text="Remove" />
+   <Button layoutX="889.0" layoutY="111.0" mnemonicParsing="false" onAction="#editEvent" text="Edit Event" />
 </AnchorPane>
