@@ -35,6 +35,11 @@ public class Event implements Serializable {
 
     public Event() {}
 
+    public Event(int eventId, UserAccount owner, String title, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
+        this(owner, title, description, location, startDate, endDate, isPrivate);
+        this.eventId = eventId;
+    }
+
     @JsonCreator
     public Event(UserAccount owner, String title, String description, String location, Timestamp startDate, Timestamp endDate, boolean isPrivate) {
         this.title = title;
@@ -49,7 +54,7 @@ public class Event implements Serializable {
     public static Event fromCommon(uk.ac.brighton.uni.na3.model.Event event) {
         UserAccount owner = Application.instance.userService.findOne(event.getOwner().getUsername());
         if (owner != null) {
-            return new Event(owner, event.getTitle(), event.getDescription(), event.getLocation(),
+            return new Event(event.getEventId(), owner, event.getTitle(), event.getDescription(), event.getLocation(),
                     event.getStartDate().toTimestamp(), event.getEndDate().toTimestamp(), event.isPrivate());
         }
         return null;

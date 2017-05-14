@@ -109,15 +109,17 @@ public class EventController {
                     || event.getAttendees().stream()
                     .anyMatch(userAccount -> userAccount.getUsername().equals(user.getUsername()))) {
                 Event oldEvent = Application.instance.eventService.findById(event.getEventId());
-                oldEvent.setTitle(event.getTitle());
-                oldEvent.setAttendees(event.getAttendees());
-                oldEvent.setDescription(event.getDescription());
-                oldEvent.setStartDate(event.getStartDate());
-                oldEvent.setEndDate(event.getEndDate());
-                oldEvent.setPrivate(event.isPrivate());
+                if (oldEvent != null) {
+                    oldEvent.setTitle(event.getTitle());
+                    oldEvent.setAttendees(event.getAttendees());
+                    oldEvent.setDescription(event.getDescription());
+                    oldEvent.setStartDate(event.getStartDate());
+                    oldEvent.setEndDate(event.getEndDate());
+                    oldEvent.setPrivate(event.isPrivate());
 
-                Application.instance.eventService.update(oldEvent); //Update in the DB
-                return new Response(ResponseType.OK);
+                    Application.instance.eventService.update(oldEvent); //Update in the DB
+                    return new Response(ResponseType.OK);
+                }
             }
         }
         return new Response(ResponseType.BAD_REQUEST);
