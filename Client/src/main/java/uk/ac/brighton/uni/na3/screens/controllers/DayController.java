@@ -1,9 +1,18 @@
 package uk.ac.brighton.uni.na3.screens.controllers;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import uk.ac.brighton.uni.na3.CalendarApp;
 import uk.ac.brighton.uni.na3.ControlledView;
@@ -11,10 +20,6 @@ import uk.ac.brighton.uni.na3.model.Event;
 import uk.ac.brighton.uni.na3.screens.EventData;
 import uk.ac.brighton.uni.na3.utils.AuthUtils;
 import uk.ac.brighton.uni.na3.utils.EventUtils;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class DayController extends ControlledView {
 	
@@ -115,9 +120,6 @@ public class DayController extends ControlledView {
         durationCol.setCellValueFactory(new PropertyValueFactory<>("duration"));
         locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
 
-        // DatePickerSkin datePickerSkin = new DatePickerSkin(datePicker);
-        // Node popupContent = datePickerSkin.getPopupContent();
-
         dateChanged(null);
     }
 
@@ -128,4 +130,5 @@ public class DayController extends ControlledView {
     public EventData getSelectedEvent(){
     	return selectedEvent;
     }
+    
 }
