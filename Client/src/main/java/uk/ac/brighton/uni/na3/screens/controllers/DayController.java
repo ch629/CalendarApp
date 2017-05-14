@@ -17,6 +17,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DayController extends ControlledView {
+	
+	private EventData selectedEvent; // Stored selected event
+	
     @FXML
     private DatePicker datePicker;
 
@@ -51,6 +54,12 @@ public class DayController extends ControlledView {
 
     @FXML
     void editEvent(ActionEvent event) {
+    	EventData e = table.getSelectionModel().getSelectedItem();
+    	if( e == null )
+    		return;
+    	
+    	selectedEvent = e;
+    	
         CalendarApp.newSecondaryScene(CalendarApp.editEventID, "Edit Event");
     }
 
@@ -105,5 +114,9 @@ public class DayController extends ControlledView {
 
     public LocalDate getDate() {
         return datePicker.getValue();
+    }
+    
+    public EventData getSelectedEvent(){
+    	return selectedEvent;
     }
 }

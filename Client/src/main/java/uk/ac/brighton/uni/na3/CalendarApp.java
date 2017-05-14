@@ -19,7 +19,7 @@ public class CalendarApp extends Application {
     public static String createEventID = "createEvent";
     public static String createEventFXML = "/Create Event.fxml";
     public static String editEventID = "editEvent";
-    public static String editEventFXML = "/Edit Event.fxml";
+    public static String editEventFXML = "/EditEventV2.fxml";
     public static String dayViewID = "dayView";
     public static String dayViewFXML = "/DayView.fxml";
     public static String calendarViewID = "calendarView";
@@ -110,5 +110,9 @@ public class CalendarApp extends Application {
         secondaryStage.setScene(scene);
 
         primaryStage.show();
+    }
+    
+    public ScreenController getMainController(){
+    	return mainController;
     }
 }
