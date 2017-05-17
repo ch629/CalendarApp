@@ -6,7 +6,7 @@ import uk.ac.brighton.uni.na3.model.networking.response.Response;
 import uk.ac.brighton.uni.na3.utils.function.NetworkOptional;
 
 public class NetworkUtils {
-    private static final String HOST_NAME = "http://localhost:8080/";
+    private static final String HOST_NAME = "http://localhost:/3000";
     public static <T extends Response> NetworkOptional<T> get(String route, Class<T> type) {
         try {
             T response = Unirest.get(HOST_NAME + route).asObject(type).getBody();
